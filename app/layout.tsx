@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     default: "Vinasetan Ratheil Houndji — Intelligence artificielle",
     template: "%s — Vinasetan Ratheil Houndji",
   },
-  description: "Site académique de Vinasetan Ratheil Houndji, enseignant-chercheur en intelligence artificielle à l’Université d’Abomey-Calavi.",
+  description: "Site professionnel de Vinasetan Ratheil Houndji, enseignant-chercheur en intelligence artificielle à l’Université d’Abomey-Calavi.",
   alternates: { canonical: "/" },
   icons: { icon: "/favicon.svg" },
 };
