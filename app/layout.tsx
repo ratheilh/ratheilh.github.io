@@ -4,14 +4,14 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://ratheilh.github.io"),
   title: {
-    default: "Vinasetan Ratheil Houndji — Intelligence artificielle",
-    template: "%s — Vinasetan Ratheil Houndji",
+    default: "Vinasétan Ratheil Esse Houndji — Artificial Intelligence",
+    template: "%s — Vinasétan Ratheil Esse Houndji",
   },
-  description: "Site professionnel de Vinasetan Ratheil Houndji, enseignant-chercheur en intelligence artificielle à l’Université d’Abomey-Calavi.",
+  description: "Professional website of Vinasétan Ratheil Esse Houndji, an artificial intelligence researcher and lecturer at the University of Abomey-Calavi.",
   alternates: { canonical: "/" },
   icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="fr"><body>{children}</body></html>;
+  return <html lang="en"><body>{children}</body></html>;
 }
