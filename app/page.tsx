@@ -10,7 +10,7 @@ export default function Home() {
           <Image className="profile-photo" src="/ratheil-houndji.webp" alt="Portrait de Vinasetan Ratheil Houndji" width={600} height={697} priority />
           <div className="profile-details">
             <p><strong>IFRI — Université d’Abomey-Calavi</strong><br />Abomey-Calavi, Bénin</p>
-            <p><a href="mailto:ratheil.houndji@uac.bj">ratheil.houndji@uac.bj</a></p><br />
+            <p><a href="mailto:ratheil.houndji@uac.bj">ratheil.houndji@uac.bj</a></p>
             <p><a href="mailto:vratheilhoundji@gmail.com">vratheilhoundji@gmail.com</a></p>
             <nav className="profile-links" aria-label="Profils externes">
               <ExternalLink href="https://scholar.google.com/citations?user=36wbP8kAAAAJ&hl=fr">Google Scholar</ExternalLink>
@@ -25,7 +25,7 @@ export default function Home() {
             <p className="eyebrow">Enseignant-chercheur en intelligence artificielle et en optimisation</p>
             <h1>Vinasetan Ratheil Houndji</h1>
             <p className="position">Maître de conférences des universités du CAMES<br />
-              Chef du département Génie logiciel · Coordonnateur des formations de Licence et de Master<br />
+              Chef du département Génie logiciel & Coordonnateur des formations de Licence et de Master / IFRI-UAC<br />
               Président de l'association FRIARE pour une intelligence artificielle responsable et efficiente</p>
           </header>
 
