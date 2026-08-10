@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { SiteNavigation } from "./navigation-links";
 
 export function SiteHeader() {
@@ -8,7 +9,8 @@ export function SiteHeader() {
 }
 
 export function AcademicPage({ children, home = false, language = "fr" }: { children: ReactNode; home?: boolean; language?: "fr" | "en" }) {
-  return <><SiteHeader /><main lang={language} className={home ? "content content-home" : "content"}>{children}</main><footer lang={language} className="site-footer"><div>© 2026 Vinasétan Ratheil Esse Houndji</div><div>IFRI · {language === "en" ? "University of Abomey-Calavi · Benin" : "Université d’Abomey-Calavi · Bénin"}</div></footer></>;
+  const privacyHref = language === "en" ? "/en/privacy" : "/politique-de-confidentialite";
+  return <><SiteHeader /><main lang={language} className={home ? "content content-home" : "content"}>{children}</main><footer lang={language} className="site-footer"><div>© 2026 Vinasétan Ratheil Esse Houndji · <Link href={privacyHref}>{language === "en" ? "Privacy" : "Confidentialité"}</Link></div><div>IFRI · {language === "en" ? "University of Abomey-Calavi · Benin" : "Université d’Abomey-Calavi · Bénin"}</div></footer></>;
 }
 
 export function ExternalLink({ href, children }: { href: string; children: ReactNode }) { return <a href={href} target="_blank" rel="noreferrer">{children}</a>; }

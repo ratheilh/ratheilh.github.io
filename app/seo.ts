@@ -19,6 +19,7 @@ export const routes = {
   supervision: { fr: "/encadrements/", en: "/en/supervision/" },
   services: { fr: "/services/", en: "/en/services/" },
   contact: { fr: "/contact/", en: "/en/contact/" },
+  privacy: { fr: "/politique-de-confidentialite/", en: "/en/privacy/" },
   engagements: "/engagements/",
 } as const;
 
@@ -31,12 +32,14 @@ export const publicPaths: SitePath[] = [
   routes.supervision.fr,
   routes.services.fr,
   routes.contact.fr,
+  routes.privacy.fr,
   routes.research.en,
   routes.publications.en,
   routes.teaching.en,
   routes.supervision.en,
   routes.services.en,
   routes.contact.en,
+  routes.privacy.en,
 ];
 
 export function absoluteUrl(path: SitePath): string {

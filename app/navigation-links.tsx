@@ -17,6 +17,7 @@ const navigationItems: { href: Localized; label: Localized }[] = [
 const frenchToEnglish: Record<string, string> = Object.fromEntries([
   ["/fr", "/"],
   ...navigationItems.map((item) => [item.href.fr, item.href.en]),
+  ["/politique-de-confidentialite", "/en/privacy"],
   ["/engagements", "/en/services"],
 ]);
 
@@ -24,6 +25,7 @@ const englishToFrench: Record<string, string> = Object.fromEntries([
   ["/", "/fr"],
   ["/en", "/fr"],
   ...navigationItems.map((item) => [item.href.en, item.href.fr]),
+  ["/en/privacy", "/politique-de-confidentialite"],
 ]);
 
 function cleanPath(pathname: string) {
