@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { AcademicPage, PageIntro } from "../site-components";
 import { type Language, type Localized, localize } from "../i18n";
+import { createPageMetadata, routes } from "../seo";
 
-export const metadata = { title: "Encadrements", alternates: { canonical: "/encadrements/", languages: { fr: "/encadrements/", en: "/en/supervision/" } } };
+export const metadata: Metadata = createPageMetadata({
+  title: "Encadrements et thèses",
+  description: "Découvrez les thèses en cours et une sélection de mémoires de master, d’ingénieur et de licence encadrés par Vinasétan Ratheil Houndji.",
+  path: routes.supervision.fr,
+  locale: "fr",
+  languageAlternates: routes.supervision,
+});
 
 type ThesisGroup = { year: string; items: string[] };
 

@@ -3,12 +3,61 @@ import Image from "next/image";
 import Link from "next/link";
 import { AcademicPage, ExternalLink } from "./site-components";
 import { type Language, type Localized, localize } from "./i18n";
+import { createPageMetadata, routes, serializeJsonLd, SITE_URL } from "./seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Artificial intelligence researcher",
-  description: "Professional website of Vinasétan Ratheil Esse Houndji, an artificial intelligence researcher and lecturer at the University of Abomey-Calavi.",
-  alternates: { canonical: "/", languages: { fr: "/fr/", en: "/" } },
-};
+  description: "Academic profile of Vinasétan Ratheil Houndji, an artificial intelligence researcher and lecturer at the University of Abomey-Calavi.",
+  path: routes.home.en,
+  locale: "en",
+  languageAlternates: routes.home,
+});
+
+const profilePageJsonLd = serializeJsonLd({
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${SITE_URL}/#profile-page`,
+  url: SITE_URL,
+  name: "Profil académique de Vinasetan Ratheil Houndji",
+  mainEntity: {
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
+    name: "Vinasetan Ratheil Houndji",
+    alternateName: "Ratheil Houndji",
+    url: SITE_URL,
+    image: `${SITE_URL}/ratheil-houndji.webp`,
+    jobTitle: "Enseignant-chercheur en intelligence artificielle",
+    affiliation: [
+      {
+        "@type": "CollegeOrUniversity",
+        name: "Université d’Abomey-Calavi",
+        url: "https://uac.bj",
+      },
+      {
+        "@type": "EducationalOrganization",
+        name: "Institut de Formation et de Recherche en Informatique (IFRI)",
+        url: "https://ifri-uac.bj",
+      },
+    ],
+    knowsAbout: [
+      "Intelligence artificielle",
+      "Apprentissage automatique",
+      "Programmation par contraintes",
+      "Optimisation combinatoire",
+      "Intelligence artificielle responsable et efficiente",
+      "Applications de l’intelligence artificielle en santé, agriculture et éducation",
+      "Réalités augmentée et virtuelle",
+    ],
+    sameAs: [
+      "https://scholar.google.com/citations?user=36wbP8kAAAAJ&hl=en",
+      "https://dblp.org/pid/150/4939",
+      "https://orcid.org/0000-0002-5467-9448",
+      "https://www.linkedin.com/in/vinasetan/",
+      "https://www.youtube.com/channel/UC24YKysMzmerMK2a1PSlYwA",
+      "https://www.facebook.com/ratheil",
+    ],
+  },
+});
 
 type EducationItem = {
   dateTime: string;
@@ -38,13 +87,13 @@ const homeContent = {
   positions: {
     fr: [
       "Maître de conférences des universités du CAMES",
-      "Chef du département de génie logiciel et coordonnateur des formations de licence et de master / IFRI-UAC",
-      "General co-chair du BWAI et président de la fondation FRIARE (2023–2026)",
+      "Chef du département de génie logiciel et Coordonnateur des formations de licence et de master / IFRI-UAC",
+      "General co-chair du Benin Workshop on Artificial Intelligence (BWAI) et président de l'association FRIARE (2023–2026)",
     ],
     en: [
       "Associate professor (CAMES)",
-      "Head of the software engineering department and coordinator of bachelor's and master's programs / IFRI-UAC",
-      "General co-chair of BWAI and president of the FRIARE Foundation (2023–2026)",
+      "Head of the software engineering department and Coordinator of bachelor's and master's programs / IFRI-UAC",
+      "General chairman of Benin Workshop on Artificial Intelligence (BWAI) and president of the FRIARE Association",
     ],
   } satisfies Localized<string[]>,
   aboutTitle: { fr: "À propos", en: "About" },
@@ -152,7 +201,9 @@ function HomeContent({ language }: { language: Language }) {
   const isEnglish = language === "en";
 
   return (
-    <AcademicPage home language={language}>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: profilePageJsonLd }} />
+      <AcademicPage home language={language}>
       <div className="home-grid">
         <aside className="profile-column" aria-label={localize(homeContent.profileLabel, language)}>
           <Image className="profile-photo" src="/ratheil-houndji.webp" alt={localize(homeContent.portraitAlt, language)} width={600} height={697} priority />
@@ -199,7 +250,8 @@ function HomeContent({ language }: { language: Language }) {
           </section>
         </div>
       </div>
-    </AcademicPage>
+      </AcademicPage>
+    </>
   );
 }
 

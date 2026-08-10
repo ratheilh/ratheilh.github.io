@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { AcademicPage, ExternalLink, PageIntro } from "../site-components";
+import { createPageMetadata, routes } from "../seo";
 
-export const metadata = { title: "Publications", alternates: { canonical: "/publications/", languages: { fr: "/publications/", en: "/en/publications/" } } };
+export const metadata: Metadata = createPageMetadata({
+  title: "Publications scientifiques",
+  description: "Consultez les articles, actes de conférences, communications et jeux de données de Vinasétan Ratheil Houndji en intelligence artificielle et optimisation.",
+  path: routes.publications.fr,
+  locale: "fr",
+  languageAlternates: routes.publications,
+});
 
 type Publication = { title: string; details: string; href?: string };
 
