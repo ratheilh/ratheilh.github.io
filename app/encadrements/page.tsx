@@ -11,6 +11,19 @@ type DoctoralThesis = {
   description: Localized;
 };
 
+type ContributedDoctoralThesis = {
+  name: string;
+  years: string;
+  institution: Localized;
+  title: Localized;
+  status: "ongoing" | "defended";
+};
+
+const doctoralSchool: Localized = {
+  fr: "École doctorale des sciences de l’ingénieur",
+  en: "Doctoral School of Engineering Sciences",
+};
+
 const doctoralTheses: DoctoralThesis[] = [
 
   {
@@ -24,14 +37,45 @@ const doctoralTheses: DoctoralThesis[] = [
     description: { fr: "Conception d’un système d’aide à la décision capable d’interpréter des EEG et de détecter différents types de crises d’épilepsie en combinant signaux, données cliniques et contexte socio-économique. Le modèle sera évalué avec des spécialistes en conditions médicales réelles.", en: "Design of a decision-support system that interprets EEGs and detects different seizure types by combining signals, clinical data, and socioeconomic context. The model will be evaluated with specialists under real-world medical conditions." },
   },
   {
-    name: "Maryse Fortune Doloresse Gahou",
-    title: { fr: "Système d’aide au dépistage précoce de l’insuffisance rénale chronique au Bénin basé sur l’apprentissage automatique", en: "A Machine Learning-Based Decision-Support System for Early Chronic Kidney Disease Screening in Benin" },
-    description: { fr: "Développement d’un outil fiable et interprétable exploitant des données cliniques et biologiques locales pour identifier précocement les personnes à risque, prédire le stade de la maladie et assister les professionnels de santé au moyen d’une plateforme numérique.", en: "Development of a reliable, interpretable tool using local clinical and biological data to identify at-risk individuals, predict disease stage, and support healthcare professionals through a digital platform." },
-  },
-  {
     name: "Grace Kisambu Nsele",
     title: { fr: "Détection automatique de la trypanosomiase à partir d’images de frottis sanguins", en: "Automatic Detection of Trypanosomiasis from Blood Smear Images" },
-    description: { fr: "Développement d’un modèle d’apprentissage profond pour détecter la trypanosomiase humaine africaine et pré-classer ses stades. Le travail comprend la constitution d’un jeu de données local, une validation multisite et un prototype explicable adapté aux environnements à ressources limitées.", en: "Development of a deep learning model to detect human African trypanosomiasis and pre-classify its stages. The work includes building a local dataset, multisite validation, and an explainable prototype suited to resource-constrained environments." },
+    description: { fr: "Développement de modèles d’apprentissage automatique pour détecter la trypanosomiase humaine africaine et pré-classer ses stades. Le travail comprend la constitution d’un jeu de données local, une validation multisite et un prototype explicable adapté aux environnements à ressources limitées.", en: "Development of machine learning models to detect human African trypanosomiasis and pre-classify its stages. The work includes building a local dataset, multisite validation, and an explainable prototype suited to resource-constrained environments." },
+  },
+  {
+    name: "Maryse Fortune Doloresse Gahou",
+    title: { fr: "Système d’aide au dépistage précoce de l’insuffisance rénale chronique au Bénin basé sur l’apprentissage automatique", en: "A Machine Learning-Based Decision-Support System for Early Chronic Kidney Disease Screening in Benin"},
+    description: { fr: "Développement d’un outil fiable et interprétable exploitant des données cliniques et biologiques locales pour identifier précocement les personnes à risque, prédire le stade de la maladie et assister les professionnels de santé au moyen d’une plateforme numérique.", en: "Development of a reliable, interpretable tool using local clinical and biological data to identify at-risk individuals, predict disease stage, and support healthcare professionals through a digital platform." },
+  },
+];
+
+const contributedDoctoralTheses: ContributedDoctoralThesis[] = [
+  {
+    name: "Marianne Balogoun",
+    years: "2022–2026",
+    institution: { fr: "École doctorale des sciences de l’ingénieur", en: "Doctoral School of Engineering Sciences" },
+    title: { fr: "Prédiction de la couverture radio à l’aide de techniques d’apprentissage automatique : cas de la télévision numérique terrestre au Bénin", en: "Radio Coverage Prediction Using Machine Learning Techniques: The Case of Digital Terrestrial Television in Benin" },
+    status: "ongoing",
+  },
+  {
+    name: "Souleymane Bah",
+    years: "2022–2026",
+    institution: { fr: "Institut de mathématiques et de sciences physiques", en: "Institute of Mathematics and Physical Sciences" },
+    title: { fr: "Détection des ravageurs de cultures à l’aide de l’apprentissage automatique et de données satellitaires ouvertes : application aux jassides des cultures de coton au nord du Bénin", en: "Crop Pest Detection Using Machine Learning and Open Satellite Data: Application to Cotton Jassids in Northern Benin" },
+    status: "ongoing",
+  },
+  {
+    name: "Ariane Houetohossou",
+    years: "2021–2024",
+    institution: { fr: "École doctorale des sciences agronomiques et de l’eau", en: "Doctoral School of Agricultural and Water Sciences" },
+    title: { fr: "Optimisation des paramètres des techniques d’apprentissage automatique pour la prédiction du rendement du maïs sous des conditions météorologiques et de fertilisation contrôlées", en: "Optimization of Machine Learning Technique Parameters for Maize Yield Prediction Under Controlled Weather and Fertilization Patterns" },
+    status: "defended",
+  },
+  {
+    name: "Peace Tahi",
+    years: "2021–2024",
+    institution: { fr: "École doctorale des sciences agronomiques et de l’eau", en: "Doctoral School of Agricultural and Water Sciences" },
+    title: { fr: "Évaluation empirique des techniques d’apprentissage automatique pour la détection des maladies et la prédiction du rendement de la tomate dans des conditions climatiques et infectieuses simulées", en: "Empirical Evaluation of Machine Learning Techniques for Disease Detection and Yield Prediction in Tomatoes Under Simulated Climate and Infection Conditions" },
+    status: "defended",
   },
 ];
 
@@ -241,24 +285,39 @@ function SupervisionContent({ language }: { language: Language }) {
     <AcademicPage language={language}>
       <PageIntro title={isEnglish ? "Supervision" : "Encadrements"}>
         {isEnglish
-          ? "Ongoing PhD research and a selection of supervised master’s, engineering, and bachelor’s theses in artificial intelligence, optimization, and software engineering."
-          : "Thèses en cours et sélection de mémoires de master, d’ingénieur et de licence encadrés en intelligence artificielle, optimisation et génie logiciel."}
+          ? "Ongoing PhD research, contributions to PhD supervision, and a selection of supervised master’s, engineering, and bachelor’s theses in artificial intelligence, optimization, and software engineering."
+          : "Thèses en cours, contributions à l’encadrement doctoral et sélection de mémoires de master, d’ingénieur et de licence encadrés en intelligence artificielle, optimisation et génie logiciel."}
       </PageIntro>
 
       <h2>{isEnglish ? "Ongoing PhD theses" : "Thèses en cours"}</h2>
-      <ul className="simple-list">
+      <ol className="publication-list">
         {doctoralTheses.map((thesis) => (
           <li key={thesis.name}>
-            <strong>{thesis.name}</strong>
-            <br />
-            <em>{localize(thesis.title, language)}</em>
-            <br />
-            {localize(thesis.description, language)}
+            <span className="title">{localize(thesis.title, language)}</span>
+            <span className="details">
+              <strong>{thesis.name}</strong> · {localize(doctoralSchool, language)}
+              <br />
+              {localize(thesis.description, language)}
+            </span>
           </li>
         ))}
-      </ul>
+      </ol>
 
-      {isEnglish ? <p className="notice">Completed thesis titles below are shown in their original submission language.</p> : null}
+      <h2>{isEnglish ? "Contributions to PhD supervision" : "Contributions à l’encadrement de thèses"}</h2>
+      <ol className="publication-list">
+        {contributedDoctoralTheses.map((thesis) => (
+          <li key={thesis.name}>
+            <span className="title">{localize(thesis.title, language)}</span>
+            <span className="details">
+              <strong>{thesis.name}</strong> · {localize(thesis.institution, language)} · {thesis.years}
+              <br />
+              {thesis.status === "defended"
+                ? (isEnglish ? "Defended" : "Soutenue")
+                : (isEnglish ? "Ongoing" : "En cours")}
+            </span>
+          </li>
+        ))}
+      </ol>
 
       <h2>{isEnglish ? "Master’s theses" : "Mémoires de master"}</h2>
       <ThesisGroups groups={masterTheses} />

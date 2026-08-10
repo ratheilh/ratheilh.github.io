@@ -18,9 +18,11 @@ type EducationItem = {
 };
 
 type NewsItem = {
-  year: string;
+  dateTime: string;
+  period: Localized;
   title: Localized;
   details: Localized;
+  links?: { href: string; label: Localized }[];
 };
 
 const homeContent = {
@@ -80,11 +82,68 @@ const education: EducationItem[] = [
 ];
 
 const news: NewsItem[] = [
-  { year: "2026", title: { fr: "Coming soon", en: "Coming soon" }, details: { fr: "CARI 2026", en: "CARI 2026" } },
-  { year: "2026", title: { fr: "Coming soon", en: "Coming soon" }, details: { fr: "BWAI 2026", en: "BWAI 2026" } },
-  { year: "2026", title: { fr: "OpenCS4Dev et ForCES", en: "OpenCS4Dev and ForCES" }, details: { fr: "Coordination Sud de deux projets ARES consacrés aux ressources pédagogiques ouvertes en informatique et à la formation continue des enseignants du supérieur.", en: "Southern coordination of two ARES projects on open computer science learning resources and continuing professional development for higher-education teachers." } },
-  { year: "2026", title: { fr: "Expertise et enseignement international", en: "Expertise and international teaching" }, details: { fr: "Contribution à la stratégie nationale de l’éducation basée sur le numérique, formateur à la FIPUN et professeur invité à l’UCLouvain.", en: "Contribution to the national digital education strategy, FIPUN trainer, and visiting professor at UCLouvain." } },
-  { year: "2025", title: { fr: "ACP Summer School 2025", en: "ACP Summer School 2025" }, details: { fr: "Présidence générale de la 20e édition, première organisation en Afrique de cette école internationale de programmation par contraintes.", en: "General Chair of the 20th edition, the first edition of this international constraint programming school held in Africa." } },
+  {
+    dateTime: "2026-11-23",
+    period: { fr: "Novembre 2026", en: "November 2026" },
+    title: { fr: "BWAI 2026 — préparation de la prochaine édition", en: "BWAI 2026 — preparing the next edition" },
+    details: { fr: "En qualité de General co-Chair, préparation du prochain Benin Workshop on Artificial Intelligence, organisé du 23 au 27 novembre 2026. L’événement réunit chercheurs, étudiants, professionnels et acteurs publics autour de la recherche, de la formation et des usages de l’intelligence artificielle au Bénin.", en: "As General co-Chair, preparation of the next Benin Workshop on Artificial Intelligence, taking place from 23 to 27 November 2026. The event brings together researchers, students, professionals, and public-sector stakeholders around AI research, education, and applications in Benin." },
+    links: [{ href: "https://bwai-ifri-uac.bj", label: { fr: "Site du BWAI", en: "BWAI website" } }],
+  },
+  {
+    dateTime: "2026-10",
+    period: { fr: "Octobre 2026", en: "October 2026" },
+    title: { fr: "CARI 2026 — à venir", en: "CARI 2026 — coming soon" },
+    details: { fr: "La 18e édition du Colloque africain sur la recherche en informatique et les mathématiques appliquées se tiendra du 21 au 24 octobre à l’Université d’Abomey-Calavi. Ce rendez-vous scientifique panafricain est consacré aux avancées de la recherche et à leurs applications.", en: "The 18th African Conference on Research in Computer Science and Applied Mathematics will take place from 21 to 24 October at the University of Abomey-Calavi. This pan-African scientific forum is devoted to research advances and their applications." },
+    links: [{ href: "https://cari-conf.bj/", label: { fr: "Site du CARI 2026", en: "CARI 2026 website" } }],
+  },
+  {
+    dateTime: "2026-09",
+    period: { fr: "Septembre 2026", en: "September 2026" },
+    title: { fr: "Coordination des projets OpenCS4Dev et ForCES", en: "Coordination of the OpenCS4Dev and ForCES projects" },
+    details: { fr: "Coordination Sud de deux projets soutenus par l’ARES. OpenCS4Dev vise la production et la mutualisation de ressources pédagogiques ouvertes pour l’enseignement de l’informatique. ForCES, mené avec l’ULB et l’Université Cheikh-Anta-Diop de septembre 2026 à août 2028, doit co-construire une infrastructure de formation continue en pédagogie universitaire numérique au Bénin et au Sénégal.", en: "Southern coordination of two ARES-supported projects. OpenCS4Dev develops and shares open educational resources for computer science teaching. ForCES, conducted with ULB and Cheikh Anta Diop University from September 2026 to August 2028, will co-design a continuing professional development infrastructure for digital university pedagogy in Benin and Senegal." },
+    links: [{ href: "https://moove.ares-ac.be/actu/les-23-projets-damorce-et-de-valorisation-selectionnes-en-2026-seront-mis", label: { fr: "Projet ForCES — ARES", en: "ForCES project — ARES" } }],
+  },
+  {
+    dateTime: "2026-08",
+    period: { fr: "Août 2026", en: "August 2026" },
+    title: { fr: "Intelligence artificielle neuro-symbolique : concepts et applications", en: "Neuro-symbolic artificial intelligence: concepts and applications" },
+    details: { fr: "Communication présentée en août à l’École d’été sur l’intelligence artificielle de Bénin Excellence. Une introduction à la complémentarité entre apprentissage neuronal et raisonnement symbolique, aux principales architectures neuro-symboliques et à leurs applications en santé, agriculture, éducation, cybersécurité et optimisation.", en: "Talk delivered in August at the Benin Excellence Summer School on Artificial Intelligence. An introduction to the complementary strengths of neural learning and symbolic reasoning, the main neuro-symbolic architectures, and their applications in health, agriculture, education, cybersecurity, and optimization." },
+    links: [{ href: "https://drive.google.com/file/d/10EymwVu_fvIQA7IZkjVKHtDIuqZEzZ2m/view?usp=drivesdk", label: { fr: "Voir la présentation (PDF)", en: "View slides (PDF)" } }],
+  },
+  {
+    dateTime: "2026-07",
+    period: { fr: "Juillet 2026", en: "July 2026" },
+    title: { fr: "Gouvernance responsable de l’intelligence artificielle dans l’enseignement supérieur africain", en: "Responsible governance of artificial intelligence in African higher education" },
+    details: { fr: "Communication présentée en juillet au colloque « IA, éducation et éthique » de la Commission permanente Éducation et Éthique de l’Académie nationale des sciences, arts et lettres du Bénin. La présentation propose des principes, des dispositifs de gouvernance et un cycle opérationnel fondé sur les risques, la souveraineté des données, l’intégrité académique, l’audit et les voies de recours.", en: "Talk delivered in July at the “AI, Education and Ethics” symposium of the Permanent Commission on Education and Ethics of Benin’s National Academy of Sciences, Arts and Letters. It proposes governance principles, institutional mechanisms, and an operational cycle covering risk levels, data sovereignty, academic integrity, auditing, and avenues for appeal." },
+    links: [{ href: "https://drive.google.com/file/d/1ioAclHqtFHFcEJzgyVYT0_MNhjpr7YZD/view?usp=drivesdk", label: { fr: "Voir la présentation (PDF)", en: "View slides (PDF)" } }],
+  },
+  {
+    dateTime: "2026-07",
+    period: { fr: "Juillet 2026", en: "July 2026" },
+    title: { fr: "L’IA au service de mon parcours académique : opportunités et pièges à éviter", en: "AI in support of my academic journey: opportunities and pitfalls to avoid" },
+    details: { fr: "Atelier animé en juillet lors du lancement de la stratégie d’intelligence artificielle de l’Université d’Abomey-Calavi. Destiné aux étudiants, il aborde l’usage académique responsable de l’IA générative, la formulation de prompts, les biais, les hallucinations, la confidentialité, la déclaration des usages ainsi que les droits et obligations prévus par le cadre éthique de l’UAC.", en: "Workshop delivered in July during the launch of the University of Abomey-Calavi’s artificial intelligence strategy. Designed for students, it covers responsible academic use of generative AI, prompt design, bias, hallucinations, confidentiality, disclosure of AI use, and the rights and obligations established by UAC’s ethical framework." },
+    links: [{ href: "https://drive.google.com/file/d/1gDTSSiedTM0y9tnnUWzqv9m8qC0XVw4W/view?usp=drivesdk", label: { fr: "Voir la présentation (PDF)", en: "View slides (PDF)" } }],
+  },
+  {
+    dateTime: "2026-05",
+    period: { fr: "Mai 2026", en: "May 2026" },
+    title: { fr: "Expertise et enseignement international", en: "Expertise and international teaching" },
+    details: { fr: "Contribution à la stratégie nationale de l’éducation fondée sur le numérique. En mai, intervention comme formateur à la FIPUN auprès d’enseignants-chercheurs de neuf pays, puis séjour comme professeur invité à l’institut ICTEAM de l’UCLouvain pour des enseignements et échanges scientifiques en intelligence artificielle et en optimisation.", en: "Contribution to the national digital education strategy. In May, delivery of FIPUN training for lecturers and researchers from nine countries, followed by a visiting professorship at UCLouvain’s ICTEAM institute for teaching and scientific exchanges in artificial intelligence and optimization." },
+    links: [
+      { href: "https://moove.ares-ac.be/actu/pedagogie-universitaire-numerique-former-celles-et-ceux-qui-formeront-leur", label: { fr: "FIPUN — ARES", en: "FIPUN — ARES" } },
+      { href: "https://www.uclouvain.be/en/research-institutes/icteam", label: { fr: "ICTEAM — UCLouvain", en: "ICTEAM — UCLouvain" } },
+    ],
+  },
+  {
+    dateTime: "2025-08",
+    period: { fr: "Août 2025", en: "August 2025" },
+    title: { fr: "20e ACP Summer School — première édition africaine", en: "20th ACP Summer School — first African edition" },
+    details: { fr: "General Chair et coorganisateur avec John Aoga de l’école tenue du 25 au 29 août à l’IFRI. Consacrée à la programmation par contraintes pour le développement durable, elle a réuni 50 participants, dont 86 % d’Africains, et attribué 14 bourses complètes et 30 bourses partielles.", en: "General Chair and co-organizer with John Aoga of the school held at IFRI from 25 to 29 August. Focused on constraint programming for sustainable development, it welcomed 50 participants, 86% of whom were African, and awarded 14 full and 30 partial scholarships." },
+    links: [
+      { href: "https://school.a4cp.org/summer2025/", label: { fr: "Programme de l’école", en: "School program" } },
+      { href: "https://www.a4cp.org/-97", label: { fr: "Bilan de l’ACP", en: "ACP report" } },
+    ],
+  },
 ];
 
 function HomeContent({ language }: { language: Language }) {
@@ -136,7 +195,7 @@ function HomeContent({ language }: { language: Language }) {
 
           <section className="home-section" aria-labelledby="news">
             <div className="section-heading"><h2 id="news">{localize(homeContent.newsTitle, language)}</h2></div>
-            <ol className="news-list">{news.map((item, index) => <li key={`${item.year}-${index}`}><time dateTime={item.year}>{item.year}</time><p><strong>{localize(item.title, language)}</strong><br />{localize(item.details, language)}</p></li>)}</ol>
+            <ol className="news-list">{news.map((item, index) => <li key={`${item.dateTime}-${index}`}><time dateTime={item.dateTime}>{localize(item.period, language)}</time><p><strong>{localize(item.title, language)}</strong><br />{localize(item.details, language)}{item.links ? <span className="news-links">{item.links.map((link, linkIndex) => <span key={link.href}>{linkIndex > 0 ? " · " : null}<ExternalLink href={link.href}>{localize(link.label, language)}</ExternalLink></span>)}</span> : null}</p></li>)}</ol>
           </section>
         </div>
       </div>

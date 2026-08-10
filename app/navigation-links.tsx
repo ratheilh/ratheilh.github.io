@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, type MouseEvent } from "react";
 import type { Localized } from "./i18n";
 
 const navigationItems: { href: Localized; label: Localized }[] = [
@@ -30,6 +30,11 @@ function cleanPath(pathname: string) {
   return pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
 }
 
+function handleNavigationClick(event: MouseEvent<HTMLAnchorElement>) {
+  event.currentTarget.closest("details")?.removeAttribute("open");
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+}
+
 export function SiteNavigation() {
   const pathname = usePathname();
   const currentPath = cleanPath(pathname);
@@ -45,25 +50,31 @@ export function SiteNavigation() {
 
   return (
     <>
-      <Link className="brand" href={isEnglish ? "/" : "/fr"} aria-label={isEnglish ? "Home" : "Accueil"}>Ratheil Houndji</Link>
+      <Link className="brand" href={isEnglish ? "/" : "/fr"} onClick={handleNavigationClick} scroll aria-label={isEnglish ? "Ratheil Houndji — Home" : "Ratheil Houndji — Accueil"}>
+        <svg className="brand-monogram" viewBox="0 0 60 44" aria-hidden="true">
+          <text className="brand-initial brand-initial-r" x="3" y="34">R</text>
+          <text className="brand-initial brand-initial-h" x="26" y="34">H</text>
+          <path className="brand-signature" d="M6 40H54" />
+        </svg>
+      </Link>
       <nav className="desktop-nav" aria-label={isEnglish ? "Main navigation" : "Navigation principale"}>
         {navigation.map(([href, label]) => {
           const isActive = currentPath === href || currentPath.startsWith(`${href}/`);
-          return <Link href={href} key={href} aria-current={isActive ? "page" : undefined}>{label}</Link>;
+          return <Link href={href} key={href} onClick={handleNavigationClick} scroll aria-current={isActive ? "page" : undefined}>{label}</Link>;
         })}
       </nav>
       <div className="header-actions">
         <nav className="language-switcher" aria-label={isEnglish ? "Language" : "Langue"}>
-          <Link href={frenchHref} hrefLang="fr" lang="fr" aria-current={!isEnglish ? "page" : undefined}>FR</Link>
+          <Link href={frenchHref} hrefLang="fr" lang="fr" onClick={handleNavigationClick} scroll aria-current={!isEnglish ? "page" : undefined}>FR</Link>
           <span aria-hidden="true">/</span>
-          <Link href={englishHref} hrefLang="en" lang="en" aria-current={isEnglish ? "page" : undefined}>EN</Link>
+          <Link href={englishHref} hrefLang="en" lang="en" onClick={handleNavigationClick} scroll aria-current={isEnglish ? "page" : undefined}>EN</Link>
         </nav>
         <details className="mobile-menu">
           <summary>{isEnglish ? "Menu" : "Menu"} <span aria-hidden="true">☰</span></summary>
           <nav aria-label={isEnglish ? "Mobile navigation" : "Navigation mobile"}>
             {navigation.map(([href, label]) => {
               const isActive = currentPath === href || currentPath.startsWith(`${href}/`);
-              return <Link href={href} key={href} aria-current={isActive ? "page" : undefined}>{label}</Link>;
+              return <Link href={href} key={href} onClick={handleNavigationClick} scroll aria-current={isActive ? "page" : undefined}>{label}</Link>;
             })}
           </nav>
         </details>

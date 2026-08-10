@@ -258,12 +258,9 @@ function PublicationsContent({ language }: { language: "fr" | "en" }) {
         {isEnglish
           ? "Journal articles, conference proceedings, presentations, and datasets in optimization, machine learning, and artificial intelligence applications."
           : "Articles, actes de conférences, communications et jeux de données en optimisation, apprentissage automatique et applications de l’intelligence artificielle."}
-
-        <p>
-          {isEnglish ? "See also " : "Voir également "}<ExternalLink href={`https://scholar.google.com/citations?user=36wbP8kAAAAJ&hl=${isEnglish ? "en" : "fr"}`}>Google Scholar</ExternalLink>,{" "}
-          <ExternalLink href="https://dblp.org/pid/150/4939">DBLP</ExternalLink> {isEnglish ? "and" : "et"} <ExternalLink href="https://orcid.org/0000-0002-5467-9448">ORCID</ExternalLink>.
-        </p>
-
+        <br />
+        {isEnglish ? "See also " : "Voir également "}<ExternalLink href={`https://scholar.google.com/citations?user=36wbP8kAAAAJ&hl=${isEnglish ? "en" : "fr"}`}>Google Scholar</ExternalLink>,{" "}
+        <ExternalLink href="https://dblp.org/pid/150/4939">DBLP</ExternalLink> {isEnglish ? "and" : "et"} <ExternalLink href="https://orcid.org/0000-0002-5467-9448">ORCID</ExternalLink>.
       </PageIntro>
       {publications.map((group) => (
         <section className="publication-year" key={group.year}>
