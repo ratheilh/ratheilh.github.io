@@ -9,7 +9,7 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2026",
     items: [
       {
-        title: "Spatiotemporal Modeling and Uncertainty Quantification of Reference Evapotranspiration Using Machine Learning and Bayesian Model Averaging in Benin",
+        title: "Spatiotemporal modeling and uncertainty quantification of reference evapotranspiration using machine learning and Bayesian model averaging in Benin",
         details: "B. C. F. Mizele, M. Meliho, V. R. Houndji, S. A. R. M. Ahouandjinou, C. A. Orlando. Geomatics, vol. 6, no 4, article 73.",
         href: "https://doi.org/10.3390/geomatics6040073",
       },
@@ -20,32 +20,32 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2025",
     items: [
       {
-        title: "Machine Learning Techniques for Tomato Yield Prediction: A Comprehensive Analysis",
+        title: "Machine learning techniques for tomato yield prediction: a comprehensive analysis",
         details: "K. A. Odah, S. C. A. Houetohossou, V. R. Houndji, R. L. G. Kakaï. Smart Agricultural Technology, vol. 12, 101067.",
         href: "https://doi.org/10.1016/j.atech.2025.101067",
       },
       {
-        title: "Machine Learning-Based Path Loss Models: Towards a Unified Methodology",
+        title: "Machine learning-based path loss models: towards a unified methodology",
         details: "M. A. O. Balogoun, M. Dossou, V. R. Houndji, A.-C. Honfoga. IEEE ICETCI 2025, pp. 1–9.",
         href: "https://doi.org/10.1109/ICETCI67340.2025.11258025",
       },
       {
-        title: "Towards a Fully-Fletched African Register of Implanted Pacemakers",
+        title: "Towards a fully-fletched African register of implanted pacemakers",
         details: "S. O. F. Kouzonde, G. Kpadjouda, V. R. Houndji, S. A. R. M. Ahouandjinou, J. Degila, M. L. Ba. InterSol 2025, LNICST, pp. 204–216.",
         href: "https://doi.org/10.1007/978-3-032-15154-4_16",
       },
       {
-        title: "Cotton Jassid Pests Severity Discrimination Using Single Image Super Resolution, Data Fusion and Machine Learning Based on SAR, Multispectral and Thermal Infrared Open Satellite Sensors Data",
+        title: "Cotton jassid pests severity discrimination using single image super resolution, data fusion and machine learning based on SAR, multispectral and thermal infrared open satellite sensors data",
         details: "S. Bah, V. R. Houndji, E. W. G. Megnigbeto, E. C. Ezin, N. G. Gouwakinnou. IEEE AICSIP 2025, pp. 1–7.",
         href: "https://doi.org/10.1109/AICSIP65423.2025.11427311",
       },
       {
-        title: "Effects of weather scenarios and fertilizer on maize growth and yield: Insights from a greenhouse experiment",
+        title: "Effects of weather scenarios and fertilizer on maize growth and yield: insights from a greenhouse experiment",
         details: "S. P. G. Tahi, K. V. Salako, V. R. Houndji, R. Glèlè Kakaï. PLOS ONE, 20(3), e0318121.",
         href: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0318121",
       },
       {
-        title: "RiceSeg-5932: Complete Pixel-Level Segmentation Masks for Rice Leaf Disease Images Samples",
+        title: "RiceSeg-5932: complete pixel-level segmentation masks for rice leaf disease images samples",
         details: "K. M. S. Zinsou, V. R. Houndji. Mendeley Data, version 1. Jeu de données de recherche.",
         href: "https://doi.org/10.17632/92jc6w6mcy.1",
       },
@@ -55,27 +55,27 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2024",
     items: [
       {
-        title: "Cotton Jassid Infestation Monitoring Using Sentinel-2 MSI, Landsat 9 TIRS, and PlanetScope Imagery with Machine Learning and Data Fusion",
+        title: "Cotton jassid infestation monitoring using Sentinel-2 MSI, Landsat 9 TIRS, and PlanetScope imagery with machine learning and data fusion",
         details: "S. Bah, M. D. T. M. Houegbe, E. W. G. Megnigbeto, V. R. Houndji, B. N. Kouton, N. G. Gouwakinnou, E. C. Ezin. IEEE ICCA 2024, pp. 1–9.",
         href: "https://doi.org/10.1109/ICCA62237.2024.10927781",
       },
       {
-        title: "An Experimental Analysis of Traditional Machine Learning Algorithms for Maize Yield Prediction",
+        title: "An experimental analysis of traditional machine learning algorithms for maize yield prediction",
         details: "S. P. G. Tahi, C. G. Hounmenou, V. R. Houndji, R. G. Kakaï. Contemporary Mathematics, vol. 5, no 4, pp. 6208–6224.",
         href: "https://doi.org/10.37256/cm.5420244481",
       },
       {
-        title: "Using Pattern Mining to Determine Fine Climatic Parameters for Maize Yield in Benin",
+        title: "Using pattern mining to determine fine climatic parameters for maize yield in Benin",
         details: "S. P. G. Tahi, V. R. Houndji, C. G. Hounmenou, R. G. Kakaï. IAES International Journal of Artificial Intelligence, vol. 13, no 4, pp. 3930–3941.",
         href: "https://doi.org/10.11591/ijai.v13.i4.pp3930-3941",
       },
       {
-        title: "Genetic Algorithms for Solving the Pigment Sequencing Problem",
+        title: "Genetic algorithms for solving the pigment sequencing problem",
         details: "V. R. Houndji, T. Gna. African Journal of Research in Computer Science and Applied Mathematics, vol. 40.",
         href: "https://doi.org/10.46298/arima.11382",
       },
       {
-        title: "Empirical Performance of Deep Learning Models with Class Imbalance for Crop Disease Classification",
+        title: "Empirical performance of deep learning models with class imbalance for crop disease classification",
         details: "S. C. A. Houetohossou, C. G. Hounmenou, V. R. Houndji, R. G. Kakaï. DeLTA 2024, CCIS, vol. 2172, pp. 118–135.",
         href: "https://link.springer.com/chapter/10.1007/978-3-031-66705-3_8",
       },
@@ -90,12 +90,12 @@ const publications: { year: string; items: Publication[] }[] = [
         href: "https://doi.org/10.1371/journal.pone.0297983",
       },
       {
-        title: "Machine Learning Techniques for Cereal Crops Yield Prediction: A Comprehensive Review",
+        title: "Machine learning techniques for cereal crops yield prediction: a comprehensive review",
         details: "S. P. G. Tahi, V. R. Houndji, K. V. Salako, C. G. Hounmenou, R. G. Kakaï. Applications of Modelling and Simulation, vol. 8, pp. 174–190.",
         href: "https://arqiipubl.com/ojs/index.php/AMS_Journal/article/view/622",
       },
       {
-        title: "Radio Coverage Prediction in Wireless Networks: A Bibliometric Study",
+        title: "Radio coverage prediction in wireless networks: a bibliometric study",
         details: "M. A. O. Balogoun, V. R. Houndji, M. Dossou, A.-C. Honfoga. ICICT 2023, LNNS, vol. 696, pp. 341–361.",
         href: "https://doi.org/10.1007/978-981-99-3236-8_27",
       },
@@ -105,22 +105,22 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2023",
     items: [
       {
-        title: "Advancements in Video-Based Insect Tracking: A Bibliometric Analysis to A Short Survey",
+        title: "Advancements in video-based insect tracking: a bibliometric analysis to a short survey",
         details: "E. A. Adjé, A. S. R. M. Ahouandjinou, G. Delmaire, G. Roussel, R. V. Houndji. ICAIP 2023, pp. 75–82.",
         href: "https://doi.org/10.1145/3635118.3635130",
       },
       {
-        title: "Time Constrained DL8.5 Using Limited Discrepancy Search",
+        title: "Time-constrained DL8.5 using limited discrepancy search",
         details: "H. Kiossou, P. Schaus, S. Nijssen, V. R. Houndji. ECML PKDD 2022, LNCS, vol. 13717, pp. 443–459.",
         href: "https://link.springer.com/chapter/10.1007/978-3-031-26419-1_27",
       },
       {
-        title: "C-Elect, An Automatic Candidate Selection Tool Using Constraint Programming",
+        title: "C-Elect, an automatic candidate selection tool using constraint programming",
         details: "V. R. Houndji, K. B. Selegbe. IEEE ICECET 2023, Cape Town, pp. 1–4.",
         href: "https://ieeexplore.ieee.org/document/10389265",
       },
       {
-        title: "UMLDesigner: An Automatic UML Diagram Design Tool",
+        title: "UMLDesigner: an automatic UML diagram design tool",
         details: "V. R. Houndji, G. Akotenou. DeLTA 2023, CCIS, vol. 1875, pp. 340–350.",
         href: "https://link.springer.com/chapter/10.1007/978-3-031-39059-3_23",
       },
@@ -130,12 +130,12 @@ const publications: { year: string; items: Publication[] }[] = [
         href: "https://pfia23.icube.unistra.fr/conferences/jfpc/Actes_CH_PFIA2023__3_.pdf",
       },
       {
-        title: "Deep learning methods for biotic and abiotic stresses detection and classification in fruits and vegetables: State of the art and perspectives",
+        title: "Deep learning methods for biotic and abiotic stresses detection and classification in fruits and vegetables: state of the art and perspectives",
         details: "S. C. A. Houetohossou, V. R. Houndji, C. G. Hounmenou, R. Sikirou, R. L. G. Kakaï. Artificial Intelligence in Agriculture, vol. 9, pp. 46–60.",
         href: "https://doi.org/10.1016/j.aiia.2023.05.002",
       },
       {
-        title: "Use of Artificial Intelligence in Cardiology: Where Are We in Africa?",
+        title: "Use of artificial intelligence in cardiology: where are we in Africa?",
         details: "F. Lo Niang, V. R. Houndji, M. Lo, J. Degila, M. L. Ba. AFRICOMM 2022, LNICST, vol. 499, pp. 473–486.",
         href: "https://link.springer.com/chapter/10.1007/978-3-031-34896-9_29",
       },
@@ -154,12 +154,12 @@ const publications: { year: string; items: Publication[] }[] = [
         href: "https://doi.org/10.11591/ijai.v11.i3.pp1175-1183",
       },
       {
-        title: "Automatic UML Defects Detection Based on Image of Diagram",
+        title: "Automatic UML defects detection based on image of diagram",
         details: "M. S. Lokonon, V. R. Houndji. DeLTA, pp. 193–198.",
         href: "https://doi.org/10.5220/0011270200003264",
       },
       {
-        title: "A Bibliometric Analysis of the Trends in the Research on Wearable Technologies for Cardiovascular Diseases",
+        title: "A bibliometric analysis of the trends in the research on wearable technologies for cardiovascular diseases",
         details: "G. E. A. Kpadjouda Job, J. Degila, S. A. Ahouandjinou, V. R. Houndji, M. L. Ba. pHealth, Studies in Health Technology and Informatics.",
         href: "https://ebooks.iospress.nl/doi/10.3233/SHTI220994",
       },
@@ -169,17 +169,17 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2020",
     items: [
       {
-        title: "Prediction of the Purchase Intention of Users on E-commerce Platforms Using Gradient Boosting",
+        title: "Prediction of the purchase intention of users on e-commerce platforms using gradient boosting",
         details: "Y. Kiki, V. R. Houndji. International Journal of Engineering and Advanced Technology, vol. 10, no 1, pp. 446–450.",
         href: "https://doi.org/10.35940/ijeat.A1929.1010120",
       },
       {
-        title: "Using an interpretable Machine Learning approach to study the drivers of International Migration",
+        title: "Using an interpretable machine learning approach to study the drivers of international migration",
         details: "H. Kiossou, Y. Schenk, F. Docquier, V. R. Houndji, S. Nijssen, P. Schaus. Harvard CRCS Workshop on Artificial Intelligence for Social Good.",
         href: "https://crcs.seas.harvard.edu/publications/using-interpretable-machine-learning-approach-study-drivers-international",
       },
       {
-        title: "AmonAI: A Students Academic Performances Prediction System",
+        title: "AmonAI: a students academic performances prediction system",
         details: "I. Houndayi, V. R. Houndji, P.-J. Zohou, E. C. Ezin. AFRICOMM, LNICST, vol. 311, pp. 212–218.",
         href: "https://link.springer.com/chapter/10.1007/978-3-030-41593-8_16",
       },
@@ -189,17 +189,17 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2019",
     items: [
       {
-        title: "The Item Dependent StockingCost Constraint",
+        title: "The item-dependent StockingCost constraint",
         details: "V. R. Houndji, P. Schaus, L. Wolsey. Constraints, vol. 24, pp. 183–209.",
         href: "https://link.springer.com/article/10.1007/s10601-018-9300-y",
       },
       {
-        title: "Sorghum Yield Prediction using Machine Learning",
+        title: "Sorghum yield prediction using machine learning",
         details: "G. Zannou, V. R. Houndji. IEEE BioSMART, pp. 152–155.",
         href: "https://ieeexplore.ieee.org/document/8734219",
       },
       {
-        title: "Awale Game: Application Programming Interface and Augmented Reality Interface",
+        title: "Awale game: application programming interface and augmented reality interface",
         details: "P. Houessou, V. R. Houndji, E. C. Ezin, P. Kiki, H. Kiossou, J.-B. Sossou, F. Zoumarou Walis. LNICST, vol. 260, pp. 147–154.",
         href: "https://link.springer.com/chapter/10.1007/978-3-030-05198-3_13",
       },
@@ -209,12 +209,12 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2018",
     items: [
       {
-        title: "Cost-based filtering algorithms for a Capacitated Lot Sizing Problem and the Constrained Arborescence Problem",
+        title: "Cost-based filtering algorithms for a capacitated lot sizing problem and the constrained arborescence problem",
         details: "V. R. Houndji. Constraints, vol. 23, no 4, pp. 481–482. Résumé de thèse.",
         href: "https://doi.org/10.1007/s10601-018-9292-7",
       },
       {
-        title: "Generic Heuristic for the mnk Games",
+        title: "Generic heuristic for the mnk games",
         details: "A.-H. Abdoulaye, V. R. Houndji, E. C. Ezin, G. Aglin. CARI 2018, pp. 265–275.",
       },
     ],
@@ -223,7 +223,7 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2017",
     items: [
       {
-        title: "The Weighted Arborescence Constraint",
+        title: "The weighted arborescence constraint",
         details: "V. R. Houndji, P. Schaus, M. N. Hounkonnou, L. Wolsey. CPAIOR 2017, LNCS, vol. 10335, pp. 185–201.",
         href: "https://link.springer.com/chapter/10.1007/978-3-319-59776-8_15",
       },
@@ -233,7 +233,7 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2014",
     items: [
       {
-        title: "The StockingCost Constraint",
+        title: "The StockingCost constraint",
         details: "V. R. Houndji, P. Schaus, L. Wolsey, Y. Deville. CP 2014, LNCS, vol. 8656, pp. 382–397.",
         href: "https://link.springer.com/chapter/10.1007/978-3-319-10428-7_29",
       },

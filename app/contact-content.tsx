@@ -2,7 +2,7 @@ import { AcademicPage, ExternalLink, PageIntro } from "./site-components";
 import { type Language, type Localized, localize } from "./i18n";
 
 const copy = {
-  title: { fr: "CV & Contacts", en: "CV & Contacts" },
+  title: { fr: "CV & contacts", en: "CV & contact" },
   intro: { fr: "Pour une collaboration scientifique, un encadrement, une conférence ou une initiative liée à l'un de mes domaines d'expertise.", en: "For scientific collaboration, supervision, conferences, or initiatives related to my areas of expertise." },
   cv: { fr: "Curriculum vitæ", en: "Curriculum vitae" },
   download: { fr: "Télécharger le CV (PDF)", en: "Download CV (PDF)" },

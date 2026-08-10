@@ -11,7 +11,7 @@ const navigationItems: { href: Localized; label: Localized }[] = [
   { href: { fr: "/enseignement", en: "/en/teaching" }, label: { fr: "Enseignements", en: "Teaching" } },
   { href: { fr: "/encadrements", en: "/en/supervision" }, label: { fr: "Encadrements", en: "Supervision" } },
   { href: { fr: "/services", en: "/en/services" }, label: { fr: "Services", en: "Services" } },
-  { href: { fr: "/contact", en: "/en/contact" }, label: { fr: "CV & Contacts", en: "CV & Contact" } },
+  { href: { fr: "/contact", en: "/en/contact" }, label: { fr: "CV & contacts", en: "CV & contact" } },
 ];
 
 const frenchToEnglish: Record<string, string> = Object.fromEntries([

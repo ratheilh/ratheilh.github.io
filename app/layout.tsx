@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://ratheilh.github.io"),
   title: {
-    default: "Vinasétan Ratheil Esse Houndji — Artificial Intelligence",
+    default: "Vinasétan Ratheil Esse Houndji — Artificial intelligence",
     template: "%s — Vinasétan Ratheil Esse Houndji",
   },
   description: "Professional website of Vinasétan Ratheil Esse Houndji, an artificial intelligence researcher and lecturer at the University of Abomey-Calavi.",

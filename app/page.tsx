@@ -5,7 +5,7 @@ import { AcademicPage, ExternalLink } from "./site-components";
 import { type Language, type Localized, localize } from "./i18n";
 
 export const metadata: Metadata = {
-  title: "Artificial Intelligence Researcher",
+  title: "Artificial intelligence researcher",
   description: "Professional website of Vinasétan Ratheil Esse Houndji, an artificial intelligence researcher and lecturer at the University of Abomey-Calavi.",
   alternates: { canonical: "/", languages: { fr: "/fr/", en: "/" } },
 };
@@ -38,13 +38,13 @@ const homeContent = {
   positions: {
     fr: [
       "Maître de conférences des universités du CAMES",
-      "Chef du département Génie logiciel & Coordonnateur des formations de Licence et de Master / IFRI-UAC",
-      "General co-Chair du BWAI & Président de la Fondation FRIARE (2023–2026)",
+      "Chef du département de génie logiciel et coordonnateur des formations de licence et de master / IFRI-UAC",
+      "General co-chair du BWAI et président de la fondation FRIARE (2023–2026)",
     ],
     en: [
-      "Associate Professor (CAMES)",
-      "Head of the Software Engineering Department & Coordinator of Bachelor's and Master's programs / IFRI-UAC",
-      "General co-Chair of BWAI & President of the FRIARE Foundation (2023–2026)",
+      "Associate professor (CAMES)",
+      "Head of the software engineering department and coordinator of bachelor's and master's programs / IFRI-UAC",
+      "General co-chair of BWAI and president of the FRIARE Foundation (2023–2026)",
     ],
   } satisfies Localized<string[]>,
   aboutTitle: { fr: "À propos", en: "About" },
@@ -71,14 +71,14 @@ const homeContent = {
 } satisfies Record<string, Localized | Localized<string[]>>;
 
 const education: EducationItem[] = [
-  { dateTime: "2025", period: { fr: "Avril–août 2025", en: "April–August 2025" }, title: { fr: "Formation internationale en pédagogie universitaire numérique", en: "International Training in Digital University Pedagogy" }, details: { fr: "Université libre de Bruxelles, Belgique · Major de la cohorte et titulaire de la Chaire du Sud", en: "Université libre de Bruxelles, Belgium · Top-ranked participant and Chair of the South awardee" } },
-  { dateTime: "2021", period: { fr: "2021", en: "2021" }, title: { fr: "Master Class for Teaching Online", en: "Master Class for Teaching Online" }, details: { fr: "Arizona State University, États-Unis · Formation en ligne", en: "Arizona State University, United States · Online" } },
-  { dateTime: "2017", period: { fr: "2013–2017", en: "2013–2017" }, title: { fr: "Doctorat en sciences de l’ingénieur", en: "PhD in Engineering Sciences" }, details: { fr: "Sciences informatiques — intelligence artificielle et recherche opérationnelle · UCLouvain et Université d’Abomey-Calavi", en: "Computer science — artificial intelligence and operations research · UCLouvain and University of Abomey-Calavi" } },
-  { dateTime: "2017", period: { fr: "2016–2017", en: "2016–2017" }, title: { fr: "Formation à la recherche en sciences de l’ingénieur", en: "Research Training in Engineering Sciences" }, details: { fr: "Université catholique de Louvain, Belgique", en: "Université catholique de Louvain, Belgium" } },
-  { dateTime: "2013", period: { fr: "2012–2013", en: "2012–2013" }, title: { fr: "Master en sciences informatiques", en: "Master's degree in Computer Science" }, details: { fr: "École polytechnique de Louvain, UCLouvain · Distinction, 15/20", en: "Louvain School of Engineering, UCLouvain · Distinction" } },
+  { dateTime: "2025", period: { fr: "Avril–août 2025", en: "April–August 2025" }, title: { fr: "Formation internationale en pédagogie universitaire numérique", en: "International training in digital university pedagogy" }, details: { fr: "Université libre de Bruxelles, Belgique · Major de la cohorte et titulaire de la Chaire du Sud", en: "Université libre de Bruxelles, Belgium · Top-ranked participant and Chair of the South awardee" } },
+  { dateTime: "2021", period: { fr: "2021", en: "2021" }, title: { fr: "Master class for teaching online", en: "Master class for teaching online" }, details: { fr: "Arizona State University, États-Unis · Formation en ligne", en: "Arizona State University, United States · Online" } },
+  { dateTime: "2017", period: { fr: "2013–2017", en: "2013–2017" }, title: { fr: "Doctorat en sciences de l’ingénieur", en: "PhD in engineering sciences" }, details: { fr: "Sciences informatiques — intelligence artificielle et recherche opérationnelle · UCLouvain et Université d’Abomey-Calavi", en: "Computer science — artificial intelligence and operations research · UCLouvain and University of Abomey-Calavi" } },
+  { dateTime: "2017", period: { fr: "2016–2017", en: "2016–2017" }, title: { fr: "Formation à la recherche en sciences de l’ingénieur", en: "Research training in engineering sciences" }, details: { fr: "Université catholique de Louvain, Belgique", en: "Université catholique de Louvain, Belgium" } },
+  { dateTime: "2013", period: { fr: "2012–2013", en: "2012–2013" }, title: { fr: "Master en sciences informatiques", en: "Master's degree in computer science" }, details: { fr: "École polytechnique de Louvain, UCLouvain · Distinction, 15/20", en: "Louvain School of Engineering, UCLouvain · Distinction" } },
   { dateTime: "2012", period: { fr: "2011–2012", en: "2011–2012" }, title: { fr: "Cours de renforcement en sciences informatiques et recherche", en: "Advanced courses in computer science and research" }, details: { fr: "Centre de formation et de recherche en informatique, Université d’Abomey-Calavi", en: "Computer Science Training and Research Center, University of Abomey-Calavi" } },
-  { dateTime: "2011", period: { fr: "2005–2011", en: "2005–2011" }, title: { fr: "Ingénieur de conception en informatique et télécommunications", en: "Engineering degree in Computer Science and Telecommunications" }, details: { fr: "École polytechnique d’Abomey-Calavi · Option Réseaux informatiques et Internet · Mention Bien, major de promotion", en: "École Polytechnique d’Abomey-Calavi · Computer Networks and Internet specialization · Top of the class." } },
-  { dateTime: "2005", period: { fr: "2004–2005", en: "2004–2005" }, title: { fr: "Baccalauréat scientifique, série C", en: "Scientific Baccalaureate, Series C" }, details: { fr: "Collège La Flèche, Cotonou · Mention Bien", en: "Collège La Flèche, Cotonou" } },
+  { dateTime: "2011", period: { fr: "2005–2011", en: "2005–2011" }, title: { fr: "Ingénieur de conception en informatique et télécommunications", en: "Engineering degree in computer science and telecommunications" }, details: { fr: "École polytechnique d’Abomey-Calavi · option réseaux informatiques et internet · mention bien, major de promotion", en: "École polytechnique d’Abomey-Calavi · computer networks and internet specialization · top of the class." } },
+  { dateTime: "2005", period: { fr: "2004–2005", en: "2004–2005" }, title: { fr: "Baccalauréat scientifique, série C", en: "Scientific baccalaureate, series C" }, details: { fr: "Collège La Flèche, Cotonou · mention bien", en: "Collège La Flèche, Cotonou" } },
 ];
 
 const news: NewsItem[] = [
@@ -86,7 +86,7 @@ const news: NewsItem[] = [
     dateTime: "2026-11-23",
     period: { fr: "Novembre 2026", en: "November 2026" },
     title: { fr: "BWAI 2026 — préparation de la prochaine édition", en: "BWAI 2026 — preparing the next edition" },
-    details: { fr: "En qualité de General co-Chair, préparation du prochain Benin Workshop on Artificial Intelligence, organisé du 23 au 27 novembre 2026. L’événement réunit chercheurs, étudiants, professionnels et acteurs publics autour de la recherche, de la formation et des usages de l’intelligence artificielle au Bénin.", en: "As General co-Chair, preparation of the next Benin Workshop on Artificial Intelligence, taking place from 23 to 27 November 2026. The event brings together researchers, students, professionals, and public-sector stakeholders around AI research, education, and applications in Benin." },
+    details: { fr: "En qualité de general co-chair, préparation du prochain Benin Workshop on Artificial Intelligence, organisé du 23 au 27 novembre 2026. L’événement réunit chercheurs, étudiants, professionnels et acteurs publics autour de la recherche, de la formation et des usages de l’intelligence artificielle au Bénin.", en: "As general co-chair, preparation of the next Benin Workshop on Artificial Intelligence, taking place from 23 to 27 November 2026. The event brings together researchers, students, professionals, and public-sector stakeholders around AI research, education, and applications in Benin." },
     links: [{ href: "https://bwai-ifri-uac.bj", label: { fr: "Site du BWAI", en: "BWAI website" } }],
   },
   {
@@ -138,7 +138,7 @@ const news: NewsItem[] = [
     dateTime: "2025-08",
     period: { fr: "Août 2025", en: "August 2025" },
     title: { fr: "20e ACP Summer School — première édition africaine", en: "20th ACP Summer School — first African edition" },
-    details: { fr: "General Chair et coorganisateur avec John Aoga de l’école tenue du 25 au 29 août à l’IFRI. Consacrée à la programmation par contraintes pour le développement durable, elle a réuni 50 participants, dont 86 % d’Africains, et attribué 14 bourses complètes et 30 bourses partielles.", en: "General Chair and co-organizer with John Aoga of the school held at IFRI from 25 to 29 August. Focused on constraint programming for sustainable development, it welcomed 50 participants, 86% of whom were African, and awarded 14 full and 30 partial scholarships." },
+    details: { fr: "General chair et coorganisateur avec John Aoga de l’école tenue du 25 au 29 août à l’IFRI. Consacrée à la programmation par contraintes pour le développement durable, elle a réuni 50 participants, dont 86 % d’Africains, et attribué 14 bourses complètes et 30 bourses partielles.", en: "General chair and co-organizer with John Aoga of the school held at IFRI from 25 to 29 August. Focused on constraint programming for sustainable development, it welcomed 50 participants, 86% of whom were African, and awarded 14 full and 30 partial scholarships." },
     links: [
       { href: "https://school.a4cp.org/summer2025/", label: { fr: "Programme de l’école", en: "School program" } },
       { href: "https://www.a4cp.org/-97", label: { fr: "Bilan de l’ACP", en: "ACP report" } },
