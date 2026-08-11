@@ -273,7 +273,7 @@ function PublicationsContent({ language }: { language: "fr" | "en" }) {
       {publications.map((group) => (
         <section className="publication-year" key={group.year}>
           <h2>{group.year}</h2>
-          <ol className="publication-list">
+          <ol className="publication-list compact-record-list">
             {group.items.map((publication) => (
               <li key={publication.title}>
                 {publication.href ? (

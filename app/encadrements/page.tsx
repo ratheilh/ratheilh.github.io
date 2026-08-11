@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AcademicPage, PageIntro } from "../site-components";
+import { AcademicPage, ExternalLink, PageIntro } from "../site-components";
 import { type Language, type Localized, localize } from "../i18n";
 import { createPageMetadata, routes } from "../seo";
 
@@ -16,7 +16,6 @@ type ThesisGroup = { year: string; items: string[] };
 type DoctoralThesis = {
   name: string;
   title: Localized;
-  description: Localized;
 };
 
 type ContributedDoctoralThesis = {
@@ -26,6 +25,75 @@ type ContributedDoctoralThesis = {
   title: Localized;
   status: "ongoing" | "defended";
 };
+
+const linkedinProfiles = new Map<string, string>([
+  ["Linuse Tikpon", "https://www.linkedin.com/in/linuse-tikpon-80a1b81a5"],
+  ["Marie Mélène Sèmèvo Tonou", "https://www.linkedin.com/in/marie-melene-tonou"],
+  ["Maryse Fortune Doloresse Gahou", "https://www.linkedin.com/in/maryse-gahou"],
+  ["Marianne Balogoun", "https://www.linkedin.com/in/marianne-a-omonlola-balogoun-3bbb00175"],
+  ["Souleymane Bah", "https://www.linkedin.com/in/souleymane-bah-584035212"],
+  ["Ariane Houetohossou", "https://www.linkedin.com/in/houetohossou-ariane-a84abb177"],
+  ["Peace Tahi", "https://www.linkedin.com/in/souand-tahi-ba6ba6124"],
+  ["Mahoutin Afis Kousse", "https://www.linkedin.com/in/mahoutin-afis-malick-kousse-4807a1199"],
+  ["Djivèdé Chryzal Beaudelaire Zossou", "https://www.linkedin.com/in/chryzal"],
+  ["Pascaline Hounkponou", "https://www.linkedin.com/in/pascaline-hounkponou-25b539195"],
+  ["Bienvenu Massou", "https://www.linkedin.com/in/bienvenu-massou-982259269"],
+  ["Narech Houessou", "https://www.linkedin.com/in/narech-houessou"],
+  ["K. Merveille Santi Zinsou", "https://www.linkedin.com/in/kpêtchéhoué-merveille-santi-zinsou-33b95b152"],
+  ["Chabi A. Rodolpho Babatounde", "https://www.linkedin.com/in/chabibabatounde"],
+  ["Koubouratou Idjaton", "https://www.linkedin.com/in/idjaton"],
+  ["Gael Aglin", "https://www.linkedin.com/in/aglingael"],
+  ["Akouvi Marie-Christiane Emmanuella Tsipoaka", "https://www.linkedin.com/in/emmanuella-tsipoaka-a83012251"],
+  ["Florian Dudereau Siaken Yabou", "https://www.linkedin.com/in/florian-siaken-6120a321b"],
+  ["Sênan Emeric Chris Gbodo", "https://www.linkedin.com/in/s%C3%AAnan-emeric-chris-gbodo-3607691a1"],
+  ["Sémiton Lémec Renaud Ahouandjinou", "https://www.linkedin.com/in/lémec-ahouandjinou-6a7803181"],
+  ["Tchegnon Romaric Madegnan", "https://www.linkedin.com/in/romaric-madegnan"],
+  ["Yannick Sèyivè Dona Kiki", "https://www.linkedin.com/in/yannick-kiki"],
+  ["Nounagnon Moïse Combelles Savoedo", "https://www.linkedin.com/in/nounagnonsavoedo"],
+  ["Bignon Murielle Souvenir Lokonon", "https://www.linkedin.com/in/murielle-souvenir-lokonon"],
+  ["Yasminath Aïcha Sidi Ali", "https://www.linkedin.com/in/yasminath-sidi-ali-512bb6162"],
+  ["Harry Gbaguidi", "https://www.linkedin.com/in/harry-gbaguidi"],
+  ["Jean-Baptiste Maureen Sossou", "https://www.linkedin.com/in/jean-baptiste-sossou-aba768141"],
+  ["Harold Silvère Kiossou", "https://www.linkedin.com/in/haroldks"],
+  ["Alimanth Sadiyath Modukpè Adjibade", "https://www.linkedin.com/in/sadiyath-adjibade-878496276"],
+  ["Samira Bandolo Anaïs Mvogo", "https://www.linkedin.com/in/samira-mvogo-072562243"],
+  ["Jordy Gnanih", "https://www.linkedin.com/in/jordy-gnanih-071aa0249"],
+  ["Karen Houeha", "https://www.linkedin.com/in/karen-houeha-a9b47b275"],
+  ["Lyne Gbaguidi", "https://www.linkedin.com/in/lyne-gbaguidi-54a44221a"],
+  ["Parfait Tolefo", "https://www.linkedin.com/in/tlf-parfait"],
+  ["Marilyse Sèdé Ahouangonou", "https://www.linkedin.com/in/marilyse-s%C3%A8d%C3%A9-ahouangonou"],
+  ["Esther Ahossi", "https://www.linkedin.com/in/esther-ahossi-3a1a50226"],
+  ["Carmel Prosper Sagbo", "https://www.linkedin.com/in/carmel-prosper-sagbo"],
+  ["Nicos Gbènato Hounvio", "https://www.linkedin.com/in/nicos-hounvio"],
+  ["Elvis Eustache Patinvoh", "https://www.linkedin.com/in/elvis-eustache-patinvoh"],
+  ["Damien Ulrich Doevi", "https://www.linkedin.com/in/damien-ulrich-doevi-396016239"],
+  ["Prince Gédéon Yiségnon Guedje", "https://www.linkedin.com/in/prince-gedeon-guedje-ai-researcher"],
+  ["O. Adéwoumi Lazare Jean-Deluxe Fagbohoun", "https://www.linkedin.com/in/jean-deluxe-fagbohoun-979617233"],
+  ["Liwa Augustine Tawe", "https://www.linkedin.com/in/augustinetawe"],
+  ["Gisèle Goubalan", "https://www.linkedin.com/in/gis%C3%A8le-goubalan-3113311b6"],
+  ["Généreux Mahouzonssou Akotenou", "https://www.linkedin.com/in/genereux-akotenou"],
+  ["Bignon Klaus Précieux Bonou Selegbe", "https://www.linkedin.com/in/klaus-bosel"],
+  ["Mahussi Jeff Fidèle Datongnon", "https://www.linkedin.com/in/mahussi-datongnon"],
+  ["Ogbinto Samir Tafel Boni", "https://www.linkedin.com/in/samir-boni-200456203"],
+  ["Marcellin Zinsou", "https://www.linkedin.com/in/evangelistedesmaths"],
+  ["Lizzy Adjagba", "https://www.linkedin.com/in/lizzy-adjagba"],
+  ["Odile Lalou", "https://www.linkedin.com/in/odile-lalou"],
+  ["Ahouefa Pascale Ninon Kpossou", "https://www.linkedin.com/in/kpossou-ahouefa-ninon"],
+  ["Aîchatou Oroubade", "https://www.linkedin.com/in/aichatou-orou-bade"],
+  ["Gabriel Julien Agbossou", "https://www.linkedin.com/in/agbossou-gabriel-9b32aa194"],
+  ["Mélaine Kiossou", "https://www.linkedin.com/in/melaine-g-kiossou-977263182"],
+  ["Iffanice Houndayi", "https://www.linkedin.com/in/iffanice"],
+  ["Abdias Dagbekpo", "https://www.linkedin.com/in/abdias-dagbekpo-469b36116"],
+  ["Luc Atakpa", "https://www.linkedin.com/in/lucgermannatakpa"],
+  ["Yessir Gouton Noudohouénou", "https://www.linkedin.com/in/yessirnoudo"],
+  ["Marie-Parisius Houessou", "https://www.linkedin.com/in/parisius"],
+  ["Freud Lanha", "https://www.linkedin.com/in/freudlanha"],
+  ["Mawulé Robert God’Right Adohounblessi", "https://www.linkedin.com/in/m-r-god-right-adohounblessi"],
+  ["Nelxie Adisso", "https://www.linkedin.com/in/nelxie-adisso-♡-99b1a4258"],
+  ["Mouyiwa Damilaré Godwin Akakpo", "https://www.linkedin.com/in/godwin-akakpo"],
+  ["Pernel Djahou Tinmitonde", "https://www.linkedin.com/in/pernel-tinmitonde-7765452a6"],
+  ["Mawenan Fernande Frédérique Togbe", "https://www.linkedin.com/in/fernande-togbe-ab1b622ba"],
+]);
 
 const doctoralSchool: Localized = {
   fr: "École doctorale des sciences de l’ingénieur",
@@ -37,22 +105,18 @@ const doctoralTheses: DoctoralThesis[] = [
   {
     name: "Linuse Tikpon",
     title: { fr: "Système multi-agents immersif en réalité virtuelle pour la formation pédagogique des enseignants universitaires", en: "An immersive multi-agent virtual reality system for the pedagogical training of university teachers" },
-    description: { fr: "Conception d’une classe universitaire virtuelle peuplée d’agents étudiants autonomes et adaptatifs, afin de permettre aux enseignants de s’entraîner et d’être évalués sur leurs pratiques pédagogiques et leur gestion de classe dans des scénarios progressifs et sans risque.", en: "Design of a virtual university classroom populated by autonomous, adaptive student agents, enabling teachers to practice and receive feedback on their teaching methods and classroom management through progressive, risk-free scenarios." },
   },
   {
     name: "Marie Mélène Sèmèvo Tonou",
     title: { fr: "Détection automatique des types de crises d’épilepsie à partir d’électroencéphalogrammes", en: "Automatic detection of epileptic seizure types from electroencephalograms" },
-    description: { fr: "Conception d’un système d’aide à la décision capable d’interpréter des EEG et de détecter différents types de crises d’épilepsie en combinant signaux, données cliniques et contexte socio-économique. Le modèle sera évalué avec des spécialistes en conditions médicales réelles.", en: "Design of a decision-support system that interprets EEGs and detects different seizure types by combining signals, clinical data, and socioeconomic context. The model will be evaluated with specialists under real-world medical conditions." },
   },
   {
     name: "Grace Kisambu Nsele",
     title: { fr: "Détection automatique de la trypanosomiase à partir d’images de frottis sanguins", en: "Automatic detection of trypanosomiasis from blood smear images" },
-    description: { fr: "Développement de modèles d’apprentissage automatique pour détecter la trypanosomiase humaine africaine et pré-classer ses stades. Le travail comprend la constitution d’un jeu de données local, une validation multisite et un prototype explicable adapté aux environnements à ressources limitées.", en: "Development of machine learning models to detect human African trypanosomiasis and pre-classify its stages. The work includes building a local dataset, multisite validation, and an explainable prototype suited to resource-constrained environments." },
   },
   {
     name: "Maryse Fortune Doloresse Gahou",
     title: { fr: "Système d’aide au dépistage précoce de l’insuffisance rénale chronique au Bénin basé sur l’apprentissage automatique", en: "A machine learning-based decision-support system for early chronic kidney disease screening in Benin"},
-    description: { fr: "Développement d’un outil fiable et interprétable exploitant des données cliniques et biologiques locales pour identifier précocement les personnes à risque, prédire le stade de la maladie et assister les professionnels de santé au moyen d’une plateforme numérique.", en: "Development of a reliable, interpretable tool using local clinical and biological data to identify at-risk individuals, predict disease stage, and support healthcare professionals through a digital platform." },
   },
 ];
 
@@ -189,6 +253,10 @@ const bachelorTheses: ThesisGroup[] = [
     items: [
       "Optimization of the blood product distribution chain in Benin: case of the Zou Department — Mawulé Robert God’Right Adohounblessi (Licence IA, IFRI)",
       "Système intelligent de conseil pédagogique pour l’enseignement supérieur : segmentation du public cible et objectifs d’apprentissage — Alimanth Sadiyath Modukpè Adjibade (Licence IA, IFRI)",
+      "Réalisation d’un système intelligent d’accompagnement des travaux pédagogiques de groupe par l’analyse des réunions — Nelxie Adisso (Licence IA, IFRI)",
+      "Réalisation d’un système d’évaluation des compétences pédagogiques basé sur la simulation des situations de classe universitaire — Mouyiwa Damilaré Godwin Akakpo (Licence GL, IFRI)",
+      "Étude comparative des techniques de séparation des sources dans les signaux électroencéphalogrammes (EEG) — Pernel Djahou Tinmitonde (Licence IA, IFRI)",
+      "Réalisation d’un prototype de simulation 3D des comportements des étudiants en situation de classe — Mawenan Fernande Frédérique Togbe (Licence IM, IFRI)",
     ],
   },
   {
@@ -277,11 +345,46 @@ const bachelorTheses: ThesisGroup[] = [
   },
 ];
 
+function PersonName({ name }: { name: string }) {
+  const linkedinProfile = linkedinProfiles.get(name);
+
+  return linkedinProfile ? (
+    <ExternalLink href={linkedinProfile}>{name}</ExternalLink>
+  ) : (
+    name
+  );
+}
+
+function ThesisItem({ item }: { item: string }) {
+  const separator = " — ";
+  const separatorIndex = item.lastIndexOf(separator);
+  const nameStart = separatorIndex + separator.length;
+  const detailsIndex = item.indexOf(" (", nameStart);
+
+  if (separatorIndex === -1 || detailsIndex === -1) {
+    return item;
+  }
+
+  const name = item.slice(nameStart, detailsIndex);
+
+  return (
+    <>
+      {item.slice(0, nameStart)}
+      <PersonName name={name} />
+      {item.slice(detailsIndex)}
+    </>
+  );
+}
+
 function ThesisGroups({ groups }: { groups: ThesisGroup[] }) {
   return groups.map((group) => (
     <section key={group.year}>
       <h3>{group.year}</h3>
-      <ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul>
+      <ul className="supervision-thesis-list">
+        {group.items.map((item) => (
+          <li key={item}><ThesisItem item={item} /></li>
+        ))}
+      </ul>
     </section>
   ));
 }
@@ -298,28 +401,28 @@ function SupervisionContent({ language }: { language: Language }) {
       </PageIntro>
 
       <h2>{isEnglish ? "Ongoing PhD theses" : "Thèses en cours"}</h2>
-      <ol className="publication-list">
+      <ol className="publication-list compact-record-list">
         {doctoralTheses.map((thesis) => (
           <li key={thesis.name}>
             <span className="title">{localize(thesis.title, language)}</span>
             <span className="details">
-              <strong>{thesis.name}</strong> · {localize(doctoralSchool, language)}
-              <br />
-              {localize(thesis.description, language)}
+              <strong>
+                <PersonName name={thesis.name} />
+              </strong> · {localize(doctoralSchool, language)} · UAC
             </span>
           </li>
         ))}
       </ol>
 
       <h2>{isEnglish ? "Contributions to PhD supervision" : "Contributions à l’encadrement de thèses"}</h2>
-      <ol className="publication-list">
+      <ol className="publication-list compact-record-list">
         {contributedDoctoralTheses.map((thesis) => (
           <li key={thesis.name}>
             <span className="title">{localize(thesis.title, language)}</span>
             <span className="details">
-              <strong>{thesis.name}</strong> · {localize(thesis.institution, language)} · {thesis.years}
-              <br />
-              {thesis.status === "defended"
+              <strong>
+                <PersonName name={thesis.name} />
+              </strong> · {localize(thesis.institution, language)} · UAC · {thesis.years} · {thesis.status === "defended"
                 ? (isEnglish ? "Defended" : "Soutenue")
                 : (isEnglish ? "Ongoing" : "En cours")}
             </span>

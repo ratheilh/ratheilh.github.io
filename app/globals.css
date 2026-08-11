@@ -79,6 +79,12 @@ a:hover { color:var(--accent); }
 .publication-list li { margin:0; padding:17px 0; border-bottom:1px solid var(--line); }
 .publication-list .title { display:block; font-weight:700; line-height:1.42; }
 .publication-list .details { display:block; color:var(--muted); font-size:16.5px; line-height:1.5; margin-top:4px; }
+.compact-record-list { margin-top:2px!important; }
+.compact-record-list li { padding:11px 0; }
+.compact-record-list .title { font-size:16.5px; line-height:1.35; }
+.compact-record-list .details { font-size:15px; line-height:1.4; margin-top:2px; }
+.supervision-thesis-list { margin-top:4px!important; }
+.supervision-thesis-list li { margin:3px 0; font-size:16.5px; line-height:1.5; }
 .publication-year h2 { margin-bottom: 5px; color: var(--accent); font-size: 22px; }
 .publication-year + .publication-year { margin-top: 36px; }
 .contact-list { list-style:none; padding:0!important; }

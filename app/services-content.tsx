@@ -12,6 +12,7 @@ type EvaluatedThesis = {
 const copy = {
   title: { fr: "Services", en: "Services" },
   intro: { fr: "Responsabilités scientifiques, expertise académique et initiatives au service des communautés de recherche et de la société.", en: "Scientific responsibilities, academic expertise, and initiatives serving research communities and society." },
+  academicResponsibilitiesTitle: { fr: "Responsabilités académiques", en: "Academic responsibilities" },
   evaluationsTitle: { fr: "Évaluation de thèses", en: "PhD thesis evaluation" },
   evaluationsIntro: { fr: "Participation à l’évaluation de travaux doctoraux en intelligence artificielle, en informatique et dans leurs domaines d’application.", en: "Participation in the evaluation of doctoral research in artificial intelligence, computer science, and their application domains." },
   friaTitle: { fr: "Fondation FRIARE", en: "FRIARE Foundation" },
@@ -29,7 +30,7 @@ const evaluatedTheses: EvaluatedThesis[] = [
 ];
 
 const expertise: { year?: string; text: Localized }[] = [
-  { year: "2026", text: { fr: "expert IA et numérique auprès du ministère de l’Enseignement supérieur et de la Recherche scientifique pour l’élaboration de la stratégie nationale de l’éducation fondée sur le numérique ;", en: "AI and digital expert to the Ministry of Higher Education and Scientific Research for the development of the national digital education strategy;" } },
+  { year: "2026", text: { fr: "expert IA et numérique auprès du ministère de l’Enseignement supérieur et de la Recherche scientifique pour l’élaboration de la stratégie nationale de l’éducation basée sur le numérique ;", en: "AI and digital expert to the Ministry of Higher Education and Scientific Research for the development of the national digital education strategy;" } },
   { year: "2025", text: { fr: "élaboration d’un guide et formation des acteurs de l’écosystème des données probantes à l’utilisation de l’IA ;", en: "development of a guide and training for evidence-ecosystem stakeholders on the use of AI;" } },
   { year: "2024", text: { fr: "contribution à l’étude de faisabilité de la stratégie nationale de l’intelligence artificielle et des mégadonnées du Bénin ;", en: "contribution to the feasibility study for Benin's national artificial intelligence and big data strategy;" } },
   { year: "2022–2023", text: { fr: "contribution à la SNIAM et à la cartographie de l’écosystème béninois de l’intelligence artificielle ;", en: "contribution to the national AI and big data strategy and mapping of Benin's artificial intelligence ecosystem;" } },
@@ -37,7 +38,6 @@ const expertise: { year?: string; text: Localized }[] = [
 
 const otherResponsibilities: Localized<string[]> = {
   fr: [
-    "Chef du département de génie logiciel de l’IFRI depuis 2022 et coordonnateur des formations de licence et de master en génie logiciel, intelligence artificielle, sécurité informatique, systèmes embarqués et internet des objets, et internet et multimédia ;",
     "Participation, depuis 2015, à la conception, à la rédaction et à la validation de plusieurs offres de formation : licences et masters de l’IFRI en intelligence artificielle, génie logiciel, sécurité informatique et internet et multimédia, ainsi que le master en hydro-informatique de l’Institut national de l’eau ;",
     "Participation à des points d’étape de thèse et à des comités de suivi doctoral ;",
     "Membre ou président de jury de nombreuses soutenances de mémoires de licence, de master et d’ingénieur depuis 2014 ;",
@@ -49,7 +49,6 @@ const otherResponsibilities: Localized<string[]> = {
     "Cofondateur et directeur général de Machine Intelligence For You (MIFY), d’août 2017 à septembre 2018.",
   ],
   en: [
-    "Head of IFRI’s software engineering department since 2022 and coordinator of bachelor’s and master’s programs in software engineering, artificial intelligence, cybersecurity, embedded systems and the internet of things, and internet and multimedia;",
     "Contribution, since 2015, to the design, drafting, and validation of several academic programs: IFRI bachelor’s and master’s programs in artificial intelligence, software engineering, cybersecurity, and internet and multimedia, as well as the National Water Institute’s master’s program in hydroinformatics;",
     "Participation in PhD progress reviews and doctoral monitoring committees;",
     "Member or chair of numerous bachelor’s, master’s, and engineering thesis defense committees since 2014;",
@@ -62,12 +61,37 @@ const otherResponsibilities: Localized<string[]> = {
   ],
 };
 
+const academicResponsibilities: Localized<string[]> = {
+  fr: [
+    "Chef du département de génie logiciel de l’IFRI, depuis 2022.",
+    "Coordonnateur des formations de Licence et de Master en Génie Logiciel, Intelligence Artificielle, Internet et Multimédia, Sécurité Informatique, et Systèmes Embarqués et Internet des Objets.",
+    "Premier responsable du Comité de déontologie et d’éthique de l’IFRI.",
+  ],
+  en: [
+    "Head of IFRI’s software engineering department since 2022.",
+    "Coordinator of bachelor’s and master’s programs in software engineering, artificial intelligence, cybersecurity, embedded systems and the internet of things, and internet and multimedia.",
+    "First head of the IFRI Committee on Professional Conduct and Ethics.",
+  ],
+};
+
 export function ServicesContent({ language }: { language: Language }) {
   const isEnglish = language === "en";
   return <AcademicPage language={language}>
     <PageIntro title={localize(copy.title, language)}>{localize(copy.intro, language)}</PageIntro>
+    <h2>{localize(copy.academicResponsibilitiesTitle, language)}</h2>
+    <ul>{localize(academicResponsibilities, language).map((item) => <li key={item}>{item}</li>)}</ul>
+
     <h2>{localize(copy.evaluationsTitle, language)}</h2><p>{localize(copy.evaluationsIntro, language)}</p>
-    <ol className="publication-list">{evaluatedTheses.map((thesis) => <li key={`${thesis.year}-${thesis.candidate}`}><span className="title">{localize(thesis.title, language)}</span><span className="details"><strong>{thesis.candidate}</strong> · {localize(thesis.institution, language)} · {thesis.year}<br />{localize(thesis.role, language)}</span></li>)}</ol>
+    <ol className="publication-list compact-record-list">
+      {evaluatedTheses.map((thesis) => (
+        <li key={`${thesis.year}-${thesis.candidate}`}>
+          <span className="title">{localize(thesis.title, language)}</span>
+          <span className="details">
+            <strong>{thesis.candidate}</strong> · {localize(thesis.institution, language)} · {thesis.year} · {localize(thesis.role, language)}
+          </span>
+        </li>
+      ))}
+    </ol>
 
     <h2>{localize(copy.friaTitle, language)}</h2>
     <p>{isEnglish ? "From 2023 to 2026, I served as president of the " : "J’ai présidé de 2023 à 2026 la "}<ExternalLink href="https://friare.org">{isEnglish ? "Ratheil Foundation for Responsible and Efficient Artificial Intelligence (FRIARE)" : "Fondation Ratheil pour une Intelligence Artificielle Responsable et Efficiente (FRIARE)"}</ExternalLink>{isEnglish ? ", dedicated to awareness, research, public dialogue, training, and project support in Africa." : ", consacrée à la sensibilisation, à la recherche, au dialogue public, à la formation et à l’accompagnement de projets en Afrique."}</p>
