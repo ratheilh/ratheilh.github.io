@@ -86,14 +86,16 @@ const homeContent = {
   },
   positions: {
     fr: [
-      "Maître de conférences des universités du CAMES",
+      "Maître de conférences des universités du CAMES en intelligence artificielle",
       "Chef du département de génie logiciel et Coordonnateur des formations de licence et de master / IFRI-UAC",
-      "Président de l'association FRIARE pour une intelligence artificielle responsable et efficiente (2023–2026) et General chairman du Benin Workshop on Artificial Intelligence (BWAI)",
+      "Président de l'association FRIARE pour une intelligence artificielle responsable et efficiente",
+      "General chairman du Benin Workshop on Artificial Intelligence (BWAI)",
     ],
     en: [
-      "Associate professor (CAMES)",
+      "Associate professor (CAMES) in Artificial Intelligence",
       "Head of the software engineering department and Coordinator of bachelor's and master's programs / IFRI-UAC",
-      "General chairman of Benin Workshop on Artificial Intelligence (BWAI) and president of the FRIARE Association",
+      "President of the FRIARE association for a responsible and efficient AI",
+      "General chairman of Benin Workshop on Artificial Intelligence (BWAI)",
     ],
   } satisfies Localized<string[]>,
   aboutTitle: { fr: "À propos", en: "About" },
