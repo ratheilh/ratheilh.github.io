@@ -88,7 +88,7 @@ const homeContent = {
     fr: [
       "Maître de conférences des universités du CAMES",
       "Chef du département de génie logiciel et Coordonnateur des formations de licence et de master / IFRI-UAC",
-      "General co-chair du Benin Workshop on Artificial Intelligence (BWAI) et président de l'association FRIARE (2023–2026)",
+      "Président de l'association FRIARE pour une intelligence artificielle responsable et efficiente (2023–2026) et General chairman du Benin Workshop on Artificial Intelligence (BWAI)",
     ],
     en: [
       "Associate professor (CAMES)",
@@ -101,12 +101,12 @@ const homeContent = {
     fr: [
       "Enseignant-chercheur en intelligence artificielle à l’Institut de Formation et de Recherche en Informatique de l’Université d’Abomey-Calavi, je travaille depuis plus de dix ans sur la recherche fondamentale et appliquée en intelligence artificielle, l’optimisation et le développement de systèmes intelligents.",
       "Mes recherches portent sur l’apprentissage automatique, la programmation par contraintes et l’optimisation combinatoire. Elles trouvent notamment des applications en santé, en agriculture et en éducation.",
-      "Au-delà de la recherche, j’accorde une place importante à la formation, à l’encadrement des jeunes chercheurs et à la construction de collaborations scientifiques durables. Je contribue également à plusieurs initiatives destinées à faire progresser l’intelligence artificielle en Afrique, notamment à travers le Benin Workshop on Artificial Intelligence et l’Association FRIARE.",
+      "Au-delà de la recherche, j’accorde une place importante à la formation, à l’encadrement des jeunes chercheurs et à la construction de collaborations scientifiques durables. Je contribue également à plusieurs initiatives destinées à faire progresser l’intelligence artificielle en Afrique, notamment à travers le Benin Workshop on Artificial Intelligence et l’association FRIARE pour une intelligence artificielle responsable et efficiente.",
     ],
     en: [
       "I am an artificial intelligence researcher and lecturer at the Institute of Training and Research in Computer Science of the University of Abomey-Calavi. For more than ten years, I have worked on fundamental and applied research in artificial intelligence, optimization, and intelligent systems.",
       "My research focuses on machine learning, constraint programming, and combinatorial optimization, with applications in health, agriculture, and education.",
-      "Beyond research, I am committed to teaching, mentoring young researchers, and building lasting scientific collaborations. I also contribute to initiatives advancing artificial intelligence in Africa, including the Benin Workshop on Artificial Intelligence and FRIARE.",
+      "Beyond research, I am committed to teaching, mentoring young researchers, and building lasting scientific collaborations. I also contribute to initiatives advancing artificial intelligence in Africa, including the Benin Workshop on Artificial Intelligence and the FRIARE association for a responsible and efficient AI.",
     ],
   } satisfies Localized<string[]>,
   educationTitle: { fr: "Éducation", en: "Education" },

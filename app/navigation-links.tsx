@@ -50,11 +50,10 @@ export function SiteNavigation() {
 
   return (
     <>
-      <Link className="brand" href={isEnglish ? "/" : "/fr"} onClick={handleNavigationClick} scroll aria-label={isEnglish ? "Ratheil Houndji — Home" : "Ratheil Houndji — Accueil"}>
-        <svg className="brand-monogram" viewBox="0 0 60 44" aria-hidden="true">
-          <text className="brand-initial brand-initial-r" x="3" y="34">R</text>
-          <text className="brand-initial brand-initial-h" x="26" y="34">H</text>
-          <path className="brand-signature" d="M6 40H54" />
+      <Link className="brand" href={isEnglish ? "/" : "/fr"} onClick={handleNavigationClick} scroll aria-label={isEnglish ? "Vinasétan Ratheil Houndji — Home" : "Vinasétan Ratheil Houndji — Accueil"}>
+        <svg className="brand-monogram" viewBox="0 0 84 44" aria-hidden="true">
+          <text className="brand-initial" x="2" y="34">VRH</text>
+          <path className="brand-signature" d="M5 40H79" />
         </svg>
       </Link>
       <nav className="desktop-nav" aria-label={isEnglish ? "Main navigation" : "Navigation principale"}>

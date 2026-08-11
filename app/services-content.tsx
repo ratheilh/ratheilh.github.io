@@ -19,8 +19,8 @@ const copy = {
   bwaiTitle: { fr: "Benin Workshop on Artificial Intelligence", en: "Benin Workshop on Artificial Intelligence" },
   summerTitle: { fr: "ACP Summer School 2025", en: "ACP Summer School 2025" },
   mifyTitle: { fr: "Mify Artificial Intelligence Contest", en: "Mify Artificial Intelligence Contest" },
-  expertiseTitle: { fr: "Expertise et service scientifique", en: "Expertise and scientific service" },
-  previousTitle: { fr: "Autres responsabilités", en: "Other responsibilities" },
+  expertiseTitle: { fr: "Quelques expertises et services scientifiques", en: "Some expertises and scientific services" },
+  previousTitle: { fr: "Autres services", en: "Other services" },
 } satisfies Record<string, Localized>;
 
 const evaluatedTheses: EvaluatedThesis[] = [
@@ -29,11 +29,47 @@ const evaluatedTheses: EvaluatedThesis[] = [
   { year: "2023", candidate: "Charles Thomas", title: { fr: "Advanced modelling and search techniques for routing and scheduling problems", en: "Advanced modelling and search techniques for routing and scheduling problems" }, institution: { fr: "UCLouvain — Louvain School of Engineering, Belgique", en: "UCLouvain — Louvain School of Engineering, Belgium" }, role: { fr: "Membre du jury", en: "Jury member" } },
 ];
 
-const expertise: { year?: string; text: Localized }[] = [
-  { year: "2026", text: { fr: "expert IA et numérique auprès du ministère de l’Enseignement supérieur et de la Recherche scientifique pour l’élaboration de la stratégie nationale de l’éducation basée sur le numérique ;", en: "AI and digital expert to the Ministry of Higher Education and Scientific Research for the development of the national digital education strategy;" } },
-  { year: "2025", text: { fr: "élaboration d’un guide et formation des acteurs de l’écosystème des données probantes à l’utilisation de l’IA ;", en: "development of a guide and training for evidence-ecosystem stakeholders on the use of AI;" } },
-  { year: "2024", text: { fr: "contribution à l’étude de faisabilité de la stratégie nationale de l’intelligence artificielle et des mégadonnées du Bénin ;", en: "contribution to the feasibility study for Benin's national artificial intelligence and big data strategy;" } },
-  { year: "2022–2023", text: { fr: "contribution à la SNIAM et à la cartographie de l’écosystème béninois de l’intelligence artificielle ;", en: "contribution to the national AI and big data strategy and mapping of Benin's artificial intelligence ecosystem;" } },
+const expertise: { year: string; items: Localized[] }[] = [
+  {
+    year: "2026",
+    items: [
+      { fr: "Expert IA et numérique auprès du ministère de l’Enseignement supérieur et de la Recherche scientifique pour l’élaboration de la stratégie nationale de l’éducation basée sur le numérique.", en: "AI and digital expert to the Ministry of Higher Education and Scientific Research for the development of the national digital education strategy." },
+      { fr: "Contribution à l’élaboration de la Stratégie de l’intelligence artificielle de l’UAC (SIAUAC), du cadre éthique de l’IA ainsi que de la charte éthique relative à l’utilisation de l’IA à l’UAC.", en: "Contribution to the development of UAC’s Artificial Intelligence Strategy (SIAUAC), AI ethics framework, and ethics charter for the use of AI at UAC." },
+    ],
+  },
+  {
+    year: "2025",
+    items: [
+      { fr: "Élaboration d’un guide et formation des acteurs de l’écosystème des données probantes à l’utilisation de l’IA.", en: "Development of a guide and training for evidence-ecosystem stakeholders on the use of AI." },
+    ],
+  },
+  {
+    year: "2024",
+    items: [
+      { fr: "Contribution à l’étude de faisabilité de la stratégie nationale de l’intelligence artificielle et des mégadonnées du Bénin.", en: "Contribution to the feasibility study for Benin's national artificial intelligence and big data strategy." },
+    ],
+  },
+  {
+    year: "2023",
+    items: [
+      { fr: "Contribution à la cartographie de l’écosystème béninois de l’intelligence artificielle.", en: "Contribution to mapping Benin's artificial intelligence ecosystem." },
+    ],
+  },
+  {
+    year: "2022",
+    items: [
+      { fr: "Contribution à la Stratégie Nationale de l'Intelligence Artificielle et de Méga-données (SNIAM) du Bénin.", en: "Contribution to the national AI and big data strategy of Benin." },
+      { fr: "Contribution à l’élaboration d’une politique régionale de renforcement des compétences en cybersécurité dans le cadre du programme OCWAR-C (Organised Crime: West African Response on Cybersecurity and Fight against Cybercrime).", en: "Contribution to the development of a regional cybersecurity skills-building policy under the OCWAR-C programme (Organised Crime: West African Response on Cybersecurity and Fight against Cybercrime)." },
+      { fr: "Expert pour la formation continue « Intelligence artificielle pour la finance » : contribution à sa mise en place et membre de l’équipe pédagogique, Sèmè City et Sorbonne University.", en: "Expert for the “Artificial Intelligence for Finance” continuing education programme: contribution to its establishment and member of its teaching team, Sèmè City and Sorbonne University." },
+      { fr: "Expert en intelligence artificielle et entrepreneuriat numérique au sein du comité de programme : contribution à l’organisation du Salon de l’entrepreneuriat numérique et de l’intelligence artificielle (SENIA) du Bénin.", en: "Artificial intelligence and digital entrepreneurship expert on the programme committee: contribution to organizing Benin’s Digital Entrepreneurship and Artificial Intelligence Fair (SENIA)." },
+    ],
+  },
+  {
+    year: "2021",
+    items: [
+      { fr: "Expert en intelligence artificielle et technologie : contribution à l’élaboration des plans stratégique et opérationnel du Centre d’innovation présidentiel pour le capital humain du Burkina Faso.", en: "Artificial intelligence and technology expert: contribution to the development of the strategic and operational plans for Burkina Faso’s Presidential Innovation Center for Human Capital." },
+    ],
+  },
 ];
 
 const otherResponsibilities: Localized<string[]> = {
@@ -97,7 +133,7 @@ export function ServicesContent({ language }: { language: Language }) {
     <p>{isEnglish ? "From 2023 to 2026, I served as president of the " : "J’ai présidé de 2023 à 2026 la "}<ExternalLink href="https://friare.org">{isEnglish ? "Ratheil Foundation for Responsible and Efficient Artificial Intelligence (FRIARE)" : "Fondation Ratheil pour une Intelligence Artificielle Responsable et Efficiente (FRIARE)"}</ExternalLink>{isEnglish ? ", dedicated to awareness, research, public dialogue, training, and project support in Africa." : ", consacrée à la sensibilisation, à la recherche, au dialogue public, à la formation et à l’accompagnement de projets en Afrique."}</p>
 
     <h2>{localize(copy.bwaiTitle, language)}</h2>
-    <p>{isEnglish ? "I am general co-chair of the " : "Je suis general co-chair du "}<ExternalLink href="https://bwai-ifri-uac.bj">Benin Workshop on Artificial Intelligence</ExternalLink>{isEnglish ? " and have contributed to five editions since 2018. This national conference brings together researchers, students, professionals, and public-sector stakeholders around artificial intelligence in Benin." : " et ai contribué à cinq éditions depuis 2018. Cette conférence nationale réunit chercheurs, étudiants, professionnels et acteurs publics autour de l’intelligence artificielle au Bénin."}</p>
+    <p>{isEnglish ? "I am the General Chair of the " : "Je suis le General Chair du "}<ExternalLink href="https://bwai-ifri-uac.bj">Benin Workshop on Artificial Intelligence</ExternalLink>{isEnglish ? ". I have contributed to five editions since 2018 as General co-Chairman. This national conference brings together researchers, students, professionals, and public-sector stakeholders around artificial intelligence in Benin." : ". J'ai contribué à cinq éditions depuis 2018 en tant que General co-Chair. Cette conférence nationale réunit chercheurs, étudiants, professionnels et acteurs publics autour de l’intelligence artificielle au Bénin."}</p>
 
     <h2>{localize(copy.summerTitle, language)}</h2>
     <p>{isEnglish ? "I served as general chair of the " : "J’ai été general chair de la "}<ExternalLink href="https://school.a4cp.org/summer2025/index.html">{isEnglish ? "20th ACP Summer School" : "20e édition de l’ACP Summer School"}</ExternalLink>{isEnglish ? " in 2025, the first African edition of this international constraint programming school." : ", organisée en 2025. Il s’agissait de la première édition en Afrique de cette école internationale de programmation par contraintes."}</p>
@@ -106,7 +142,17 @@ export function ServicesContent({ language }: { language: Language }) {
     <p>{isEnglish ? "From 2017 to 2022, I chaired the competition committee for six editions of the " : "J’ai assuré de 2017 à 2022 la présidence du comité de compétition de six éditions du "}<ExternalLink href="https://maic.mify-ai.com/">Mify Artificial Intelligence Contest</ExternalLink>{isEnglish ? ", an international competition designed to develop practical skills in artificial intelligence and problem solving." : ", concours international destiné à développer les compétences pratiques en intelligence artificielle et en résolution de problèmes."}</p>
 
     <h2>{localize(copy.expertiseTitle, language)}</h2>
-    <ul>{expertise.map((item) => <li key={item.year}><strong>{item.year} :</strong> {localize(item.text, language)}</li>)}<li>{isEnglish ? "member of the " : "membre de l’"}<ExternalLink href="https://www.a4cp.org/">Association for Constraint Programming</ExternalLink>{isEnglish ? " and scientific committees including CP, JFPC, and CARI." : " et de comités scientifiques, notamment CP, JFPC et CARI."}</li></ul>
+    <ul className="expertise-list">
+      {expertise.map((group) => (
+        <li key={group.year}>
+          <strong>{group.year}{isEnglish ? ":" : " :"}</strong>
+          <ul className="expertise-items">
+            {group.items.map((item) => <li key={item.fr}>{localize(item, language)}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ul>
+    <p className="expertise-membership">{isEnglish ? "Member of the " : "Membre de l’"}<ExternalLink href="https://www.a4cp.org/">Association for Constraint Programming</ExternalLink>{isEnglish ? " and scientific committees including CP, JFPC, and CARI." : " et de comités scientifiques, notamment CP, JFPC et CARI."}</p>
 
     <h2>{localize(copy.previousTitle, language)}</h2><ul>{localize(otherResponsibilities, language).map((item) => <li key={item}>{item}</li>)}</ul>
   </AcademicPage>;
