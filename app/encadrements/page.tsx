@@ -105,9 +105,11 @@ const linkedinProfiles = new Map<string, string>([
 
 const thesisDocumentIds = new Map<string, string>([
   ["master:2026:Défodji Eden Freddy Houndonougbo", "1vN-uaeNVplDGSYwPR-UqdFsrbKQw4pjt"],
+  ["master:2025:Grace Kisambu Nsele", "14jYvJt4R2_Ba6BZk6N2RscexxSauUIzI"],
   ["master:2023:Mahoutin Afis Kousse", "1CHU3vbu2ZIL2S_7eqICynt_a_gWUl5z-"],
   ["master:2023:Djivèdé Chryzal Beaudelaire Zossou", "1_JeA2Cwm-GzFwSS2nWnxbKSxW4SBsMR1"],
   ["master:2023:Servule O. F. Kouzonde", "1PtncBrD6_A2gCuJHhRNR4n2wO94ejtG1"],
+  ["master:2023:Pascaline Hounkponou", "1ESZh60shqZqwFyrGByBUL-rhQcSlmiNQ"],
   ["master:2021:Erick Adje", "106bdGYIAXA0q_5OnPgx5AIVMGjl_sZ9O"],
   ["master:2021:Narech Houessou", "1Ke-9lTLgaON5C9tmZTSxKLEC_geIGf1P"],
   ["master:2019:K. Merveille Santi Zinsou", "1qwc11005mUpX8qre0i0sB6bxXCkxdk1b"],
@@ -124,6 +126,7 @@ const thesisDocumentIds = new Map<string, string>([
   ["engineer:2021:Sémiton Lémec Renaud Ahouandjinou", "1_gwXr1T6pxs62-EWnAZEbwmskz6vzGe3"],
   ["engineer:2021:Bignon Murielle Souvenir Lokonon", "1Jfh9GLLkiz0rgPKG9xCWlW5h2Xito66p"],
   ["engineer:2021:Yasminath Aïcha Sidi Ali", "1FhbI3rEyXIo2TjO9i_EkVbl5ncSwPPSq"],
+  ["engineer:2021:Yannick Sèyivè Dona Kiki", "1UX3feyzTrfZ8Y-Br-AFrir0ShXN6BkVK"],
   ["engineer:2019:Marianne A. O. Balogoun", "1O7koIc37NDGRP8fx9OD88NACwW5wRbYP"],
   ["engineer:2019:Jean-Baptiste Maureen Sossou", "1iA-QYaUQOvNskDO_e9aFsJKoIWRmBx2f"],
   ["engineer:2019:Harold Silvère Kiossou", "1TDvHq_XgENS0aTkvvRlAK4bPrrRDO9Q-"],
@@ -131,7 +134,11 @@ const thesisDocumentIds = new Map<string, string>([
   ["bachelor:2026:Alimanth Sadiyath Modukpè Adjibade", "1YtyGewiqOa7-nk3QcdHVlqGyMhQWmy4D"],
   ["bachelor:2026:Mouyiwa Damilaré Godwin Akakpo", "1Hw0UnLSVeAoTxUFo49RFIF5PBgQ9mqIH"],
   ["bachelor:2026:Pernel Djahou Tinmitonde", "1C-nT9eiGVCvQ9twrL6swnx2Ps9IMZPTi"],
+  ["bachelor:2025:Aristot Sadock Othniel Tohon", "1p4ikSBbRsTpuCKXoeDG__9nh6OvwX57C"],
+  ["bachelor:2025:Sophie Fèmi Bérengère Aholou", "11aUOHPOy7rXN9chvGVoX9xMzqtFgpnSN"],
   ["bachelor:2024:Samira Bandolo Anaïs Mvogo", "1f9DDoUpqMX1DCIMIGYQJLNBHWTeqRm-9"],
+  ["bachelor:2024:Jordy Gnanih", "1aePUvMvgfWdlF_SToSvhQUy3D_a438EQ"],
+  ["bachelor:2024:Phoris Agbozognigbe", "1Gc1lzSAHuOXQHe2vNEb-DoNOcIDYDoJi"],
   ["bachelor:2023:Karen Houeha", "1k8__IHlsKp8UwVrAtSk-_nfLi05Whemk"],
   ["bachelor:2023:Lyne Gbaguidi", "1uD53bThGIF9bxm3Vd9tAgji_YKWDTXBQ"],
   ["bachelor:2023:Parfait Tolefo", "1ZuzSb1NldC6JXxuz97mvXPLLR0_LUx5m"],
@@ -147,6 +154,7 @@ const thesisDocumentIds = new Map<string, string>([
   ["bachelor:2021:Marcellin Zinsou", "1pqrCYUYHY13y9k5daXmJT1X-pJDLXtGw"],
   ["bachelor:2021:Lizzy Adjagba", "1opalflFZ0LWKL8Qb7gCuT-vllvwPUxxb"],
   ["bachelor:2021:Kelvine Natacha Mahussi Honon Dadjo", "1Dbe9AAJORDV6eIjAElSPTAnnDJUGzwO6"],
+  ["bachelor:2020:Pascaline Hounkponou", "1JfPlR_1w-wzE4cYlTwc81zY5Y_NXKX9d"],
   ["bachelor:2020:Aîchatou Oroubade", "1dsdRl2kCIk9_j91JTM7EvEBJfvGzbcO-"],
   ["bachelor:2019:Mahoutin Afis Kousse", "1sIhsl8S_4W84xQ3mzK3SP_vNu83n0bAS"],
   ["bachelor:2019:Gabriel Julien Agbossou", "1-c_NIEuTmNoudkY1nvTjy9j0Hg81WJXb"],
@@ -358,11 +366,19 @@ const bachelorTheses: ThesisGroup[] = [
     ],
   },
   {
+    year: "2025",
+    items: [
+      "Verified: A platform for document authenticity using unique identifiers — Aristot Sadock Othniel Tohon (Licence GL, IFRI)",
+      "Mobile application for cleaning metadata from online multimedia files — Sophie Fèmi Bérengère Aholou (Licence GL, IFRI)",
+    ],
+  },
+  {
     year: "2024",
     items: [
       "KidneyDoc: a patient management platform for the nephrology department of CNHU — Samira Bandolo Anaïs Mvogo (Licence GL, IFRI)",
       "Application web de gestion des emplois du temps : cas de l’IFRI — Jordy Gnanih (Licence GL, IFRI)",
       "Documentaire sur l’impact de l’intelligence artificielle sur la vie privée — Odile Lalou (Licence IM, IFRI)",
+      "Développement d’une application de détection des comportements suspects des applications mobiles sur les smartphones Android — Phoris Agbozognigbe (Licence SI, IFRI)",
     ],
   },
   {
