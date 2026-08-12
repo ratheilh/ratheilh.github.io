@@ -15,7 +15,7 @@ const copy = {
 
 const groups: CourseGroup[] = [
   { title: { fr: "Intelligence artificielle", en: "Artificial intelligence" }, courses: [
-    { title: { fr: "Intelligence artificielle et applications / machine learning", en: "Artificial intelligence and applications / machine learning" }, program: { fr: "Master IFRI, depuis 2014–2015", en: "IFRI master's program, since 2014–2015" } },
+    { title: { fr: "Intelligence artificielle et applications", en: "Artificial intelligence and applications / machine learning" }, program: { fr: "Master IFRI, depuis 2014–2015", en: "IFRI master's program, since 2014–2015" } },
     { title: { fr: "Concepts et applications de l’apprentissage automatique", en: "Machine learning concepts and applications" }, program: { fr: "Licence IA, depuis 2022–2023", en: "AI bachelor's program, since 2022–2023" } },
     { title: { fr: "Techniques de résolution de problèmes par la recherche", en: "Search-based problem-solving techniques" }, program: { fr: "Licence IA, depuis 2022–2023", en: "AI bachelor's program, since 2022–2023" } },
   ] },
@@ -40,6 +40,11 @@ const resources: TeachingResource[] = [
     description: { fr: "un guide synthétique de 10 pages présentant les repères essentiels, du choix du sujet à la soutenance.", en: "a concise 10-page guide in French covering the essential steps from topic selection to thesis defense." },
     href: "/teaching-resources/reussir-son-memoire-en-informatique.pdf",
   },
+  {
+    name: { fr: "Travailler en équipe", en: "Working as a team" },
+    description: { fr: "un support pédagogique consacré au travail en équipe.", en: "a French-language teaching resource about teamwork." },
+    href: "/teaching-resources/travailler-en-equipe.pdf",
+  },
 ];
 
 export function TeachingContent({ language }: { language: Language }) {
@@ -50,11 +55,11 @@ export function TeachingContent({ language }: { language: Language }) {
       {resources.map((resource) => (
         <li key={resource.href}>
           <ExternalLink href={resource.href}>{localize(resource.name, language)}</ExternalLink>
-          {" — "}{localize(resource.description, language)}
+          {" / "}{localize(resource.description, language)}
         </li>
       ))}
     </ul>
-    {groups.map((group) => <section key={group.title.fr}><h2>{localize(group.title, language)}</h2><ul>{group.courses.map((course) => <li key={course.title.fr}><strong>{localize(course.title, language)}</strong> — {localize(course.program, language)};</li>)}</ul></section>)}
+    {groups.map((group) => <section key={group.title.fr}><h2>{localize(group.title, language)}</h2><ul>{group.courses.map((course) => <li key={course.title.fr}><strong>{localize(course.title, language)}</strong> / {localize(course.program, language)}</li>)}</ul></section>)}
     <h2>{localize(copy.pedagogyTitle, language)}</h2><p>{localize(copy.pedagogy, language)}</p>
   </AcademicPage>;
 }

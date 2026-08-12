@@ -15,7 +15,7 @@ const copy = {
   academicResponsibilitiesTitle: { fr: "Responsabilités académiques", en: "Academic responsibilities" },
   evaluationsTitle: { fr: "Évaluation de thèses", en: "PhD thesis evaluation" },
   evaluationsIntro: { fr: "Participation à l’évaluation de travaux doctoraux en intelligence artificielle, en informatique et dans leurs domaines d’application.", en: "Participation in the evaluation of doctoral research in artificial intelligence, computer science, and their application domains." },
-  friaTitle: { fr: "Fondation FRIARE", en: "FRIARE Foundation" },
+  friaTitle: { fr: "Fondation/Association FRIARE", en: "FRIARE Fondation/Association" },
   bwaiTitle: { fr: "Benin Workshop on Artificial Intelligence", en: "Benin Workshop on Artificial Intelligence" },
   summerTitle: { fr: "ACP Summer School 2025", en: "ACP Summer School 2025" },
   mifyTitle: { fr: "Mify Artificial Intelligence Contest", en: "Mify Artificial Intelligence Contest" },
@@ -117,6 +117,9 @@ export function ServicesContent({ language }: { language: Language }) {
     <h2>{localize(copy.academicResponsibilitiesTitle, language)}</h2>
     <ul>{localize(academicResponsibilities, language).map((item) => <li key={item}>{item}</li>)}</ul>
 
+    <h2>{localize(copy.friaTitle, language)}</h2>
+    <p>{isEnglish ? "Since 2023 I served as president of the " : "Je préside depuis 2023 l'"}<ExternalLink href="https://friare.org">{isEnglish ? "FRIARE association for responsible and efficient artificial intelligence" : "association FRIARE pour une intelligence artificielle responsable et efficiente"}</ExternalLink>{isEnglish ? ", dedicated to awareness, research, public dialogue on the responsible use of AI in Africa." : ", consacrée à la sensibilisation, à la recherche, au dialogue public sur l'utilisation responsable de l'IA en Afrique."}</p>
+
     <h2>{localize(copy.evaluationsTitle, language)}</h2><p>{localize(copy.evaluationsIntro, language)}</p>
     <ol className="publication-list compact-record-list">
       {evaluatedTheses.map((thesis) => (
@@ -128,9 +131,6 @@ export function ServicesContent({ language }: { language: Language }) {
         </li>
       ))}
     </ol>
-
-    <h2>{localize(copy.friaTitle, language)}</h2>
-    <p>{isEnglish ? "From 2023 to 2026, I served as president of the " : "J’ai présidé de 2023 à 2026 la "}<ExternalLink href="https://friare.org">{isEnglish ? "Ratheil Foundation for Responsible and Efficient Artificial Intelligence (FRIARE)" : "Fondation Ratheil pour une Intelligence Artificielle Responsable et Efficiente (FRIARE)"}</ExternalLink>{isEnglish ? ", dedicated to awareness, research, public dialogue, training, and project support in Africa." : ", consacrée à la sensibilisation, à la recherche, au dialogue public, à la formation et à l’accompagnement de projets en Afrique."}</p>
 
     <h2>{localize(copy.bwaiTitle, language)}</h2>
     <p>{isEnglish ? "I am the General Chair of the " : "Je suis le General Chair du "}<ExternalLink href="https://bwai-ifri-uac.bj">Benin Workshop on Artificial Intelligence</ExternalLink>{isEnglish ? ". I have contributed to five editions since 2018 as General co-Chairman. This national conference brings together researchers, students, professionals, and public-sector stakeholders around artificial intelligence in Benin." : ". J'ai contribué à cinq éditions depuis 2018 en tant que General co-Chair. Cette conférence nationale réunit chercheurs, étudiants, professionnels et acteurs publics autour de l’intelligence artificielle au Bénin."}</p>

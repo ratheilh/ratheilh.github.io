@@ -78,7 +78,7 @@ const homeContent = {
   profileLabel: { fr: "Profil et coordonnées", en: "Profile and contact details" },
   portraitAlt: { fr: "Portrait de Vinasétan Ratheil Houndji", en: "Portrait of Vinasétan Ratheil Houndji" },
   country: { fr: "Bénin", en: "Benin" },
-  cvDownload: { fr: "Télécharger le CV (PDF)", en: "Download CV (PDF)" },
+  cvDownload: { fr: "Télécharger CV (PDF)", en: "Download CV (PDF)" },
   externalProfiles: { fr: "Profils externes", en: "External profiles" },
   eyebrow: {
     fr: "Enseignant-chercheur en intelligence artificielle et en optimisation",
@@ -210,15 +210,14 @@ function HomeContent({ language }: { language: Language }) {
         <aside className="profile-column" aria-label={localize(homeContent.profileLabel, language)}>
           <Image className="profile-photo" src="/ratheil-houndji.webp" alt={localize(homeContent.portraitAlt, language)} width={600} height={697} priority />
           <div className="profile-details">
-            <p><strong>IFRI — {isEnglish ? "University" : "Université"} d’Abomey-Calavi</strong><br />Abomey-Calavi, {localize(homeContent.country, language)}</p>
-            <p><a href={isEnglish ? "/cv-vinasetan-ratheil-houndji-en.pdf" : "/cv-vinasetan-ratheil-houndji.pdf"} download>{localize(homeContent.cvDownload, language)}</a></p>
-            <p><a href="mailto:ratheil.houndji@uac.bj">ratheil.houndji@uac.bj</a></p>
-            <p><a href="mailto:vratheilhoundji@gmail.com">vratheilhoundji@gmail.com</a></p>
             <nav className="profile-links" aria-label={localize(homeContent.externalProfiles, language)}>
               <ExternalLink href={`https://scholar.google.com/citations?user=36wbP8kAAAAJ&hl=${language}`}>Google Scholar</ExternalLink>
               <ExternalLink href="https://dblp.org/pid/150/4939">DBLP</ExternalLink><ExternalLink href="https://orcid.org/0000-0002-5467-9448">ORCID</ExternalLink>
               <ExternalLink href="https://www.linkedin.com/in/vinasetan/">LinkedIn</ExternalLink><ExternalLink href="https://www.youtube.com/channel/UC24YKysMzmerMK2a1PSlYwA">YouTube</ExternalLink>
             </nav>
+            <p><a href={isEnglish ? "/cv-vinasetan-ratheil-houndji-en.pdf" : "/cv-vinasetan-ratheil-houndji.pdf"} download>{localize(homeContent.cvDownload, language)}</a></p>
+            <p><a href="mailto:ratheil.houndji@uac.bj">ratheil.houndji@uac.bj</a></p>
+            <p><a href="mailto:vratheilhoundji@gmail.com">vratheilhoundji@gmail.com</a></p>
           </div>
         </aside>
 
