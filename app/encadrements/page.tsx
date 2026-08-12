@@ -104,19 +104,44 @@ const linkedinProfiles = new Map<string, string>([
 ]);
 
 const thesisDocumentIds = new Map<string, string>([
-  ["master:2023:Djivèdé Chryzal Beaudelaire Zossou", "1gB0E8_QzI4DUn05OJd1VfMCZ_m0Q5XlD"],
-  ["master:2018:Chabi A. Rodolpho Babatounde", "12KSFfSWmUsVInf5y02gkbDjN76lq1pGT"],
-  ["master:2017:Hafiz Abdoulaye", "1Q5iVz6HyZ7ypAzMu7FidlqFL2L49Fp1_"],
-  ["master:2017:Gabin Anadjamè", "1RVSBnwQykbhCKYJips9X9u3QX2f8LMLW"],
-  ["master:2017:Tafsir Gna", "1-FkhVb39FS2e3v9WMe_D_6TZsSWdjibg"],
-  ["master:2016:Koubouratou Idjaton", "1PmR_gK4fUKOu_F2wuCCtlWwBFVtQe_A3"],
-  ["engineer:2023:Sênan Emeric Chris Gbodo", "1ebGQ6UgyU67ekG88Csup1KGvbi5NSPNf"],
-  ["engineer:2021:Sémiton Lémec Renaud Ahouandjinou", "1MZWF-DHAS6mXn-_MdXWkUW8pv3c689y5"],
-  ["engineer:2021:Bignon Murielle Souvenir Lokonon", "11DCmcclumqkm4YdbbFUlxIkFvnRXZWGO"],
-  ["engineer:2021:Yasminath Aïcha Sidi Ali", "1YkGu-lzbsrhA9ny8-pDIbF-c0-Zc_r6E"],
-  ["engineer:2019:Marianne A. O. Balogoun", "1IaSmp7Mo7bRxj3VL2ovUisGPoQB_XxAC"],
-  ["engineer:2019:Jean-Baptiste Maureen Sossou", "1tYV8kREPDYoMou1WCAvHkY8MwNA-R9fd"],
-  ["engineer:2019:Harold Silvère Kiossou", "1QCCtKpR4UimbqwcP6OUY6j34LuOnOe4l"],
+  ["master:2026:Défodji Eden Freddy Houndonougbo", "1vN-uaeNVplDGSYwPR-UqdFsrbKQw4pjt"],
+  ["master:2023:Mahoutin Afis Kousse", "1CHU3vbu2ZIL2S_7eqICynt_a_gWUl5z-"],
+  ["master:2023:Djivèdé Chryzal Beaudelaire Zossou", "1_JeA2Cwm-GzFwSS2nWnxbKSxW4SBsMR1"],
+  ["master:2023:Servule O. F. Kouzonde", "1PtncBrD6_A2gCuJHhRNR4n2wO94ejtG1"],
+  ["master:2021:Erick Adje", "106bdGYIAXA0q_5OnPgx5AIVMGjl_sZ9O"],
+  ["master:2019:K. Merveille Santi Zinsou", "1qwc11005mUpX8qre0i0sB6bxXCkxdk1b"],
+  ["master:2018:Judiacel G. N. Zannou", "1rHzIWKxnONvvzPdUr5b773jGYALrRMaL"],
+  ["master:2018:Chabi A. Rodolpho Babatounde", "1MlCbKiaJoZ_FzzKvjsap9W5_BeHgosX0"],
+  ["master:2017:Hafiz Abdoulaye", "1tRkWQ0qVqdWNvxpC7W4WH3ZGUKgvfYDK"],
+  ["master:2017:Gabin Anadjamè", "1-RzJM3go4blLLW5WE_8-BCB0YdN93ccU"],
+  ["master:2017:Tafsir Gna", "1uHzBTEvmWWPInXFrtlguDICIObdMysNj"],
+  ["master:2016:Koubouratou Idjaton", "1jGekeYX8-QTZCI7ACgfMRsWYsx2s4KW8"],
+  ["master:2016:Gael Aglin", "1oWvC5ULcJHLF0L9h6w29X9KW4AJp-2Di"],
+  ["engineer:2023:Sênan Emeric Chris Gbodo", "138nW9SL0Jwwob59cs89Nw-JuD7MaPynr"],
+  ["engineer:2021:Sémiton Lémec Renaud Ahouandjinou", "1_gwXr1T6pxs62-EWnAZEbwmskz6vzGe3"],
+  ["engineer:2021:Bignon Murielle Souvenir Lokonon", "1Jfh9GLLkiz0rgPKG9xCWlW5h2Xito66p"],
+  ["engineer:2021:Yasminath Aïcha Sidi Ali", "1FhbI3rEyXIo2TjO9i_EkVbl5ncSwPPSq"],
+  ["engineer:2019:Marianne A. O. Balogoun", "1O7koIc37NDGRP8fx9OD88NACwW5wRbYP"],
+  ["engineer:2019:Jean-Baptiste Maureen Sossou", "1iA-QYaUQOvNskDO_e9aFsJKoIWRmBx2f"],
+  ["engineer:2019:Harold Silvère Kiossou", "1TDvHq_XgENS0aTkvvRlAK4bPrrRDO9Q-"],
+  ["bachelor:2023:Karen Houeha", "1k8__IHlsKp8UwVrAtSk-_nfLi05Whemk"],
+  ["bachelor:2023:Esther Ahossi", "1Zi1sPomIFIEQbfPy8_FYe7oDfDngfGVZ"],
+  ["bachelor:2023:Damien Ulrich Doevi", "1NX61EMS-TFFYdvnZPRqJ220UCtQBKLiS"],
+  ["bachelor:2023:Prince Gédéon Yiségnon Guedje", "1m-IDqsX57PMBqhN4KoIA5pPed2E7-scB"],
+  ["bachelor:2022:Généreux Mahouzonssou Akotenou", "1ULnznhdw7uqMNqUWnkYhegEf6f3rFPK6"],
+  ["bachelor:2022:Bignon Klaus Précieux Bonou Selegbe", "1SPlB-yGGeyQn8x4PlB1KdEjJ4ykfLYQw"],
+  ["bachelor:2021:Ogbinto Samir Tafel Boni", "1LTfgbOvyeKwD3OWffg4TazrgNtmP5NVx"],
+  ["bachelor:2021:Marcellin Zinsou", "1pqrCYUYHY13y9k5daXmJT1X-pJDLXtGw"],
+  ["bachelor:2021:Lizzy Adjagba", "1opalflFZ0LWKL8Qb7gCuT-vllvwPUxxb"],
+  ["bachelor:2020:Aîchatou Oroubade", "1dsdRl2kCIk9_j91JTM7EvEBJfvGzbcO-"],
+  ["bachelor:2019:Mahoutin Afis Kousse", "1sIhsl8S_4W84xQ3mzK3SP_vNu83n0bAS"],
+  ["bachelor:2019:Gabriel Julien Agbossou", "1-c_NIEuTmNoudkY1nvTjy9j0Hg81WJXb"],
+  ["bachelor:2019:Mélaine Kiossou", "1sDWQKHUZdNPYMaW3GGEf4e9mL559Ky1-"],
+  ["bachelor:2018:Iffanice Houndayi", "1XgUushuUR9onpnd5I-PiJU6gGDxwTdG9"],
+  ["bachelor:2018:Abdias Dagbekpo", "1oAcHqQH8HvcPZoEVKOdF2rSIDaw7_QRC"],
+  ["bachelor:2018:Luc Atakpa", "1upjl_WIcSyYIjkD4i4sWcVI3TF6nFq1s"],
+  ["bachelor:2017:Marie-Parisius Houessou", "1HcBxLwlxNUMZqysVw_xENF3MaKP7XRuq"],
+  ["bachelor:2017:Ahouefa Pascale Ninon Kpossou", "1Gp7kMuFOXkNOy8HxreicLDr-KefggOGh"],
 ]);
 
 const doctoralSchool: Localized = {
@@ -202,6 +227,12 @@ const contributedDoctoralTheses: ContributedDoctoralThesis[] = [
 
 const masterTheses: ThesisGroup[] = [
   {
+    year: "2026",
+    items: [
+      "Mitigating biases in datasets using constraint programming-based undersampling — Défodji Eden Freddy Houndonougbo (Master SIRI, IFRI)",
+    ],
+  },
+  {
     year: "2025",
     items: [
       "Contributions à l’analyse multimodale dans la détection de la tuberculose : en République démocratique du Congo — Grace Kisambu Nsele (Master GL, IFRI)",
@@ -227,6 +258,7 @@ const masterTheses: ThesisGroup[] = [
   {
     year: "2021",
     items: [
+      "Classification du trafic internet grâce aux méthodes d’apprentissage automatique — Erick Adje (Master Télécommunications et réseaux informatiques, ED-SDI)",
       "Application web de partage de données multimodales pour le suivi des altérations des châteaux par traitement d’images et deep learning — Narech Houessou (Master SIRI, IFRI)",
     ],
   },
@@ -239,6 +271,7 @@ const masterTheses: ThesisGroup[] = [
   {
     year: "2018",
     items: [
+      "Estimation des rendements agricoles avec le machine learning : cas du sorgho — Judiacel G. N. Zannou (Master, IFRI)",
       "Système d’information de gestion du parc automobile béninois fondé sur la lecture automatique des plaques minéralogiques — Chabi A. Rodolpho Babatounde (Master SIRI, IFRI)",
     ],
   },
@@ -253,8 +286,8 @@ const masterTheses: ThesisGroup[] = [
   {
     year: "2016",
     items: [
-      "Heuristique générique pour les jeux de type n-alignés — Koubouratou Idjaton (Master, IFRI)",
-      "Évaluation d’heuristiques de recherche informée : cas du n-puzzle — Gael Aglin (Master, IFRI)",
+      "Évaluation d’heuristiques de recherche informée : cas du n-puzzle — Koubouratou Idjaton (Master, IFRI)",
+      "Heuristique générique pour les jeux de type n-alignés — Gael Aglin (Master, IFRI)",
     ],
   },
 ];
