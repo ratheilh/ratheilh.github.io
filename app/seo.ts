@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://ratheil.info";
-export const SITE_NAME = "Vinasétan Ratheil Esse Houndji";
+export const SITE_NAME = "Vinasétan Ratheil Houndji";
 
 type SitePath = `/${string}`;
 type Locale = "fr" | "en";

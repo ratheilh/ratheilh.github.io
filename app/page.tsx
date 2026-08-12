@@ -76,7 +76,7 @@ type NewsItem = {
 
 const homeContent = {
   profileLabel: { fr: "Profil et coordonnées", en: "Profile and contact details" },
-  portraitAlt: { fr: "Portrait de Vinasétan Ratheil Esse Houndji", en: "Portrait of Vinasétan Ratheil Esse Houndji" },
+  portraitAlt: { fr: "Portrait de Vinasétan Ratheil Houndji", en: "Portrait of Vinasétan Ratheil Houndji" },
   country: { fr: "Bénin", en: "Benin" },
   cvDownload: { fr: "Télécharger le CV (PDF)", en: "Download CV (PDF)" },
   externalProfiles: { fr: "Profils externes", en: "External profiles" },
@@ -225,7 +225,7 @@ function HomeContent({ language }: { language: Language }) {
         <div className="home-main">
           <header className="identity">
             <p className="eyebrow">{localize(homeContent.eyebrow, language)}</p>
-            <h1>Vinasétan Ratheil Esse Houndji</h1>
+            <h1>Vinasétan Ratheil Houndji</h1>
             <p className="position">{positions.map((position, index) => <span key={position}>{position}{index < positions.length - 1 ? <br /> : null}</span>)}</p>
           </header>
 

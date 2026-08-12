@@ -17,6 +17,10 @@ const publications: { year: string; items: Publication[] }[] = [
     year: "2026",
     items: [
       {
+        title: "Spectral prototype-based spatial reweighting for robust crop classification via Sentinel-1 and Sentinel-2 data fusion",
+        details: "E. Adje, A. Lakoussa, V. R. Houndji, S. A. R. M. Ahouandjinou. CARI 2026. Article accepté.",
+      },
+      {
         title: "Spatiotemporal modeling and uncertainty quantification of reference evapotranspiration using machine learning and Bayesian model averaging in Benin",
         details: "B. C. F. Mizele, M. Meliho, V. R. Houndji, S. A. R. M. Ahouandjinou, C. A. Orlando. Geomatics, vol. 6, no 4, article 73.",
         href: "https://doi.org/10.3390/geomatics6040073",
@@ -252,6 +256,7 @@ const publications: { year: string; items: Publication[] }[] = [
 function englishDetails(details: string) {
   return details
     .replace("Jeu de données de recherche.", "Research dataset.")
+    .replace("Article accepté.", "Accepted paper.")
     .replace("Communication aux Journées Francophones de Programmation par Contraintes, Strasbourg.", "Paper presented at the Journées Francophones de Programmation par Contraintes, Strasbourg.")
     .replace("Communication à l’International Seminar on Machine Learning, Optimization, and Data Science.", "Presentation at the International Seminar on Machine Learning, Optimization, and Data Science.")
     .replace("Résumé de thèse.", "PhD thesis abstract.");

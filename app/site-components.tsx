@@ -8,7 +8,7 @@ export function SiteHeader() {
 }
 
 export function AcademicPage({ children, home = false, language = "fr" }: { children: ReactNode; home?: boolean; language?: "fr" | "en" }) {
-  return <><SiteHeader /><main lang={language} className={home ? "content content-home" : "content"}>{children}</main><footer lang={language} className="site-footer"><div>© 2026 Vinasétan Ratheil Esse Houndji</div><div>IFRI · {language === "en" ? "University of Abomey-Calavi · Benin" : "Université d’Abomey-Calavi · Bénin"}</div></footer></>;
+  return <><SiteHeader /><main lang={language} className={home ? "content content-home" : "content"}>{children}</main><footer lang={language} className="site-footer"><div>© 2026 Vinasétan Ratheil Houndji</div><div>IFRI · {language === "en" ? "University of Abomey-Calavi · Benin" : "Université d’Abomey-Calavi · Bénin"}</div></footer></>;
 }
 
 export function ExternalLink({ href, children }: { href: string; children: ReactNode }) { return <a href={href} target="_blank" rel="noreferrer">{children}</a>; }
