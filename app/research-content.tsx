@@ -17,7 +17,7 @@ const copy = {
 
 const areas: ResearchItem[] = [
   { title: { fr: "Intelligence artificielle et apprentissage automatique", en: "Artificial intelligence and machine learning" }, description: { fr: "conception, expérimentation et évaluation de systèmes intelligents.", en: "design, experimentation, and evaluation of intelligent systems." } },
-  { title: { fr: "Programmation par contraintes", en: "Constraint programming" }, description: { fr: "algorithmes de filtrage, recherche arborescente et modélisation de problèmes combinatoires.", en: "filtering algorithms, tree search, and modeling of combinatorial problems." } },
+  { title: { fr: "Programmation par contraintes", en: "Constraint programming" }, description: { fr: "algorithmes de filtrage, algorithmes de recherche et modélisation de problèmes combinatoires.", en: "filtering algorithms, tree search, and modeling of combinatorial problems." } },
   { title: { fr: "Optimisation combinatoire", en: "Combinatorial optimization" }, description: { fr: "planification, ordonnancement, recherche opérationnelle et aide à la décision.", en: "planning, scheduling, operations research, and decision support." } },
   { title: { fr: "IA responsable et efficiente", en: "Responsible and efficient AI" }, description: { fr: "équité, interprétabilité et adaptation des systèmes aux contextes africains.", en: "fairness, interpretability, and adaptation of systems to African contexts." } },
 ];

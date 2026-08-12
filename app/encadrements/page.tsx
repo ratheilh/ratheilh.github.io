@@ -15,7 +15,9 @@ type ThesisGroup = { year: string; items: string[] };
 
 type DoctoralThesis = {
   name: string;
+  institution: Localized;
   title: Localized;
+  university?: string;
 };
 
 type ContributedDoctoralThesis = {
@@ -24,14 +26,20 @@ type ContributedDoctoralThesis = {
   institution: Localized;
   title: Localized;
   status: "ongoing" | "defended";
+  university?: string;
 };
+
+type ThesisKind = "master" | "engineer" | "bachelor";
 
 const linkedinProfiles = new Map<string, string>([
   ["Linuse Tikpon", "https://www.linkedin.com/in/linuse-tikpon-80a1b81a5"],
   ["Marie Mélène Sèmèvo Tonou", "https://www.linkedin.com/in/marie-melene-tonou"],
   ["Maryse Fortune Doloresse Gahou", "https://www.linkedin.com/in/maryse-gahou"],
+  ["Noël Christi Honzounnon", "https://www.linkedin.com/in/noel-christi-honzounnon-01ba85191/"],
   ["Marianne Balogoun", "https://www.linkedin.com/in/marianne-a-omonlola-balogoun-3bbb00175"],
+  ["Marianne A. O. Balogoun", "https://www.linkedin.com/in/marianne-a-omonlola-balogoun-3bbb00175"],
   ["Souleymane Bah", "https://www.linkedin.com/in/souleymane-bah-584035212"],
+  ["Fatou Lo Niang", "https://www.linkedin.com/in/fatou-lo-niang/"],
   ["Ariane Houetohossou", "https://www.linkedin.com/in/houetohossou-ariane-a84abb177"],
   ["Peace Tahi", "https://www.linkedin.com/in/souand-tahi-ba6ba6124"],
   ["Mahoutin Afis Kousse", "https://www.linkedin.com/in/mahoutin-afis-malick-kousse-4807a1199"],
@@ -95,6 +103,22 @@ const linkedinProfiles = new Map<string, string>([
   ["Mawenan Fernande Frédérique Togbe", "https://www.linkedin.com/in/fernande-togbe-ab1b622ba"],
 ]);
 
+const thesisDocumentIds = new Map<string, string>([
+  ["master:2023:Djivèdé Chryzal Beaudelaire Zossou", "1gB0E8_QzI4DUn05OJd1VfMCZ_m0Q5XlD"],
+  ["master:2018:Chabi A. Rodolpho Babatounde", "12KSFfSWmUsVInf5y02gkbDjN76lq1pGT"],
+  ["master:2017:Hafiz Abdoulaye", "1Q5iVz6HyZ7ypAzMu7FidlqFL2L49Fp1_"],
+  ["master:2017:Gabin Anadjamè", "1RVSBnwQykbhCKYJips9X9u3QX2f8LMLW"],
+  ["master:2017:Tafsir Gna", "1-FkhVb39FS2e3v9WMe_D_6TZsSWdjibg"],
+  ["master:2016:Koubouratou Idjaton", "1PmR_gK4fUKOu_F2wuCCtlWwBFVtQe_A3"],
+  ["engineer:2023:Sênan Emeric Chris Gbodo", "1ebGQ6UgyU67ekG88Csup1KGvbi5NSPNf"],
+  ["engineer:2021:Sémiton Lémec Renaud Ahouandjinou", "1MZWF-DHAS6mXn-_MdXWkUW8pv3c689y5"],
+  ["engineer:2021:Bignon Murielle Souvenir Lokonon", "11DCmcclumqkm4YdbbFUlxIkFvnRXZWGO"],
+  ["engineer:2021:Yasminath Aïcha Sidi Ali", "1YkGu-lzbsrhA9ny8-pDIbF-c0-Zc_r6E"],
+  ["engineer:2019:Marianne A. O. Balogoun", "1IaSmp7Mo7bRxj3VL2ovUisGPoQB_XxAC"],
+  ["engineer:2019:Jean-Baptiste Maureen Sossou", "1tYV8kREPDYoMou1WCAvHkY8MwNA-R9fd"],
+  ["engineer:2019:Harold Silvère Kiossou", "1QCCtKpR4UimbqwcP6OUY6j34LuOnOe4l"],
+]);
+
 const doctoralSchool: Localized = {
   fr: "École doctorale des sciences de l’ingénieur",
   en: "Doctoral School of Engineering Sciences",
@@ -104,19 +128,33 @@ const doctoralTheses: DoctoralThesis[] = [
 
   {
     name: "Linuse Tikpon",
+    institution: doctoralSchool,
     title: { fr: "Système multi-agents immersif en réalité virtuelle pour la formation pédagogique des enseignants universitaires", en: "An immersive multi-agent virtual reality system for the pedagogical training of university teachers" },
+    university: "UAC",
   },
   {
     name: "Marie Mélène Sèmèvo Tonou",
+    institution: doctoralSchool,
     title: { fr: "Détection automatique des types de crises d’épilepsie à partir d’électroencéphalogrammes", en: "Automatic detection of epileptic seizure types from electroencephalograms" },
+    university: "UAC",
   },
   {
     name: "Grace Kisambu Nsele",
+    institution: doctoralSchool,
     title: { fr: "Détection automatique de la trypanosomiase à partir d’images de frottis sanguins", en: "Automatic detection of trypanosomiasis from blood smear images" },
+    university: "UAC",
   },
   {
     name: "Maryse Fortune Doloresse Gahou",
+    institution: doctoralSchool,
     title: { fr: "Système d’aide au dépistage précoce de l’insuffisance rénale chronique au Bénin basé sur l’apprentissage automatique", en: "A machine learning-based decision-support system for early chronic kidney disease screening in Benin"},
+    university: "UAC",
+  },
+  {
+    name: "Noël Christi Honzounnon",
+    institution: { fr: "École doctorale des sciences de la vie et de la terre", en: "Doctoral School of Life and Earth Sciences" },
+    title: { fr: "Identification de biomarqueurs pharmacogénomiques et développement d’algorithmes décisionnels pour un traitement personnalisé du diabète de type 2", en: "Identification of pharmacogenomic biomarkers and development of decision-making algorithms for personalized treatment of type 2 diabetes" },
+    university: "UAC",
   },
 ];
 
@@ -127,12 +165,21 @@ const contributedDoctoralTheses: ContributedDoctoralThesis[] = [
     institution: { fr: "École doctorale des sciences de l’ingénieur", en: "Doctoral School of Engineering Sciences" },
     title: { fr: "Prédiction de la couverture radio à l’aide de techniques d’apprentissage automatique : cas de la télévision numérique terrestre au Bénin", en: "Radio coverage prediction using machine learning techniques: the case of digital terrestrial television in Benin" },
     status: "ongoing",
+    university: "UAC",
   },
   {
     name: "Souleymane Bah",
     years: "2022–2026",
     institution: { fr: "Institut de mathématiques et de sciences physiques", en: "Institute of Mathematics and Physical Sciences" },
     title: { fr: "Détection des ravageurs de cultures à l’aide de l’apprentissage automatique et de données satellitaires ouvertes : application aux jassides des cultures de coton au nord du Bénin", en: "Crop pest detection using machine learning and open satellite data: application to cotton jassids in northern Benin" },
+    status: "ongoing",
+    university: "UAC",
+  },
+  {
+    name: "Fatou Lo Niang",
+    years: "2022 –-",
+    institution: { fr: "Université Cheick Anta Diop (UCAD), Sénégal", en: "Université Cheick Anta Diop (UCAD), Senegal" },
+    title: { fr: "Conception d’un Système d’Information Médical Intelligent: modèles IA de détection et de prise en charge précoces des maladies cardio-vasculaires au Sénégal.", en: "Design of an intelligent medical information system: AI models for early detection and management of cardiovascular diseases in Senegal." },
     status: "ongoing",
   },
   {
@@ -141,6 +188,7 @@ const contributedDoctoralTheses: ContributedDoctoralThesis[] = [
     institution: { fr: "École doctorale des sciences agronomiques et de l’eau", en: "Doctoral School of Agricultural and Water Sciences" },
     title: { fr: "Optimisation des paramètres des techniques d’apprentissage automatique pour la prédiction du rendement du maïs sous des conditions météorologiques et de fertilisation contrôlées", en: "Optimization of machine learning technique parameters for maize yield prediction under controlled weather and fertilization patterns" },
     status: "defended",
+    university: "UAC",
   },
   {
     name: "Peace Tahi",
@@ -148,6 +196,7 @@ const contributedDoctoralTheses: ContributedDoctoralThesis[] = [
     institution: { fr: "École doctorale des sciences agronomiques et de l’eau", en: "Doctoral School of Agricultural and Water Sciences" },
     title: { fr: "Évaluation empirique des techniques d’apprentissage automatique pour la détection des maladies et la prédiction du rendement de la tomate dans des conditions climatiques et infectieuses simulées", en: "Empirical evaluation of machine learning techniques for disease detection and yield prediction in tomatoes under simulated climate and infection conditions" },
     status: "defended",
+    university: "UAC",
   },
 ];
 
@@ -155,7 +204,7 @@ const masterTheses: ThesisGroup[] = [
   {
     year: "2025",
     items: [
-      "Automatic detection of pulmonary tuberculosis from medical images: case of the Democratic Republic of the Congo — Grace Nsele Kisambu (Master GL, IFRI)",
+      "Contributions à l’analyse multimodale dans la détection de la tuberculose : en République démocratique du Congo — Grace Kisambu Nsele (Master GL, IFRI)",
       "Protection de la vie privée dans le data mining par approche cryptographique : application à la détection de données aberrantes — Esdras Ago (Master GL, IFRI)",
     ],
   },
@@ -243,6 +292,7 @@ const engineerTheses: ThesisGroup[] = [
     items: [
       "Classification automatique de documents fondée sur le bag of words et l’extraction de motifs séquentiels — Jean-Baptiste Maureen Sossou (Ingénieur GIT, EPAC)",
       "Prédiction des performances d’une architecture 2D SOME-Bus avec le deep learning — Harold Silvère Kiossou (Ingénieur GIT, EPAC)",
+      "Résolution du problème d’affectation de fréquences avec la programmation par contraintes — Marianne A. O. Balogoun (Ingénieur GIT, EPAC)",
     ],
   },
 ];
@@ -355,7 +405,7 @@ function PersonName({ name }: { name: string }) {
   );
 }
 
-function ThesisItem({ item }: { item: string }) {
+function ThesisItem({ item, kind, year, language }: { item: string; kind: ThesisKind; year: string; language: Language }) {
   const separator = " — ";
   const separatorIndex = item.lastIndexOf(separator);
   const nameStart = separatorIndex + separator.length;
@@ -366,23 +416,32 @@ function ThesisItem({ item }: { item: string }) {
   }
 
   const name = item.slice(nameStart, detailsIndex);
+  const documentId = thesisDocumentIds.get(`${kind}:${year}:${name}`);
 
   return (
     <>
       {item.slice(0, nameStart)}
       <PersonName name={name} />
       {item.slice(detailsIndex)}
+      {documentId ? (
+        <>
+          {" · "}
+          <ExternalLink href={`https://drive.google.com/uc?export=download&id=${documentId}`}>
+            {language === "en" ? "Download thesis (PDF)" : "Télécharger le mémoire (PDF)"}
+          </ExternalLink>
+        </>
+      ) : null}
     </>
   );
 }
 
-function ThesisGroups({ groups }: { groups: ThesisGroup[] }) {
+function ThesisGroups({ groups, kind, language }: { groups: ThesisGroup[]; kind: ThesisKind; language: Language }) {
   return groups.map((group) => (
     <section key={group.year}>
       <h3>{group.year}</h3>
       <ul className="supervision-thesis-list">
         {group.items.map((item) => (
-          <li key={item}><ThesisItem item={item} /></li>
+          <li key={item}><ThesisItem item={item} kind={kind} year={group.year} language={language} /></li>
         ))}
       </ul>
     </section>
@@ -408,7 +467,7 @@ function SupervisionContent({ language }: { language: Language }) {
             <span className="details">
               <strong>
                 <PersonName name={thesis.name} />
-              </strong> · {localize(doctoralSchool, language)} · UAC
+              </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null}
             </span>
           </li>
         ))}
@@ -422,7 +481,7 @@ function SupervisionContent({ language }: { language: Language }) {
             <span className="details">
               <strong>
                 <PersonName name={thesis.name} />
-              </strong> · {localize(thesis.institution, language)} · UAC · {thesis.years} · {thesis.status === "defended"
+              </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null} · {thesis.years} · {thesis.status === "defended"
                 ? (isEnglish ? "Defended" : "Soutenue")
                 : (isEnglish ? "Ongoing" : "En cours")}
             </span>
@@ -431,13 +490,13 @@ function SupervisionContent({ language }: { language: Language }) {
       </ol>
 
       <h2>{isEnglish ? "Master’s theses" : "Mémoires de master"}</h2>
-      <ThesisGroups groups={masterTheses} />
+      <ThesisGroups groups={masterTheses} kind="master" language={language} />
 
       <h2>{isEnglish ? "Engineering degree theses" : "Mémoires d’ingénieur"}</h2>
-      <ThesisGroups groups={engineerTheses} />
+      <ThesisGroups groups={engineerTheses} kind="engineer" language={language} />
 
       <h2>{isEnglish ? "Bachelor’s theses" : "Mémoires de licence"}</h2>
-      <ThesisGroups groups={bachelorTheses} />
+      <ThesisGroups groups={bachelorTheses} kind="bachelor" language={language} />
 
     </AcademicPage>
   );
