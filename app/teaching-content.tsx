@@ -15,7 +15,7 @@ const copy = {
 
 const groups: CourseGroup[] = [
   { title: { fr: "Intelligence artificielle", en: "Artificial intelligence" }, courses: [
-    { title: { fr: "Intelligence artificielle et applications", en: "Artificial intelligence and applications / machine learning" }, program: { fr: "Master IFRI, depuis 2014–2015", en: "IFRI master's program, since 2014–2015" } },
+    { title: { fr: "Intelligence artificielle et applications", en: "Artificial intelligence and applications" }, program: { fr: "Master IFRI, depuis 2014–2015", en: "IFRI master's program, since 2014–2015" } },
     { title: { fr: "Concepts et applications de l’apprentissage automatique", en: "Machine learning concepts and applications" }, program: { fr: "Licence IA, depuis 2022–2023", en: "AI bachelor's program, since 2022–2023" } },
     { title: { fr: "Techniques de résolution de problèmes par la recherche", en: "Search-based problem-solving techniques" }, program: { fr: "Licence IA, depuis 2022–2023", en: "AI bachelor's program, since 2022–2023" } },
   ] },
@@ -47,9 +47,8 @@ const resources: TeachingResource[] = [
   },
 ];
 
-export function TeachingContent({ language }: { language: Language }) {
-  return <AcademicPage language={language}>
-    <PageIntro title={localize(copy.title, language)}>{localize(copy.intro, language)}</PageIntro>
+function GeneralTeachingResources({ language }: { language: Language }) {
+  return <>
     <h2>{localize(copy.resourceTitle, language)}</h2>
     <ul className="compact-list">
       {resources.map((resource) => (
@@ -59,7 +58,14 @@ export function TeachingContent({ language }: { language: Language }) {
         </li>
       ))}
     </ul>
+  </>;
+}
+
+export function TeachingContent({ language }: { language: Language }) {
+  return <AcademicPage language={language}>
+    <PageIntro title={localize(copy.title, language)}>{localize(copy.intro, language)}</PageIntro>
     {groups.map((group) => <section key={group.title.fr}><h2>{localize(group.title, language)}</h2><ul>{group.courses.map((course) => <li key={course.title.fr}><strong>{localize(course.title, language)}</strong> / {localize(course.program, language)}</li>)}</ul></section>)}
     <h2>{localize(copy.pedagogyTitle, language)}</h2><p>{localize(copy.pedagogy, language)}</p>
+    <GeneralTeachingResources language={language} />
   </AcademicPage>;
 }

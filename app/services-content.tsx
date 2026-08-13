@@ -17,6 +17,7 @@ const copy = {
   evaluationsIntro: { fr: "Participation à l’évaluation de travaux doctoraux en intelligence artificielle, en informatique et dans leurs domaines d’application.", en: "Participation in the evaluation of doctoral research in artificial intelligence, computer science, and their application domains." },
   friaTitle: { fr: "Fondation/Association FRIARE", en: "FRIARE Fondation/Association" },
   bwaiTitle: { fr: "Benin Workshop on Artificial Intelligence", en: "Benin Workshop on Artificial Intelligence" },
+  eeiaTitle: { fr: "École d’Été sur l’Intelligence Artificielle", en: "Summer School on Artificial Intelligence" },
   summerTitle: { fr: "ACP Summer School 2025", en: "ACP Summer School 2025" },
   mifyTitle: { fr: "Mify Artificial Intelligence Contest", en: "Mify Artificial Intelligence Contest" },
   expertiseTitle: { fr: "Quelques expertises et services scientifiques", en: "Some expertises and scientific services" },
@@ -134,6 +135,9 @@ export function ServicesContent({ language }: { language: Language }) {
 
     <h2>{localize(copy.bwaiTitle, language)}</h2>
     <p>{isEnglish ? "I am the General Chair of the " : "Je suis le General Chair du "}<ExternalLink href="https://bwai-ifri-uac.bj">Benin Workshop on Artificial Intelligence</ExternalLink>{isEnglish ? ". I have contributed to five editions since 2018 as General co-Chairman. This national conference brings together researchers, students, professionals, and public-sector stakeholders around artificial intelligence in Benin." : ". J'ai contribué à cinq éditions depuis 2018 en tant que General co-Chair. Cette conférence nationale réunit chercheurs, étudiants, professionnels et acteurs publics autour de l’intelligence artificielle au Bénin."}</p>
+
+    <h2>{localize(copy.eeiaTitle, language)}</h2>
+    <p>{isEnglish ? "I am a member of the teaching team and a speaker at the " : "Je suis membre de l’équipe pédagogique et conférencier de l’"}<ExternalLink href="https://eeia.bj">{isEnglish ? "Summer School on Artificial Intelligence (EEIA)" : "École d’Été sur l’Intelligence Artificielle (EEIA)"}</ExternalLink>{isEnglish ? ". I also chair the selection committee for the EEIA Grand Prize. Since 2022." : ". Je préside également le comité de sélection du Grand Prix EEIA. Depuis 2022."}</p>
 
     <h2>{localize(copy.summerTitle, language)}</h2>
     <p>{isEnglish ? "I served as general chair of the " : "J’ai été general chair de la "}<ExternalLink href="https://school.a4cp.org/summer2025/index.html">{isEnglish ? "20th ACP Summer School" : "20e édition de l’ACP Summer School"}</ExternalLink>{isEnglish ? " in 2025, the first African edition of this international constraint programming school." : ", organisée en 2025. Il s’agissait de la première édition en Afrique de cette école internationale de programmation par contraintes."}</p>

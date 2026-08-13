@@ -9,14 +9,14 @@ const copy = {
   title: { fr: "Recherche", en: "Research" },
   intro: { fr: "Apprentissage automatique — programmation par contraintes — optimisation combinatoire.", en: "Machine learning — constraint programming — combinatorial optimization." },
   areasTitle: { fr: "Axes de recherche", en: "Research areas" },
-  projectsTitle: { fr: "Quelques projets", en: "Selected projects" },
+  projectsTitle: { fr: "Quelques projets", en: "Some projects" },
   prototypesTitle: { fr: "Prototypes et recherches appliquées", en: "Prototypes and applied research" },
   videos: { fr: "Démonstrations vidéo disponibles sur ma", en: "Video demonstrations are available on my" },
   channel: { fr: "chaîne YouTube", en: "YouTube channel" },
 } satisfies Record<string, Localized>;
 
 const areas: ResearchItem[] = [
-  { title: { fr: "Intelligence artificielle et apprentissage automatique", en: "Artificial intelligence and machine learning" }, description: { fr: "conception, expérimentation et évaluation de systèmes intelligents.", en: "design, experimentation, and evaluation of intelligent systems." } },
+  { title: { fr: "Apprentissage automatique", en: "Machine learning" }, description: { fr: "conception, expérimentation et évaluation de systèmes intelligents.", en: "design, experimentation, and evaluation of intelligent systems." } },
   { title: { fr: "Programmation par contraintes", en: "Constraint programming" }, description: { fr: "algorithmes de filtrage, algorithmes de recherche et modélisation de problèmes combinatoires.", en: "filtering algorithms, tree search, and modeling of combinatorial problems." } },
   { title: { fr: "Optimisation combinatoire", en: "Combinatorial optimization" }, description: { fr: "planification, ordonnancement, recherche opérationnelle et aide à la décision.", en: "planning, scheduling, operations research, and decision support." } },
   { title: { fr: "IA responsable et efficiente", en: "Responsible and efficient AI" }, description: { fr: "équité, interprétabilité et adaptation des systèmes aux contextes africains.", en: "fairness, interpretability, and adaptation of systems to African contexts." } },
