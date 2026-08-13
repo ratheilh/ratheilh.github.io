@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { AcademicPage, ExternalLink } from "./site-components";
 import { type Language, type Localized, localize } from "./i18n";
 import { createPageMetadata, routes, serializeJsonLd, SITE_URL } from "./seo";
@@ -36,7 +37,7 @@ const profilePageJsonLd = serializeJsonLd({
       {
         "@type": "EducationalOrganization",
         name: "Institut de Formation et de Recherche en Informatique (IFRI)",
-        url: "https://ifri-uac.bj",
+        url: "https://uac-ifri.bj/",
       },
     ],
     knowsAbout: [
@@ -64,6 +65,14 @@ type EducationItem = {
   period: Localized;
   title: Localized;
   details: Localized;
+  thesis?: {
+    label: Localized;
+    title: Localized;
+    supervisionLabel: Localized;
+    supervisors: { name: string; href: string }[];
+    href: string;
+    downloadLabel: Localized;
+  };
 };
 
 type NewsItem = {
@@ -124,12 +133,68 @@ const homeContent = {
 const education: EducationItem[] = [
   { dateTime: "2025", period: { fr: "Avril–août 2025", en: "April–August 2025" }, title: { fr: "Formation internationale en pédagogie universitaire numérique", en: "International training in digital university pedagogy" }, details: { fr: "Université libre de Bruxelles, Belgique · Major de la cohorte et titulaire de la Chaire du Sud", en: "Université libre de Bruxelles, Belgium · Top-ranked participant and Chair of the South awardee" } },
   { dateTime: "2021", period: { fr: "2021", en: "2021" }, title: { fr: "Master class for teaching online", en: "Master class for teaching online" }, details: { fr: "Arizona State University, États-Unis · Formation en ligne", en: "Arizona State University, United States · Online" } },
-  { dateTime: "2017", period: { fr: "2013–2017", en: "2013–2017" }, title: { fr: "Doctorat en sciences de l’ingénieur", en: "PhD in engineering sciences" }, details: { fr: "Sciences informatiques — intelligence artificielle et recherche opérationnelle · UCLouvain et Université d’Abomey-Calavi", en: "Computer science — artificial intelligence and operations research · UCLouvain and University of Abomey-Calavi" } },
+  {
+    dateTime: "2017",
+    period: { fr: "2013–2017", en: "2013–2017" },
+    title: { fr: "Doctorat en sciences de l’ingénieur", en: "PhD in engineering sciences" },
+    details: { fr: "Sciences informatiques — intelligence artificielle et recherche opérationnelle · UCLouvain et Université d’Abomey-Calavi", en: "Computer science — artificial intelligence and operations research · UCLouvain and University of Abomey-Calavi" },
+    thesis: {
+      label: { fr: "Thèse", en: "Thesis" },
+      title: { fr: "Algorithmes de filtrage fondés sur les coûts pour un problème de dimensionnement de lots avec capacités et le problème d’arborescence contraint", en: "Cost-based filtering algorithms for a capacitated lot sizing problem and the constrained arborescence problem" },
+      supervisionLabel: { fr: "Thèse dirigée par", en: "Supervised by" },
+      supervisors: [
+        { name: "Laurence A. Wolsey", href: "https://fr.wikipedia.org/wiki/Laurence_Wolsey" },
+        { name: "Pierre Schaus", href: "https://pschaus.github.io/" },
+        { name: "M. Norbert Hounkonnou", href: "https://twas.org/directory/hounkonnou-mahouton-norbert" },
+      ],
+      href: "https://drive.google.com/uc?export=download&id=17GEQElWI_horVPFMTCk1Rs1INZ4cb1WC",
+      downloadLabel: { fr: "Télécharger la thèse (PDF)", en: "Download the thesis (PDF)" },
+    },
+  },
   { dateTime: "2017", period: { fr: "2016–2017", en: "2016–2017" }, title: { fr: "Formation à la recherche en sciences de l’ingénieur", en: "Research training in engineering sciences" }, details: { fr: "Université catholique de Louvain, Belgique", en: "Université catholique de Louvain, Belgium" } },
-  { dateTime: "2013", period: { fr: "2012–2013", en: "2012–2013" }, title: { fr: "Master en sciences informatiques", en: "Master's degree in computer science" }, details: { fr: "École polytechnique de Louvain, UCLouvain · Distinction, 15/20", en: "Louvain School of Engineering, UCLouvain · Distinction" } },
+  {
+    dateTime: "2013",
+    period: { fr: "2012–2013", en: "2012–2013" },
+    title: { fr: "Master en sciences informatiques", en: "Master's degree in computer science" },
+    details: { fr: "École polytechnique de Louvain, UCLouvain · Distinction, 15/20", en: "Louvain School of Engineering, UCLouvain · Distinction" },
+    thesis: {
+      label: { fr: "Mémoire", en: "Thesis" },
+      title: { fr: "Deux problèmes de planification de production : formulations et résolution par programmation en nombres entiers et par programmation par contraintes", en: "Two production planning problems: formulations and solution using integer programming and constraint programming" },
+      supervisionLabel: { fr: "Mémoire dirigé par", en: "Supervised by" },
+      supervisors: [
+        { name: "Yves Deville", href: "https://webperso.info.ucl.ac.be/~yde/" },
+        { name: "Laurence Wolsey", href: "https://fr.wikipedia.org/wiki/Laurence_Wolsey" },
+      ],
+      href: "https://drive.google.com/uc?export=download&id=14YDBPWGpO7Qou8plBzQO10LR50zCRS14",
+      downloadLabel: { fr: "Télécharger le mémoire (PDF)", en: "Download the thesis (PDF)" },
+    },
+  },
   { dateTime: "2012", period: { fr: "2011–2012", en: "2011–2012" }, title: { fr: "Cours de renforcement en sciences informatiques et recherche", en: "Advanced courses in computer science and research" }, details: { fr: "Centre de formation et de recherche en informatique, Université d’Abomey-Calavi", en: "Computer Science Training and Research Center, University of Abomey-Calavi" } },
-  { dateTime: "2011", period: { fr: "2005–2011", en: "2005–2011" }, title: { fr: "Ingénieur de conception en informatique et télécommunications", en: "Engineering degree in computer science and telecommunications" }, details: { fr: "École polytechnique d’Abomey-Calavi · option réseaux informatiques et internet · mention bien, major de promotion", en: "École polytechnique d’Abomey-Calavi · computer networks and internet specialization · top of the class." } },
+  {
+    dateTime: "2011",
+    period: { fr: "2005–2011", en: "2005–2011" },
+    title: { fr: "Ingénieur de conception en informatique et télécommunications", en: "Engineering degree in computer science and telecommunications" },
+    details: { fr: "École polytechnique d’Abomey-Calavi · option réseaux informatiques et internet · mention bien, major de promotion", en: "École polytechnique d’Abomey-Calavi · computer networks and internet specialization · top of the class." },
+    thesis: {
+      label: { fr: "Mémoire", en: "Thesis" },
+      title: { fr: "Conception d’un système d’information urbain : cas de la commune de Porto-Novo, Bénin", en: "Design of an urban information system: the case of the municipality of Porto-Novo, Benin" },
+      supervisionLabel: { fr: "Mémoire dirigé par", en: "Supervised by" },
+      supervisors: [
+        { name: "Sèmiyou A. Adedjouma", href: "https://www.researchgate.net/profile/Semiyou-Adedjouma" },
+        { name: "Didier Anago", href: "https://orcid.org/0009-0009-7802-5017" },
+      ],
+      href: "https://drive.google.com/uc?export=download&id=1wvG4rPT60cgjYDph8RH98R7CyM0bXvSh",
+      downloadLabel: { fr: "Télécharger le mémoire (PDF)", en: "Download the thesis (PDF)" },
+    },
+  },
   { dateTime: "2005", period: { fr: "2004–2005", en: "2004–2005" }, title: { fr: "Baccalauréat scientifique, série C", en: "Scientific baccalaureate, series C" }, details: { fr: "Collège La Flèche, Cotonou · mention bien", en: "Collège La Flèche, Cotonou" } },
+];
+
+const positionLinks: ({ label: string; href: string } | null)[] = [
+  null,
+  { label: "IFRI-UAC", href: "https://uac-ifri.bj/" },
+  { label: "FRIARE", href: "https://friare.org" },
+  { label: "Benin Workshop on Artificial Intelligence (BWAI)", href: "https://bwai-ifri-uac.bj" },
 ];
 
 const news: NewsItem[] = [
@@ -137,7 +202,7 @@ const news: NewsItem[] = [
     dateTime: "2026-11-23",
     period: { fr: "Novembre 2026", en: "November 2026" },
     title: { fr: "BWAI 2026 — préparation de la prochaine édition", en: "BWAI 2026 — preparing the next edition" },
-    details: { fr: "En qualité de general co-chair, préparation du prochain Benin Workshop on Artificial Intelligence, organisé du 23 au 27 novembre 2026. L’événement réunit chercheurs, étudiants, professionnels et acteurs publics autour de la recherche, de la formation et des usages de l’intelligence artificielle au Bénin.", en: "As general co-chair, preparation of the next Benin Workshop on Artificial Intelligence, taking place from 23 to 27 November 2026. The event brings together researchers, students, professionals, and public-sector stakeholders around AI research, education, and applications in Benin." },
+    details: { fr: "En qualité de General chair, préparation du prochain Benin Workshop on Artificial Intelligence, prévu du 23 au 27 novembre 2026. L’événement réunit chercheurs, étudiants, professionnels et acteurs publics autour de la recherche, de la formation et des usages de l’intelligence artificielle au Bénin.", en: "As General Chair, preparation of the next Benin Workshop on Artificial Intelligence, taking place from 23 to 27 November 2026. The event brings together researchers, students, professionals, and public-sector stakeholders around AI research, education, and applications in Benin." },
     links: [{ href: "https://bwai-ifri-uac.bj", label: { fr: "Site du BWAI", en: "BWAI website" } }],
   },
   {
@@ -165,7 +230,7 @@ const news: NewsItem[] = [
     dateTime: "2026-07",
     period: { fr: "Juillet 2026", en: "July 2026" },
     title: { fr: "Gouvernance responsable de l’intelligence artificielle dans l’enseignement supérieur africain", en: "Responsible governance of artificial intelligence in African higher education" },
-    details: { fr: "Communication présentée en juillet au colloque « IA, éducation et éthique » de la Commission permanente Éducation et Éthique de l’Académie nationale des sciences, arts et lettres du Bénin. La présentation propose des principes, des dispositifs de gouvernance et un cycle opérationnel fondé sur les risques, la souveraineté des données, l’intégrité académique, l’audit et les voies de recours.", en: "Talk delivered in July at the “AI, Education and Ethics” symposium of the Permanent Commission on Education and Ethics of Benin’s National Academy of Sciences, Arts and Letters. It proposes governance principles, institutional mechanisms, and an operational cycle covering risk levels, data sovereignty, academic integrity, auditing, and avenues for appeal." },
+    details: { fr: "Communication présentée en juillet au colloque « IA, éducation et éthique » de la Commission permanente Éducation et Éthique de l’Académie nationale des sciences, arts et lettres du Bénin. La présentation propose des principes, des dispositifs de gouvernance et un cycle opérationnel basé sur les risques, la souveraineté des données, l’intégrité académique, l’audit et les voies de recours.", en: "Talk delivered in July at the “AI, Education and Ethics” symposium of the Permanent Commission on Education and Ethics of Benin’s National Academy of Sciences, Arts and Letters. It proposes governance principles, institutional mechanisms, and an operational cycle covering risk levels, data sovereignty, academic integrity, auditing, and avenues for appeal." },
     links: [{ href: "https://drive.google.com/file/d/1ioAclHqtFHFcEJzgyVYT0_MNhjpr7YZD/view?usp=drivesdk", label: { fr: "Voir la présentation (PDF)", en: "View slides (PDF)" } }],
   },
   {
@@ -197,6 +262,47 @@ const news: NewsItem[] = [
   },
 ];
 
+function SupervisorLinks({ supervisors, language }: { supervisors: NonNullable<EducationItem["thesis"]>["supervisors"]; language: Language }) {
+  return <>{supervisors.map((supervisor, index) => {
+    const separator = index === 0
+      ? ""
+      : index < supervisors.length - 1
+        ? ", "
+        : supervisors.length === 2
+          ? language === "en" ? " and " : " et "
+          : language === "en" ? ", and " : " et ";
+
+    return <span key={supervisor.href}>{separator}<ExternalLink href={supervisor.href}>{supervisor.name}</ExternalLink></span>;
+  })}</>;
+}
+
+function PositionLine({ text, index }: { text: string; index: number }) {
+  const link = positionLinks[index];
+
+  if (!link) {
+    return text;
+  }
+
+  const [before, after] = text.split(link.label);
+  return <>{before}<ExternalLink href={link.href}>{link.label}</ExternalLink>{after}</>;
+}
+
+function CollapsibleHomeSection({ id, title, className, action, children }: { id: string; title: string; className?: string; action?: ReactNode; children: ReactNode }) {
+  const classes = ["home-section", "collapsible-home-section", className].filter(Boolean).join(" ");
+
+  return (
+    <section className={classes} aria-labelledby={id}>
+      <details open>
+        <summary><h2 id={id}>{title}</h2></summary>
+        <div className="collapsible-home-content">
+          {action ? <div className="collapsible-section-action">{action}</div> : null}
+          {children}
+        </div>
+      </details>
+    </section>
+  );
+}
+
 function HomeContent({ language }: { language: Language }) {
   const about = localize(homeContent.aboutParagraphs, language);
   const positions = localize(homeContent.positions, language);
@@ -225,30 +331,28 @@ function HomeContent({ language }: { language: Language }) {
           <header className="identity">
             <p className="eyebrow">{localize(homeContent.eyebrow, language)}</p>
             <h1>Vinasétan Ratheil Houndji</h1>
-            <p className="position">{positions.map((position, index) => <span key={position}>{position}{index < positions.length - 1 ? <br /> : null}</span>)}</p>
+            <p className="position">{positions.map((position, index) => <span key={position}><PositionLine text={position} index={index} />{index < positions.length - 1 ? <br /> : null}</span>)}</p>
           </header>
 
-          <section className="biography" aria-labelledby={isEnglish ? "about" : "a-propos"}>
-            <h2 id={isEnglish ? "about" : "a-propos"}>{localize(homeContent.aboutTitle, language)}</h2>
+          <CollapsibleHomeSection id={isEnglish ? "about" : "a-propos"} title={localize(homeContent.aboutTitle, language)} className="biography biography-collapsible">
             {about.map((paragraph, index) => index === 0 ? (
-              <p key={paragraph}>{isEnglish ? "I am an artificial intelligence researcher and lecturer at the " : "Enseignant-chercheur en intelligence artificielle à l’"}<ExternalLink href="https://ifri-uac.bj">{isEnglish ? "Institute of Training and Research in Computer Science" : "Institut de Formation et de Recherche en Informatique"}</ExternalLink>{isEnglish ? " of the University of Abomey-Calavi. For more than ten years, I have worked on fundamental and applied research in artificial intelligence, optimization, and intelligent systems." : " de l’Université d’Abomey-Calavi, je travaille depuis plus de dix ans sur la recherche fondamentale et appliquée en intelligence artificielle, l’optimisation et le développement de systèmes intelligents."}</p>
+              <p key={paragraph}>{isEnglish ? "I am an artificial intelligence researcher and lecturer at the " : "Enseignant-chercheur en intelligence artificielle à l’"}<ExternalLink href="https://uac-ifri.bj/">{isEnglish ? "Institute of Training and Research in Computer Science" : "Institut de Formation et de Recherche en Informatique"}</ExternalLink>{isEnglish ? " of the University of Abomey-Calavi. For more than ten years, I have worked on fundamental and applied research in artificial intelligence, optimization, and intelligent systems." : " de l’Université d’Abomey-Calavi, je travaille depuis plus de dix ans sur la recherche fondamentale et appliquée en intelligence artificielle, l’optimisation et le développement de systèmes intelligents."}</p>
+            ) : index === 2 ? (
+              <p key={paragraph}>{isEnglish ? <>Beyond research, I am committed to teaching, mentoring young researchers, and building lasting scientific collaborations. I also contribute to initiatives advancing artificial intelligence in Africa, including the <ExternalLink href="https://bwai-ifri-uac.bj">Benin Workshop on Artificial Intelligence</ExternalLink> and the <ExternalLink href="https://friare.org">FRIARE association for a responsible and efficient AI</ExternalLink>.</> : <>Au-delà de la recherche, j’accorde une place importante à la formation, à l’encadrement des jeunes chercheurs et à la construction de collaborations scientifiques durables. Je contribue également à plusieurs initiatives destinées à faire progresser l’intelligence artificielle en Afrique, notamment à travers le <ExternalLink href="https://bwai-ifri-uac.bj">Benin Workshop on Artificial Intelligence</ExternalLink> et l’<ExternalLink href="https://friare.org">association FRIARE pour une intelligence artificielle responsable et efficiente</ExternalLink>.</>}</p>
             ) : <p key={paragraph}>{paragraph}</p>)}
-          </section>
+          </CollapsibleHomeSection>
 
-          <section className="home-section education" aria-labelledby="education">
-            <div className="section-heading"><h2 id="education">{localize(homeContent.educationTitle, language)}</h2></div>
-            <ol className="education-list">{education.map((item) => <li key={`${item.dateTime}-${localize(item.title, language)}`}><time dateTime={item.dateTime}>{localize(item.period, language)}</time><p><strong>{localize(item.title, language)}</strong><br />{localize(item.details, language)}</p></li>)}</ol>
-          </section>
+          <CollapsibleHomeSection id="education" title={localize(homeContent.educationTitle, language)} className="education">
+            <ol className="education-list">{education.map((item) => <li key={`${item.dateTime}-${localize(item.title, language)}`}><time dateTime={item.dateTime}>{localize(item.period, language)}</time><p><strong>{localize(item.title, language)}</strong><br />{localize(item.details, language)}{item.thesis ? <span className="education-thesis"><span>{localize(item.thesis.label, language)} : <cite>{localize(item.thesis.title, language)}</cite></span> · <span>{localize(item.thesis.supervisionLabel, language)} <SupervisorLinks supervisors={item.thesis.supervisors} language={language} /> · <a href={item.thesis.href} target="_blank" rel="noreferrer">{localize(item.thesis.downloadLabel, language)}</a></span></span> : null}</p></li>)}</ol>
+          </CollapsibleHomeSection>
 
-          <section className="home-section research-summary" aria-labelledby="research-interests">
-            <div className="section-heading"><h2 id="research-interests">{localize(homeContent.interestsTitle, language)}</h2><Link href={isEnglish ? "/en/research" : "/recherche"}>{localize(homeContent.researchLink, language)}</Link></div>
+          <CollapsibleHomeSection id="research-interests" title={localize(homeContent.interestsTitle, language)} className="research-summary" action={<Link href={isEnglish ? "/en/research" : "/recherche"}>{localize(homeContent.researchLink, language)}</Link>}>
             <ul className="compact-list">{localize(homeContent.interests, language).map((interest) => <li key={interest}>{interest}</li>)}</ul>
-          </section>
+          </CollapsibleHomeSection>
 
-          <section className="home-section" aria-labelledby="news">
-            <div className="section-heading"><h2 id="news">{localize(homeContent.newsTitle, language)}</h2></div>
+          <CollapsibleHomeSection id="news" title={localize(homeContent.newsTitle, language)}>
             <ol className="news-list">{news.map((item, index) => <li key={`${item.dateTime}-${index}`}><time dateTime={item.dateTime}>{localize(item.period, language)}</time><p><strong>{localize(item.title, language)}</strong><br />{localize(item.details, language)}{item.links ? <span className="news-links">{item.links.map((link, linkIndex) => <span key={link.href}>{linkIndex > 0 ? " · " : null}<ExternalLink href={link.href}>{localize(link.label, language)}</ExternalLink></span>)}</span> : null}</p></li>)}</ol>
-          </section>
+          </CollapsibleHomeSection>
         </div>
       </div>
       </AcademicPage>

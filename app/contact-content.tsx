@@ -35,6 +35,6 @@ export function ContactContent({ language }: { language: Language }) {
       <li><span>Facebook</span> <ExternalLink href="https://www.facebook.com/ratheil">Facebook</ExternalLink></li>
     </ul>
     <h2>{localize(copy.institution, language)}</h2>
-    <p><ExternalLink href="https://ifri-uac.bj">{localize(copy.institute, language)}</ExternalLink><br /><ExternalLink href="https://uac.bj">{localize(copy.university, language)}</ExternalLink><br />Abomey-Calavi, {localize(copy.republic, language)}</p>
+    <p><ExternalLink href="https://uac-ifri.bj/">{localize(copy.institute, language)}</ExternalLink><br /><ExternalLink href="https://uac.bj">{localize(copy.university, language)}</ExternalLink><br />Abomey-Calavi, {localize(copy.republic, language)}</p>
   </AcademicPage>;
 }

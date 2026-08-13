@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { AcademicPage, ExternalLink, PageIntro } from "./site-components";
 import { type Language, type Localized, localize } from "./i18n";
 
@@ -8,8 +9,11 @@ type TeachingResource = { name: Localized; description: Localized; href: string 
 const copy = {
   title: { fr: "Enseignements", en: "Teaching" },
   intro: { fr: "Enseignements en intelligence artificielle, optimisation, algorithmique et programmation, principalement à l’IFRI.", en: "Courses in artificial intelligence, optimization, algorithms, and programming, primarily at IFRI." },
+  coursesCategoryTitle: { fr: "Cours enseignés", en: "Courses taught" },
+  resourcesCategoryTitle: { fr: "Pédagogie et ressources générales", en: "Pedagogy and general resources" },
   pedagogyTitle: { fr: "Formation en pédagogie universitaire", en: "Training in university pedagogy" },
   pedagogy: { fr: "Major de la cohorte 2025 de la formation internationale en pédagogie universitaire numérique de l’Université libre de Bruxelles. En mai 2026, j’y suis intervenu comme titulaire de la Chaire du Sud sur les outils numériques au service de la pédagogie universitaire auprès d’enseignants-chercheurs de neuf pays.", en: "I was the top-ranked participant in the 2025 international training in digital university pedagogy at the Université libre de Bruxelles. In May 2026, I returned as a Chair of the South awardee, leading workshops on digital tools for university teaching for lecturers and researchers from nine countries." },
+  pedagogyResourceLabel: { fr: "Ressources de la formation : FIPUN 2026 / Outils numériques (Padlet)", en: "Training resources: FIPUN 2026 / Digital tools (Padlet)" },
   resourceTitle: { fr: "Quelques ressources pédagogiques générales", en: "Some general teaching resources" },
 } satisfies Record<string, Localized>;
 
@@ -48,8 +52,8 @@ const resources: TeachingResource[] = [
 ];
 
 function GeneralTeachingResources({ language }: { language: Language }) {
-  return <>
-    <h2>{localize(copy.resourceTitle, language)}</h2>
+  return <section className="teaching-subsection">
+    <h3>{localize(copy.resourceTitle, language)}</h3>
     <ul className="compact-list">
       {resources.map((resource) => (
         <li key={resource.href}>
@@ -58,14 +62,40 @@ function GeneralTeachingResources({ language }: { language: Language }) {
         </li>
       ))}
     </ul>
-  </>;
+  </section>;
+}
+
+function CollapsibleTeachingSection({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+  return (
+    <section className="collapsible-page-section" aria-labelledby={id}>
+      <details open>
+        <summary><h2 id={id}>{title}</h2></summary>
+        <div className="collapsible-page-content">{children}</div>
+      </details>
+    </section>
+  );
 }
 
 export function TeachingContent({ language }: { language: Language }) {
   return <AcademicPage language={language}>
     <PageIntro title={localize(copy.title, language)}>{localize(copy.intro, language)}</PageIntro>
-    {groups.map((group) => <section key={group.title.fr}><h2>{localize(group.title, language)}</h2><ul>{group.courses.map((course) => <li key={course.title.fr}><strong>{localize(course.title, language)}</strong> / {localize(course.program, language)}</li>)}</ul></section>)}
-    <h2>{localize(copy.pedagogyTitle, language)}</h2><p>{localize(copy.pedagogy, language)}</p>
-    <GeneralTeachingResources language={language} />
+
+    <CollapsibleTeachingSection id="courses-taught" title={localize(copy.coursesCategoryTitle, language)}>
+      {groups.map((group) => (
+        <section className="teaching-subsection" key={group.title.fr}>
+          <h3>{localize(group.title, language)}</h3>
+          <ul>{group.courses.map((course) => <li key={course.title.fr}><strong>{localize(course.title, language)}</strong> / {localize(course.program, language)}</li>)}</ul>
+        </section>
+      ))}
+    </CollapsibleTeachingSection>
+
+    <CollapsibleTeachingSection id="general-teaching-resources" title={localize(copy.resourcesCategoryTitle, language)}>
+      <section className="teaching-subsection">
+        <h3>{localize(copy.pedagogyTitle, language)}</h3>
+        <p>{localize(copy.pedagogy, language)}</p>
+        <p className="teaching-resource-link"><ExternalLink href="https://padlet.com/ratheilesse/fipun-2026-outils-numeriques-w4wr2ohdtsc803e1">{localize(copy.pedagogyResourceLabel, language)}</ExternalLink></p>
+      </section>
+      <GeneralTeachingResources language={language} />
+    </CollapsibleTeachingSection>
   </AcademicPage>;
 }

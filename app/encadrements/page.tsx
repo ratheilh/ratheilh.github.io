@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { AcademicPage, ExternalLink, PageIntro } from "../site-components";
 import { type Language, type Localized, localize } from "../i18n";
 import { createPageMetadata, routes } from "../seo";
@@ -511,10 +512,12 @@ function ThesisItem({ item, kind, year, language }: { item: string; kind: Thesis
   );
 }
 
-function ThesisGroups({ groups, kind, language }: { groups: ThesisGroup[]; kind: ThesisKind; language: Language }) {
+function ThesisGroups({ groups, kind, language, yearHeadingLevel = "h3" }: { groups: ThesisGroup[]; kind: ThesisKind; language: Language; yearHeadingLevel?: "h3" | "h4" }) {
+  const YearHeading = yearHeadingLevel;
+
   return groups.map((group) => (
     <section key={group.year}>
-      <h3>{group.year}</h3>
+      <YearHeading>{group.year}</YearHeading>
       <ul className="supervision-thesis-list">
         {group.items.map((item) => (
           <li key={item}><ThesisItem item={item} kind={kind} year={group.year} language={language} /></li>
@@ -522,6 +525,17 @@ function ThesisGroups({ groups, kind, language }: { groups: ThesisGroup[]; kind:
       </ul>
     </section>
   ));
+}
+
+function CollapsibleSupervisionSection({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+  return (
+    <section className="collapsible-page-section" aria-labelledby={id}>
+      <details open>
+        <summary><h2 id={id}>{title}</h2></summary>
+        <div className="collapsible-page-content">{children}</div>
+      </details>
+    </section>
+  );
 }
 
 function SupervisionContent({ language }: { language: Language }) {
@@ -535,44 +549,57 @@ function SupervisionContent({ language }: { language: Language }) {
           : "Thèses en cours, contributions à l’encadrement doctoral et sélection de mémoires de master, d’ingénieur et de licence encadrés en intelligence artificielle, optimisation et génie logiciel."}
       </PageIntro>
 
-      <h2>{isEnglish ? "Ongoing PhD theses" : "Thèses en cours"}</h2>
-      <ol className="publication-list compact-record-list">
-        {doctoralTheses.map((thesis) => (
-          <li key={thesis.name}>
-            <span className="title">{localize(thesis.title, language)}</span>
-            <span className="details">
-              <strong>
-                <PersonName name={thesis.name} />
-              </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null}
-            </span>
-          </li>
-        ))}
-      </ol>
+      <CollapsibleSupervisionSection id="phd-supervision" title={isEnglish ? "PhD supervision" : "Encadrement doctoral"}>
+        <section className="supervision-subsection">
+          <h3>{isEnglish ? "Ongoing PhD theses" : "Thèses en cours"}</h3>
+          <ol className="publication-list compact-record-list">
+            {doctoralTheses.map((thesis) => (
+              <li key={thesis.name}>
+                <span className="title">{localize(thesis.title, language)}</span>
+                <span className="details">
+                  <strong>
+                    <PersonName name={thesis.name} />
+                  </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-      <h2>{isEnglish ? "Contributions to PhD supervision" : "Contributions à l’encadrement de thèses"}</h2>
-      <ol className="publication-list compact-record-list">
-        {contributedDoctoralTheses.map((thesis) => (
-          <li key={thesis.name}>
-            <span className="title">{localize(thesis.title, language)}</span>
-            <span className="details">
-              <strong>
-                <PersonName name={thesis.name} />
-              </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null} · {thesis.years} · {thesis.status === "defended"
-                ? (isEnglish ? "Defended" : "Soutenue")
-                : (isEnglish ? "Ongoing" : "En cours")}
-            </span>
-          </li>
-        ))}
-      </ol>
+        <section className="supervision-subsection">
+          <h3>{isEnglish ? "Contributions to PhD supervision" : "Contributions à l’encadrement de thèses"}</h3>
+          <ol className="publication-list compact-record-list">
+            {contributedDoctoralTheses.map((thesis) => (
+              <li key={thesis.name}>
+                <span className="title">{localize(thesis.title, language)}</span>
+                <span className="details">
+                  <strong>
+                    <PersonName name={thesis.name} />
+                  </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null} · {thesis.years} · {thesis.status === "defended"
+                    ? (isEnglish ? "Defended" : "Soutenue")
+                    : (isEnglish ? "Ongoing" : "En cours")}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </CollapsibleSupervisionSection>
 
-      <h2>{isEnglish ? "Master’s theses" : "Mémoires de master"}</h2>
-      <ThesisGroups groups={masterTheses} kind="master" language={language} />
+      <CollapsibleSupervisionSection id="master-supervision" title={isEnglish ? "Master’s and engineering theses" : "Mémoires de master et d’ingénieur"}>
+        <section className="supervision-subsection">
+          <h3>{isEnglish ? "Master’s theses" : "Mémoires de master"}</h3>
+          <ThesisGroups groups={masterTheses} kind="master" language={language} yearHeadingLevel="h4" />
+        </section>
 
-      <h2>{isEnglish ? "Engineering degree theses" : "Mémoires d’ingénieur"}</h2>
-      <ThesisGroups groups={engineerTheses} kind="engineer" language={language} />
+        <section className="supervision-subsection">
+          <h3>{isEnglish ? "Engineering degree theses" : "Mémoires d’ingénieur"}</h3>
+          <ThesisGroups groups={engineerTheses} kind="engineer" language={language} yearHeadingLevel="h4" />
+        </section>
+      </CollapsibleSupervisionSection>
 
-      <h2>{isEnglish ? "Bachelor’s theses" : "Mémoires de licence"}</h2>
-      <ThesisGroups groups={bachelorTheses} kind="bachelor" language={language} />
+      <CollapsibleSupervisionSection id="bachelor-supervision" title={isEnglish ? "Bachelor’s theses" : "Mémoires de licence"}>
+        <ThesisGroups groups={bachelorTheses} kind="bachelor" language={language} />
+      </CollapsibleSupervisionSection>
 
     </AcademicPage>
   );

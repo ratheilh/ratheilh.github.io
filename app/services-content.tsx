@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { AcademicPage, ExternalLink, PageIntro } from "./site-components";
 import { type Language, type Localized, localize } from "./i18n";
 
@@ -12,7 +13,9 @@ type EvaluatedThesis = {
 const copy = {
   title: { fr: "Services", en: "Services" },
   intro: { fr: "Responsabilités scientifiques, expertise académique et initiatives au service des communautés de recherche et de la société.", en: "Scientific responsibilities, academic expertise, and initiatives serving research communities and society." },
-  academicResponsibilitiesTitle: { fr: "Responsabilités académiques", en: "Academic responsibilities" },
+  academicCategoryTitle: { fr: "Responsabilités académiques et évaluation", en: "Academic leadership and evaluation" },
+  academicResponsibilitiesTitle: { fr: "Responsabilités académiques actuelles", en: "Current academic responsibilities" },
+  previousAcademicTitle: { fr: "Autres responsabilités académiques", en: "Other academic responsibilities" },
   evaluationsTitle: { fr: "Évaluation de thèses", en: "PhD thesis evaluation" },
   evaluationsIntro: { fr: "Participation à l’évaluation de travaux doctoraux en intelligence artificielle, en informatique et dans leurs domaines d’application.", en: "Participation in the evaluation of doctoral research in artificial intelligence, computer science, and their application domains." },
   friaTitle: { fr: "Fondation/Association FRIARE", en: "FRIARE Fondation/Association" },
@@ -20,8 +23,10 @@ const copy = {
   eeiaTitle: { fr: "École d’Été sur l’Intelligence Artificielle", en: "Summer School on Artificial Intelligence" },
   summerTitle: { fr: "ACP Summer School 2025", en: "ACP Summer School 2025" },
   mifyTitle: { fr: "Mify Artificial Intelligence Contest", en: "Mify Artificial Intelligence Contest" },
-  expertiseTitle: { fr: "Quelques expertises et services scientifiques", en: "Some expertises and scientific services" },
-  previousTitle: { fr: "Autres services", en: "Other services" },
+  expertiseCategoryTitle: { fr: "Expertise scientifique et politiques publiques", en: "Scientific expertise and public policy" },
+  expertiseTitle: { fr: "Missions d’expertise et contributions", en: "Expert assignments and contributions" },
+  initiativesCategoryTitle: { fr: "Initiatives, communautés et événements scientifiques", en: "Scientific initiatives, communities, and events" },
+  communityResponsibilitiesTitle: { fr: "Autres engagements communautaires", en: "Other community engagements" },
 } satisfies Record<string, Localized>;
 
 const evaluatedTheses: EvaluatedThesis[] = [
@@ -73,26 +78,33 @@ const expertise: { year: string; items: Localized[] }[] = [
   },
 ];
 
-const otherResponsibilities: Localized<string[]> = {
+const previousAcademicResponsibilities: Localized<string[]> = {
   fr: [
     "Participation, depuis 2015, à la conception, à la rédaction et à la validation de plusieurs offres de formation : licences et masters de l’IFRI en intelligence artificielle, génie logiciel, sécurité informatique et internet et multimédia, ainsi que le master en hydro-informatique de l’Institut national de l’eau ;",
     "Participation à des points d’étape de thèse et à des comités de suivi doctoral ;",
     "Membre ou président de jury de nombreuses soutenances de mémoires de licence, de master et d’ingénieur depuis 2014 ;",
     "Coordonnateur des formations de master en génie logiciel, sécurité informatique, et systèmes d’information et réseaux informatiques, de janvier 2019 à juillet 2022 ;",
-    "Fondateur et coordonnateur de Startup Grind University of Abomey-Calavi, de 2020 à 2021 ;",
     "Responsable des groupes pédagogiques de troisième année en génie logiciel et sécurité informatique, de janvier à décembre 2018 ;",
     "Participation, en 2018, à la rédaction et à la validation du projet de création d’un centre d’excellence en eau et assainissement, comme représentant de l’IFRI pour l’hydro-informatique ;",
-    "Curateur du Cotonou Hub de la Global Shapers Community, de 2018 à 2019 ;",
-    "Cofondateur et directeur général de Machine Intelligence For You (MIFY), d’août 2017 à septembre 2018.",
   ],
   en: [
     "Contribution, since 2015, to the design, drafting, and validation of several academic programs: IFRI bachelor’s and master’s programs in artificial intelligence, software engineering, cybersecurity, and internet and multimedia, as well as the National Water Institute’s master’s program in hydroinformatics;",
     "Participation in PhD progress reviews and doctoral monitoring committees;",
     "Member or chair of numerous bachelor’s, master’s, and engineering thesis defense committees since 2014;",
     "Coordinator of master’s programs in software engineering, cybersecurity, and information systems and computer networks, January 2019–July 2022;",
-    "Founder and coordinator of Startup Grind University of Abomey-Calavi, 2020–2021;",
     "Coordinator of third-year software engineering and cybersecurity teaching groups, January–December 2018;",
     "Contribution in 2018 to drafting and validating the project to create a center of excellence in water and sanitation, as IFRI’s representative for Hydroinformatics;",
+  ],
+};
+
+const communityResponsibilities: Localized<string[]> = {
+  fr: [
+    "Fondateur et coordonnateur de Startup Grind University of Abomey-Calavi, de 2020 à 2021 ;",
+    "Curateur du Cotonou Hub de la Global Shapers Community, de 2018 à 2019 ;",
+    "Cofondateur et directeur général de Machine Intelligence For You (MIFY), d’août 2017 à septembre 2018.",
+  ],
+  en: [
+    "Founder and coordinator of Startup Grind University of Abomey-Calavi, 2020–2021;",
     "Curator of the Cotonou Hub of the Global Shapers Community, 2018–2019;",
     "Co-founder and chief executive officer of Machine Intelligence For You (MIFY), August 2017–September 2018.",
   ],
@@ -111,53 +123,97 @@ const academicResponsibilities: Localized<string[]> = {
   ],
 };
 
+function CollapsibleServicesSection({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+  return (
+    <section className="collapsible-page-section" aria-labelledby={id}>
+      <details open>
+        <summary><h2 id={id}>{title}</h2></summary>
+        <div className="collapsible-page-content">{children}</div>
+      </details>
+    </section>
+  );
+}
+
 export function ServicesContent({ language }: { language: Language }) {
   const isEnglish = language === "en";
+
   return <AcademicPage language={language}>
     <PageIntro title={localize(copy.title, language)}>{localize(copy.intro, language)}</PageIntro>
-    <h2>{localize(copy.academicResponsibilitiesTitle, language)}</h2>
-    <ul>{localize(academicResponsibilities, language).map((item) => <li key={item}>{item}</li>)}</ul>
 
-    <h2>{localize(copy.friaTitle, language)}</h2>
-    <p>{isEnglish ? "Since 2023 I served as president of the " : "Je préside depuis 2023 l'"}<ExternalLink href="https://friare.org">{isEnglish ? "FRIARE association for responsible and efficient artificial intelligence" : "association FRIARE pour une intelligence artificielle responsable et efficiente"}</ExternalLink>{isEnglish ? ", dedicated to awareness, research, public dialogue on the responsible use of AI in Africa." : ", consacrée à la sensibilisation, à la recherche, au dialogue public sur l'utilisation responsable de l'IA en Afrique."}</p>
+    <CollapsibleServicesSection id="academic-services" title={localize(copy.academicCategoryTitle, language)}>
+      <section className="service-subsection">
+        <h3>{localize(copy.academicResponsibilitiesTitle, language)}</h3>
+        <ul>{localize(academicResponsibilities, language).map((item) => <li key={item}>{item}</li>)}</ul>
+      </section>
 
-    <h2>{localize(copy.evaluationsTitle, language)}</h2><p>{localize(copy.evaluationsIntro, language)}</p>
-    <ol className="publication-list compact-record-list">
-      {evaluatedTheses.map((thesis) => (
-        <li key={`${thesis.year}-${thesis.candidate}`}>
-          <span className="title">{localize(thesis.title, language)}</span>
-          <span className="details">
-            <strong>{thesis.candidate}</strong> · {localize(thesis.institution, language)} · {thesis.year} · {localize(thesis.role, language)}
-          </span>
-        </li>
-      ))}
-    </ol>
+      <section className="service-subsection">
+        <h3>{localize(copy.evaluationsTitle, language)}</h3>
+        <p>{localize(copy.evaluationsIntro, language)}</p>
+        <ol className="publication-list compact-record-list">
+          {evaluatedTheses.map((thesis) => (
+            <li key={`${thesis.year}-${thesis.candidate}`}>
+              <span className="title">{localize(thesis.title, language)}</span>
+              <span className="details">
+                <strong>{thesis.candidate}</strong> · {localize(thesis.institution, language)} · {thesis.year} · {localize(thesis.role, language)}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-    <h2>{localize(copy.bwaiTitle, language)}</h2>
-    <p>{isEnglish ? "I am the General Chair of the " : "Je suis le General Chair du "}<ExternalLink href="https://bwai-ifri-uac.bj">Benin Workshop on Artificial Intelligence</ExternalLink>{isEnglish ? ". I have contributed to five editions since 2018 as General co-Chairman. This national conference brings together researchers, students, professionals, and public-sector stakeholders around artificial intelligence in Benin." : ". J'ai contribué à cinq éditions depuis 2018 en tant que General co-Chair. Cette conférence nationale réunit chercheurs, étudiants, professionnels et acteurs publics autour de l’intelligence artificielle au Bénin."}</p>
+      <section className="service-subsection">
+        <h3>{localize(copy.previousAcademicTitle, language)}</h3>
+        <ul>{localize(previousAcademicResponsibilities, language).map((item) => <li key={item}>{item}</li>)}</ul>
+      </section>
+    </CollapsibleServicesSection>
 
-    <h2>{localize(copy.eeiaTitle, language)}</h2>
-    <p>{isEnglish ? "I am a member of the teaching team and a speaker at the " : "Je suis membre de l’équipe pédagogique et conférencier de l’"}<ExternalLink href="https://eeia.bj">{isEnglish ? "Summer School on Artificial Intelligence (EEIA)" : "École d’Été sur l’Intelligence Artificielle (EEIA)"}</ExternalLink>{isEnglish ? ". I also chair the selection committee for the EEIA Grand Prize. Since 2022." : ". Je préside également le comité de sélection du Grand Prix EEIA. Depuis 2022."}</p>
+    <CollapsibleServicesSection id="scientific-expertise" title={localize(copy.expertiseCategoryTitle, language)}>
+      <section className="service-subsection">
+        <h3>{localize(copy.expertiseTitle, language)}</h3>
+        <ul className="expertise-list">
+          {expertise.map((group) => (
+            <li key={group.year}>
+              <strong>{group.year}{isEnglish ? ":" : " :"}</strong>
+              <ul className="expertise-items">
+                {group.items.map((item) => <li key={item.fr}>{localize(item, language)}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ul>
+        <p className="expertise-membership">{isEnglish ? "Member of the " : "Membre de l’"}<ExternalLink href="https://www.a4cp.org/">Association for Constraint Programming</ExternalLink>{isEnglish ? " and scientific committees including CP, JFPC, and CARI." : " et de comités scientifiques, notamment CP, JFPC et CARI."}</p>
+      </section>
+    </CollapsibleServicesSection>
 
-    <h2>{localize(copy.summerTitle, language)}</h2>
-    <p>{isEnglish ? "I served as general chair of the " : "J’ai été general chair de la "}<ExternalLink href="https://school.a4cp.org/summer2025/index.html">{isEnglish ? "20th ACP Summer School" : "20e édition de l’ACP Summer School"}</ExternalLink>{isEnglish ? " in 2025, the first African edition of this international constraint programming school." : ", organisée en 2025. Il s’agissait de la première édition en Afrique de cette école internationale de programmation par contraintes."}</p>
+    <CollapsibleServicesSection id="scientific-initiatives" title={localize(copy.initiativesCategoryTitle, language)}>
+      <section className="service-subsection">
+        <h3>{localize(copy.friaTitle, language)}</h3>
+        <p>{isEnglish ? "Since 2023 I served as president of the " : "Je préside depuis 2023 l'"}<ExternalLink href="https://friare.org">{isEnglish ? "FRIARE association for responsible and efficient artificial intelligence" : "association FRIARE pour une intelligence artificielle responsable et efficiente"}</ExternalLink>{isEnglish ? ", dedicated to awareness, research, public dialogue on the responsible use of AI in Africa." : ", consacrée à la sensibilisation, à la recherche, au dialogue public sur l'utilisation responsable de l'IA en Afrique."}</p>
+      </section>
 
-    <h2>{localize(copy.mifyTitle, language)}</h2>
-    <p>{isEnglish ? "From 2017 to 2022, I chaired the competition committee for six editions of the " : "J’ai assuré de 2017 à 2022 la présidence du comité de compétition de six éditions du "}<ExternalLink href="https://maic.mify-ai.com/">Mify Artificial Intelligence Contest</ExternalLink>{isEnglish ? ", an international competition designed to develop practical skills in artificial intelligence and problem solving." : ", concours international destiné à développer les compétences pratiques en intelligence artificielle et en résolution de problèmes."}</p>
+      <section className="service-subsection">
+        <h3>{localize(copy.bwaiTitle, language)}</h3>
+        <p>{isEnglish ? "I am the General Chair of the " : "Je suis le General Chair du "}<ExternalLink href="https://bwai-ifri-uac.bj">Benin Workshop on Artificial Intelligence</ExternalLink>{isEnglish ? ". I have contributed to five editions since 2018 as General co-Chairman. This national conference brings together researchers, students, professionals, and public-sector stakeholders around artificial intelligence in Benin." : ". J'ai contribué à cinq éditions depuis 2018 en tant que General co-Chair. Cette conférence nationale réunit chercheurs, étudiants, professionnels et acteurs publics autour de l’intelligence artificielle au Bénin."}</p>
+      </section>
 
-    <h2>{localize(copy.expertiseTitle, language)}</h2>
-    <ul className="expertise-list">
-      {expertise.map((group) => (
-        <li key={group.year}>
-          <strong>{group.year}{isEnglish ? ":" : " :"}</strong>
-          <ul className="expertise-items">
-            {group.items.map((item) => <li key={item.fr}>{localize(item, language)}</li>)}
-          </ul>
-        </li>
-      ))}
-    </ul>
-    <p className="expertise-membership">{isEnglish ? "Member of the " : "Membre de l’"}<ExternalLink href="https://www.a4cp.org/">Association for Constraint Programming</ExternalLink>{isEnglish ? " and scientific committees including CP, JFPC, and CARI." : " et de comités scientifiques, notamment CP, JFPC et CARI."}</p>
+      <section className="service-subsection">
+        <h3>{localize(copy.eeiaTitle, language)}</h3>
+        <p>{isEnglish ? "I am a member of the teaching team and a speaker at the " : "Je suis membre de l’équipe pédagogique et conférencier de l’"}<ExternalLink href="https://eeia.bj">{isEnglish ? "Summer School on Artificial Intelligence (EEIA)" : "École d’Été sur l’Intelligence Artificielle (EEIA)"}</ExternalLink>{isEnglish ? ". I also chair the selection committee for the EEIA Grand Prize. Since 2022." : ". Je préside également le comité de sélection du Grand Prix EEIA. Depuis 2022."}</p>
+      </section>
 
-    <h2>{localize(copy.previousTitle, language)}</h2><ul>{localize(otherResponsibilities, language).map((item) => <li key={item}>{item}</li>)}</ul>
+      <section className="service-subsection">
+        <h3>{localize(copy.summerTitle, language)}</h3>
+        <p>{isEnglish ? "I served as general chair of the " : "J’ai été general chair de la "}<ExternalLink href="https://school.a4cp.org/summer2025/index.html">{isEnglish ? "20th ACP Summer School" : "20e édition de l’ACP Summer School"}</ExternalLink>{isEnglish ? " in 2025, the first African edition of this international constraint programming school." : ", organisée en 2025. Il s’agissait de la première édition en Afrique de cette école internationale de programmation par contraintes."}</p>
+      </section>
+
+      <section className="service-subsection">
+        <h3>{localize(copy.mifyTitle, language)}</h3>
+        <p>{isEnglish ? "From 2017 to 2022, I chaired the competition committee for six editions of the " : "J’ai assuré de 2017 à 2022 la présidence du comité de compétition de six éditions du "}<ExternalLink href="https://maic.mify-ai.com/">Mify Artificial Intelligence Contest</ExternalLink>{isEnglish ? ", an international competition designed to develop practical skills in artificial intelligence and problem solving." : ", concours international destiné à développer les compétences pratiques en intelligence artificielle et en résolution de problèmes."}</p>
+      </section>
+
+      <section className="service-subsection">
+        <h3>{localize(copy.communityResponsibilitiesTitle, language)}</h3>
+        <ul>{localize(communityResponsibilities, language).map((item) => <li key={item}>{item}</li>)}</ul>
+      </section>
+    </CollapsibleServicesSection>
   </AcademicPage>;
 }
