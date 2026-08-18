@@ -143,6 +143,7 @@ const thesisDocumentIds = new Map<string, string>([
   ["bachelor:2026:Mouyiwa Damilaré Godwin Akakpo", "1Hw0UnLSVeAoTxUFo49RFIF5PBgQ9mqIH"],
   ["bachelor:2026:Pernel Djahou Tinmitonde", "1C-nT9eiGVCvQ9twrL6swnx2Ps9IMZPTi"],
   ["bachelor:2026:Mawenan Fernande Frédérique Togbe", "1qtHgPyEapX4n6rghZv-nzLKVLNE81llM"],
+  ["bachelor:2025:Sègnon Eric Stéphane Gnacadja", "1tHVcL_FRqZEahbG0uR-s0b2pQr02IXI_"],
   ["bachelor:2025:Aristot Sadock Othniel Tohon", "1p4ikSBbRsTpuCKXoeDG__9nh6OvwX57C"],
   ["bachelor:2025:Sophie Fèmi Bérengère Aholou", "11aUOHPOy7rXN9chvGVoX9xMzqtFgpnSN"],
   ["bachelor:2025:Dona Fidèle Houekpoeha", "1HmfXG7xlLcFzrEERvAdeIRYeWFQde1XE"],
@@ -155,6 +156,7 @@ const thesisDocumentIds = new Map<string, string>([
   ["bachelor:2023:Esther Ahossi", "1Zi1sPomIFIEQbfPy8_FYe7oDfDngfGVZ"],
   ["bachelor:2023:Carmel Prosper Sagbo", "1XDGVfl7QaXtU2DKGYrXbE0pOtdpP3-yx"],
   ["bachelor:2023:Elvis Eustache Patinvoh", "11gLOyy4SKU0j94dBJSh0LN7loDevZ-rQ"],
+  ["bachelor:2023:Abdé Rayanath Seibou Toleba", "1Ag89WM8H6Ej1bUSv-45kAFIjBhiynrVC"],
   ["bachelor:2023:Damien Ulrich Doevi", "1NX61EMS-TFFYdvnZPRqJ220UCtQBKLiS"],
   ["bachelor:2023:Prince Gédéon Yiségnon Guedje", "1m-IDqsX57PMBqhN4KoIA5pPed2E7-scB"],
   ["bachelor:2023:O. Adéwoumi Lazare Jean-Deluxe Fagbohoun", "1tjE0ESa3Wyd4shHuSONhguj8irGlt9bq"],
@@ -175,6 +177,7 @@ const thesisDocumentIds = new Map<string, string>([
   ["bachelor:2018:Abdias Dagbekpo", "1oAcHqQH8HvcPZoEVKOdF2rSIDaw7_QRC"],
   ["bachelor:2018:Luc Atakpa", "1upjl_WIcSyYIjkD4i4sWcVI3TF6nFq1s"],
   ["bachelor:2018:Yessir Gouton Noudohouénou", "1wD9YQD7ewsLbGpXPEj17YSWbpQUVYs5Q"],
+  ["bachelor:2018:Servule O. F. Kouzonde", "1nRodGTqDElOXA5xPeiM7giLPUi_Guzi_"],
   ["bachelor:2017:Marie-Parisius Houessou", "1HcBxLwlxNUMZqysVw_xENF3MaKP7XRuq"],
   ["bachelor:2017:Ahouefa Pascale Ninon Kpossou", "1Gp7kMuFOXkNOy8HxreicLDr-KefggOGh"],
 ]);
@@ -238,7 +241,7 @@ const contributedDoctoralTheses: ContributedDoctoralThesis[] = [
   {
     name: "Fatou Lo Niang",
     years: "2022–",
-    institution: { fr: "Université Cheick Anta Diop (UCAD), Sénégal", en: "Université Cheick Anta Diop (UCAD), Senegal" },
+    institution: { fr: "Université Gaston Berger de Saint Louis (UGB), Sénégal", en: "Gaston Berger University of Saint-Louis (UGB), Senegal" },
     title: { fr: "Conception d’un Système d’Information Médical Intelligent: modèles IA de détection et de prise en charge précoces des maladies cardio-vasculaires au Sénégal.", en: "Design of an intelligent medical information system: AI models for early detection and management of cardiovascular diseases in Senegal." },
     status: "ongoing",
   },
@@ -380,6 +383,7 @@ const bachelorTheses: ThesisGroup[] = [
   {
     year: "2025",
     items: [
+      "Implementation of a mobile parking management application in Benin — Sègnon Eric Stéphane Gnacadja (Licence GL, IFRI)",
       "Verified: A platform for document authenticity using unique identifiers — Aristot Sadock Othniel Tohon (Licence GL, IFRI)",
       "Mobile application for cleaning metadata from online multimedia files — Sophie Fèmi Bérengère Aholou (Licence GL, IFRI)",
       "Implementation of a management system for the FRIARE mentoring program: Mentora — Dona Fidèle Houekpoeha (Licence GL, IFRI)",
@@ -401,7 +405,7 @@ const bachelorTheses: ThesisGroup[] = [
       "Sensibilisation à l’utilisation responsable de l’intelligence artificielle : vidéo et stratégie de communication — Lyne Gbaguidi (Licence IM, IFRI)",
       "Implementation of a DevOps architecture for IFRI applications — Parfait Tolefo (Licence SI, IFRI)",
       "Security audit of a web platform: the case of the IFRI website — Marilyse Sèdé Ahouangonou (Licence SI, IFRI)",
-      "Application de gestion des finances personnelles — Rayanath Toleba (Licence GL, IFRI)",
+      "Application de gestion des finances personnelles — Abdé Rayanath Seibou Toleba (Licence GL, IFRI)",
       "Prototype d’une application d’achat de produits pharmaceutiques en ligne — Esther Ahossi (Licence IM, IFRI)",
       "API RESTful pour la digitalisation des services d’un réseau d’entreprise : cas de Coursier Express Africa — Carmel Prosper Sagbo (Licence GL, IFRI)",
       "Visite de la Route des Esclaves en réalité augmentée et basée sur la géolocalisation — Nicos Gbènato Hounvio (Licence IM, IFRI)",
