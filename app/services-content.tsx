@@ -99,11 +99,13 @@ const previousAcademicResponsibilities: Localized<string[]> = {
 
 const communityResponsibilities: Localized<string[]> = {
   fr: [
+    "Membre de l'association Benin Talent Pool (BTP) et du Club DSI Bénin ;",
     "Fondateur et coordonnateur de Startup Grind University of Abomey-Calavi, de 2020 à 2021 ;",
     "Curateur du Cotonou Hub de la Global Shapers Community, de 2018 à 2019 ;",
     "Cofondateur et directeur général de Machine Intelligence For You (MIFY), d’août 2017 à septembre 2018.",
   ],
   en: [
+    "Member of the association Benin Talent Pool (BTP) and the Club DSI Bénin ;",
     "Founder and coordinator of Startup Grind University of Abomey-Calavi, 2020–2021;",
     "Curator of the Cotonou Hub of the Global Shapers Community, 2018–2019;",
     "Co-founder and chief executive officer of Machine Intelligence For You (MIFY), August 2017–September 2018.",

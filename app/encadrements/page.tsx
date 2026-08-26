@@ -128,6 +128,7 @@ const thesisDocumentIds = new Map<string, string>([
   ["master:2016:Gael Aglin", "1oWvC5ULcJHLF0L9h6w29X9KW4AJp-2Di"],
   ["engineer:2026:Comlanvi Florentin Brilland Baba", "1t6QxBfEQgvrB6YLFakGXpFPG-j11fSS1"],
   ["engineer:2026:Akouvi Marie-Christiane Emmanuella Tsipoaka", "1rFa-f9CtG2W2CcpKVviO1j0ZP6NY_jVl"],
+  ["engineer:2026:Yham Steeve Mackéols Fadegnon", "17IAU69AyENONqMbQDeAJHlYF9VH8LB6h"],
   ["engineer:2023:Sênan Emeric Chris Gbodo", "138nW9SL0Jwwob59cs89Nw-JuD7MaPynr"],
   ["engineer:2021:Sémiton Lémec Renaud Ahouandjinou", "1_gwXr1T6pxs62-EWnAZEbwmskz6vzGe3"],
   ["engineer:2021:Bignon Murielle Souvenir Lokonon", "1Jfh9GLLkiz0rgPKG9xCWlW5h2Xito66p"],
