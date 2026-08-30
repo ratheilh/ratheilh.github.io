@@ -32,81 +32,6 @@ type ContributedDoctoralThesis = {
 
 type ThesisKind = "master" | "engineer" | "bachelor";
 
-const linkedinProfiles = new Map<string, string>([
-  ["Linuse Tikpon", "https://www.linkedin.com/in/linuse-tikpon-80a1b81a5"],
-  ["Marie Mélène Sèmèvo Tonou", "https://www.linkedin.com/in/marie-melene-tonou"],
-  ["Maryse Fortune Doloresse Gahou", "https://www.linkedin.com/in/maryse-gahou"],
-  ["Noël Christi Honzounnon", "https://www.linkedin.com/in/noel-christi-honzounnon-01ba85191/"],
-  ["Marianne Balogoun", "https://www.linkedin.com/in/marianne-a-omonlola-balogoun-3bbb00175"],
-  ["Marianne A. O. Balogoun", "https://www.linkedin.com/in/marianne-a-omonlola-balogoun-3bbb00175"],
-  ["Souleymane Bah", "https://www.linkedin.com/in/souleymane-bah-584035212"],
-  ["Fatou Lo Niang", "https://www.linkedin.com/in/fatou-lo-niang/"],
-  ["Ariane Houetohossou", "https://www.linkedin.com/in/houetohossou-ariane-a84abb177"],
-  ["Peace Tahi", "https://www.linkedin.com/in/souand-tahi-ba6ba6124"],
-  ["Mahoutin Afis Kousse", "https://www.linkedin.com/in/mahoutin-afis-malick-kousse-4807a1199"],
-  ["Djivèdé Chryzal Beaudelaire Zossou", "https://www.linkedin.com/in/chryzal"],
-  ["Pascaline Hounkponou", "https://www.linkedin.com/in/pascaline-hounkponou-25b539195"],
-  ["Bienvenu Massou", "https://www.linkedin.com/in/bienvenu-massou-982259269"],
-  ["Narech Houessou", "https://www.linkedin.com/in/narech-houessou"],
-  ["K. Merveille Santi Zinsou", "https://www.linkedin.com/in/kpêtchéhoué-merveille-santi-zinsou-33b95b152"],
-  ["Chabi A. Rodolpho Babatounde", "https://www.linkedin.com/in/chabibabatounde"],
-  ["Koubouratou Idjaton", "https://www.linkedin.com/in/idjaton"],
-  ["Gael Aglin", "https://www.linkedin.com/in/aglingael"],
-  ["Akouvi Marie-Christiane Emmanuella Tsipoaka", "https://www.linkedin.com/in/emmanuella-tsipoaka-a83012251"],
-  ["Florian Dudereau Siaken Yabou", "https://www.linkedin.com/in/florian-siaken-6120a321b"],
-  ["Sênan Emeric Chris Gbodo", "https://www.linkedin.com/in/s%C3%AAnan-emeric-chris-gbodo-3607691a1"],
-  ["Sémiton Lémec Renaud Ahouandjinou", "https://www.linkedin.com/in/lémec-ahouandjinou-6a7803181"],
-  ["Tchegnon Romaric Madegnan", "https://www.linkedin.com/in/romaric-madegnan"],
-  ["Yannick Sèyivè Dona Kiki", "https://www.linkedin.com/in/yannick-kiki"],
-  ["Nounagnon Moïse Combelles Savoedo", "https://www.linkedin.com/in/nounagnonsavoedo"],
-  ["Bignon Murielle Souvenir Lokonon", "https://www.linkedin.com/in/murielle-souvenir-lokonon"],
-  ["Yasminath Aïcha Sidi Ali", "https://www.linkedin.com/in/yasminath-sidi-ali-512bb6162"],
-  ["Harry Gbaguidi", "https://www.linkedin.com/in/harry-gbaguidi"],
-  ["Jean-Baptiste Maureen Sossou", "https://www.linkedin.com/in/jean-baptiste-sossou-aba768141"],
-  ["Harold Silvère Kiossou", "https://www.linkedin.com/in/haroldks"],
-  ["Alimanth Sadiyath Modukpè Adjibade", "https://www.linkedin.com/in/sadiyath-adjibade-878496276"],
-  ["Samira Bandolo Anaïs Mvogo", "https://www.linkedin.com/in/samira-mvogo-072562243"],
-  ["Aristot Sadock Othniel Tohon", "https://www.linkedin.com/in/sadock-tohon-0b265b271/"],
-  ["Sophie Fèmi Bérengère Aholou", "https://www.linkedin.com/in/sophie-fèmi-aholou-96265723b/"],
-  ["Phoris Agbozognigbe", "https://www.linkedin.com/in/andy-agbozognigbe-20a453237/"],
-  ["Jordy Gnanih", "https://www.linkedin.com/in/jordy-gnanih-071aa0249"],
-  ["Karen Houeha", "https://www.linkedin.com/in/karen-houeha-a9b47b275"],
-  ["Lyne Gbaguidi", "https://www.linkedin.com/in/lyne-gbaguidi-54a44221a"],
-  ["Parfait Tolefo", "https://www.linkedin.com/in/tlf-parfait"],
-  ["Marilyse Sèdé Ahouangonou", "https://www.linkedin.com/in/marilyse-s%C3%A8d%C3%A9-ahouangonou"],
-  ["Esther Ahossi", "https://www.linkedin.com/in/esther-ahossi-3a1a50226"],
-  ["Carmel Prosper Sagbo", "https://www.linkedin.com/in/carmel-prosper-sagbo"],
-  ["Nicos Gbènato Hounvio", "https://www.linkedin.com/in/nicos-hounvio"],
-  ["Elvis Eustache Patinvoh", "https://www.linkedin.com/in/elvis-eustache-patinvoh"],
-  ["Damien Ulrich Doevi", "https://www.linkedin.com/in/damien-ulrich-doevi-396016239"],
-  ["Prince Gédéon Yiségnon Guedje", "https://www.linkedin.com/in/prince-gedeon-guedje-ai-researcher"],
-  ["O. Adéwoumi Lazare Jean-Deluxe Fagbohoun", "https://www.linkedin.com/in/jean-deluxe-fagbohoun-979617233"],
-  ["Liwa Augustine Tawe", "https://www.linkedin.com/in/augustinetawe"],
-  ["Gisèle Goubalan", "https://www.linkedin.com/in/gis%C3%A8le-goubalan-3113311b6"],
-  ["Généreux Mahouzonssou Akotenou", "https://www.linkedin.com/in/genereux-akotenou"],
-  ["Bignon Klaus Précieux Bonou Selegbe", "https://www.linkedin.com/in/klaus-bosel"],
-  ["Mahussi Jeff Fidèle Datongnon", "https://www.linkedin.com/in/mahussi-datongnon"],
-  ["Ogbinto Samir Tafel Boni", "https://www.linkedin.com/in/samir-boni-200456203"],
-  ["Marcellin Zinsou", "https://www.linkedin.com/in/evangelistedesmaths"],
-  ["Lizzy Adjagba", "https://www.linkedin.com/in/lizzy-adjagba"],
-  ["Odile Lalou", "https://www.linkedin.com/in/odile-lalou"],
-  ["Ahouefa Pascale Ninon Kpossou", "https://www.linkedin.com/in/kpossou-ahouefa-ninon"],
-  ["Aîchatou Oroubade", "https://www.linkedin.com/in/aichatou-orou-bade"],
-  ["Gabriel Julien Agbossou", "https://www.linkedin.com/in/agbossou-gabriel-9b32aa194"],
-  ["Mélaine Kiossou", "https://www.linkedin.com/in/melaine-g-kiossou-977263182"],
-  ["Iffanice Houndayi", "https://www.linkedin.com/in/iffanice"],
-  ["Abdias Dagbekpo", "https://www.linkedin.com/in/abdias-dagbekpo-469b36116"],
-  ["Luc Atakpa", "https://www.linkedin.com/in/lucgermannatakpa"],
-  ["Yessir Gouton Noudohouénou", "https://www.linkedin.com/in/yessirnoudo"],
-  ["Marie-Parisius Houessou", "https://www.linkedin.com/in/parisius"],
-  ["Freud Lanha", "https://www.linkedin.com/in/freudlanha"],
-  ["Mawulé Robert God’Right Adohounblessi", "https://www.linkedin.com/in/m-r-god-right-adohounblessi"],
-  ["Nelxie Adisso", "https://www.linkedin.com/in/nelxie-adisso-♡-99b1a4258"],
-  ["Mouyiwa Damilaré Godwin Akakpo", "https://www.linkedin.com/in/godwin-akakpo"],
-  ["Pernel Djahou Tinmitonde", "https://www.linkedin.com/in/pernel-tinmitonde-7765452a6"],
-  ["Mawenan Fernande Frédérique Togbe", "https://www.linkedin.com/in/fernande-togbe-ab1b622ba"],
-]);
-
 const thesisDocumentIds = new Map<string, string>([
   ["master:2026:Défodji Eden Freddy Houndonougbo", "1vN-uaeNVplDGSYwPR-UqdFsrbKQw4pjt"],
   ["master:2025:Grace Kisambu Nsele", "14jYvJt4R2_Ba6BZk6N2RscexxSauUIzI"],
@@ -268,65 +193,65 @@ const masterTheses: ThesisGroup[] = [
   {
     year: "2026",
     items: [
-      "Mitigating biases in datasets using constraint programming-based undersampling — Défodji Eden Freddy Houndonougbo (Master SIRI, IFRI)",
+      "Mitigating biases in datasets using constraint programming-based undersampling · Défodji Eden Freddy Houndonougbo (Master SIRI, IFRI)",
     ],
   },
   {
     year: "2025",
     items: [
-      "Contributions à l’analyse multimodale dans la détection de la tuberculose : en République démocratique du Congo — Grace Kisambu Nsele (Master GL, IFRI)",
-      "Protection de la vie privée dans le data mining par approche cryptographique : application à la détection de données aberrantes — Esdras Ago (Master GL, IFRI)",
+      "Contributions à l’analyse multimodale dans la détection de la tuberculose : en République démocratique du Congo · Grace Kisambu Nsele (Master GL, IFRI)",
+      "Protection de la vie privée dans le data mining par approche cryptographique : application à la détection de données aberrantes · Esdras Ago (Master GL, IFRI)",
     ],
   },
   {
     year: "2024",
     items: [
-      "Interpreting complex machine learning models using association rules — Linuse Tikpon (Master GL, IFRI)",
-      "Fairness in machine learning using pattern mining and constraint programming — Bienvenu Massou (Master GL, IFRI)",
+      "Interpreting complex machine learning models using association rules · Linuse Tikpon (Master GL, IFRI)",
+      "Fairness in machine learning using pattern mining and constraint programming · Bienvenu Massou (Master GL, IFRI)",
     ],
   },
   {
     year: "2023",
     items: [
-      "Fairness in machine learning using constraint programming — Mahoutin Afis Kousse (Master GL, IFRI)",
-      "Performance profile for machine learning — Djivèdé Chryzal Beaudelaire Zossou (Master GL, IFRI)",
-      "Vers la mise en place d’un registre des porteurs africains de pacemaker dans le cadre du projet AI4Cardio — Servule O. F. Kouzonde (Master SIRI, IFRI)",
-      "Prévision du rendement du soja au Bénin à l’aide de modèles d’apprentissage automatique — Pascaline Hounkponou (Master Statistique, CIPMA)",
+      "Fairness in machine learning using constraint programming · Mahoutin Afis Kousse (Master GL, IFRI)",
+      "Performance profile for machine learning · Djivèdé Chryzal Beaudelaire Zossou (Master GL, IFRI)",
+      "Vers la mise en place d’un registre des porteurs africains de pacemaker dans le cadre du projet AI4Cardio · Servule O. F. Kouzonde (Master SIRI, IFRI)",
+      "Prévision du rendement du soja au Bénin à l’aide de modèles d’apprentissage automatique · Pascaline Hounkponou (Master Statistique, CIPMA)",
     ],
   },
   {
     year: "2021",
     items: [
-      "Classification du trafic internet grâce aux méthodes d’apprentissage automatique — Erick Adje (Master Télécommunications et réseaux informatiques, ED-SDI)",
-      "Application web de partage de données multimodales pour le suivi des altérations des châteaux par traitement d’images et deep learning — Narech Houessou (Master SIRI, IFRI)",
+      "Classification du trafic internet grâce aux méthodes d’apprentissage automatique · Erick Adje (Master Télécommunications et réseaux informatiques, ED-SDI)",
+      "Application web de partage de données multimodales pour le suivi des altérations des châteaux par traitement d’images et deep learning · Narech Houessou (Master SIRI, IFRI)",
     ],
   },
   {
     year: "2019",
     items: [
-      "Système d’identification de maladies des plantes de riz par réseaux de neurones convolutifs — K. Merveille Santi Zinsou (Master SIRI, IFRI)",
+      "Système d’identification de maladies des plantes de riz par réseaux de neurones convolutifs · K. Merveille Santi Zinsou (Master SIRI, IFRI)",
     ],
   },
   {
     year: "2018",
     items: [
-      "Estimation des rendements agricoles avec le machine learning : cas du sorgho — Judiacel G. N. Zannou (Master, IFRI)",
-      "Système d’information de gestion du parc automobile béninois fondé sur la lecture automatique des plaques minéralogiques — Chabi A. Rodolpho Babatounde (Master SIRI, IFRI)",
+      "Estimation des rendements agricoles avec le machine learning : cas du sorgho · Judiacel G. N. Zannou (Master, IFRI)",
+      "Système d’information de gestion du parc automobile béninois fondé sur la lecture automatique des plaques minéralogiques · Chabi A. Rodolpho Babatounde (Master SIRI, IFRI)",
     ],
   },
   {
     year: "2017",
     items: [
-      "Détermination par apprentissage automatique des paramètres d’une heuristique générique pour les jeux de type n-alignés — Hafiz Abdoulaye (Master, IFRI)",
-      "La business intelligence au service de la microfinance au Bénin : application au PAPME — Gabin Anadjamè (Master, IFRI)",
-      "Résolution du pigment sequencing problem avec les algorithmes génétiques — Tafsir Gna (Master, IFRI)",
+      "Détermination par apprentissage automatique des paramètres d’une heuristique générique pour les jeux de type n-alignés · Hafiz Abdoulaye (Master, IFRI)",
+      "La business intelligence au service de la microfinance au Bénin : application au PAPME · Gabin Anadjamè (Master, IFRI)",
+      "Résolution du pigment sequencing problem avec les algorithmes génétiques · Tafsir Gna (Master, IFRI)",
     ],
   },
   {
     year: "2016",
     items: [
-      "Évaluation d’heuristiques de recherche informée : cas du n-puzzle — Koubouratou Idjaton (Master, IFRI)",
-      "Heuristique générique pour les jeux de type n-alignés — Gael Aglin (Master, IFRI)",
+      "Évaluation d’heuristiques de recherche informée : cas du n-puzzle · Koubouratou Idjaton (Master, IFRI)",
+      "Heuristique générique pour les jeux de type n-alignés · Gael Aglin (Master, IFRI)",
     ],
   },
 ];
@@ -335,36 +260,36 @@ const engineerTheses: ThesisGroup[] = [
   {
     year: "2026",
     items: [
-      "Déterminants et prédiction de l’espérance de vie par apprentissage automatique : application au Bénin et à ses pays limitrophes — Yham Steeve Mackéols Fadegnon (Ingénieur ISE, ENEAM)",
-      "Valeur ajoutée agricole au Bénin : déterminants climatiques et économiques et prévision par apprentissage automatique — Comlanvi Florentin Brilland Baba (Ingénieur ISE, ENEAM)",
-      "Leviers agricoles et bien-être économique des ménages ruraux au Bénin : une approche par machine learning explicable et causal — Akouvi Marie-Christiane Emmanuella Tsipoaka (Ingénieur ISE, ENEAM)",
+      "Déterminants et prédiction de l’espérance de vie par apprentissage automatique : application au Bénin et à ses pays limitrophes · Yham Steeve Mackéols Fadegnon (Ingénieur ISE, ENEAM)",
+      "Valeur ajoutée agricole au Bénin : déterminants climatiques et économiques et prévision par apprentissage automatique · Comlanvi Florentin Brilland Baba (Ingénieur ISE, ENEAM)",
+      "Leviers agricoles et bien-être économique des ménages ruraux au Bénin : une approche par machine learning explicable et causal · Akouvi Marie-Christiane Emmanuella Tsipoaka (Ingénieur ISE, ENEAM)",
     ],
   },
   {
     year: "2023",
     items: [
-      "Prédiction des rendements des plantations d’anacardiers au Bénin par le machine learning — Florian Dudereau Siaken Yabou (Ingénieur ISE, ENEAM)",
-      "Prédiction de la valeur client en assurance-vie par apprentissage automatique — Sênan Emeric Chris Gbodo (Ingénieur ISE, ENEAM)",
+      "Prédiction des rendements des plantations d’anacardiers au Bénin par le machine learning · Florian Dudereau Siaken Yabou (Ingénieur ISE, ENEAM)",
+      "Prédiction de la valeur client en assurance-vie par apprentissage automatique · Sênan Emeric Chris Gbodo (Ingénieur ISE, ENEAM)",
     ],
   },
   {
     year: "2021",
     items: [
-      "Application de la réalité augmentée à la visite de site touristique : cas de la Route des Esclaves de Ouidah — Sémiton Lémec Renaud Ahouandjinou (Ingénieur GIT, EPAC)",
-      "Système d’identification automatique de Spodoptera frugiperda — Tchegnon Romaric Madegnan (Ingénieur GIT, EPAC)",
-      "Prédiction de l’intention d’achat sur les plateformes de commerce électronique — Yannick Sèyivè Dona Kiki (Ingénieur GIT, EPAC)",
-      "Filtrage vidéo : détection et suppression de scènes à caractère pornographique — Nounagnon Moïse Combelles Savoedo (Ingénieur GIT, EPAC)",
-      "Correcteur syntaxique des diagrammes UML : cas du diagramme de cas d’utilisation — Bignon Murielle Souvenir Lokonon (Ingénieur GIT, EPAC)",
-      "Détection des zones de maïs infestées par Spodoptera frugiperda à l’aide d’algorithmes d’apprentissage automatique — Yasminath Aïcha Sidi Ali (Ingénieur GIT, EPAC)",
-      "Algorithmes efficaces pour la planification des soutenances — Harry Gbaguidi (Ingénieur GIT, EPAC)",
+      "Application de la réalité augmentée à la visite de site touristique : cas de la Route des Esclaves de Ouidah · Sémiton Lémec Renaud Ahouandjinou (Ingénieur GIT, EPAC)",
+      "Système d’identification automatique de Spodoptera frugiperda · Tchegnon Romaric Madegnan (Ingénieur GIT, EPAC)",
+      "Prédiction de l’intention d’achat sur les plateformes de commerce électronique · Yannick Sèyivè Dona Kiki (Ingénieur GIT, EPAC)",
+      "Filtrage vidéo : détection et suppression de scènes à caractère pornographique · Nounagnon Moïse Combelles Savoedo (Ingénieur GIT, EPAC)",
+      "Correcteur syntaxique des diagrammes UML : cas du diagramme de cas d’utilisation · Bignon Murielle Souvenir Lokonon (Ingénieur GIT, EPAC)",
+      "Détection des zones de maïs infestées par Spodoptera frugiperda à l’aide d’algorithmes d’apprentissage automatique · Yasminath Aïcha Sidi Ali (Ingénieur GIT, EPAC)",
+      "Algorithmes efficaces pour la planification des soutenances · Harry Gbaguidi (Ingénieur GIT, EPAC)",
     ],
   },
   {
     year: "2019",
     items: [
-      "Classification automatique de documents fondée sur le bag of words et l’extraction de motifs séquentiels — Jean-Baptiste Maureen Sossou (Ingénieur GIT, EPAC)",
-      "Prédiction des performances d’une architecture 2D SOME-Bus avec le deep learning — Harold Silvère Kiossou (Ingénieur GIT, EPAC)",
-      "Résolution du problème d’affectation de fréquences avec la programmation par contraintes — Marianne A. O. Balogoun (Ingénieur GIT, EPAC)",
+      "Classification automatique de documents fondée sur le bag of words et l’extraction de motifs séquentiels · Jean-Baptiste Maureen Sossou (Ingénieur GIT, EPAC)",
+      "Prédiction des performances d’une architecture 2D SOME-Bus avec le deep learning · Harold Silvère Kiossou (Ingénieur GIT, EPAC)",
+      "Résolution du problème d’affectation de fréquences avec la programmation par contraintes · Marianne A. O. Balogoun (Ingénieur GIT, EPAC)",
     ],
   },
 ];
@@ -373,122 +298,112 @@ const bachelorTheses: ThesisGroup[] = [
   {
     year: "2026",
     items: [
-      "Optimization of the blood product distribution chain in Benin: case of the Zou Department — Mawulé Robert God’Right Adohounblessi (Licence IA, IFRI)",
-      "Système intelligent de conseil pédagogique pour l’enseignement supérieur : segmentation du public cible et objectifs d’apprentissage — Alimanth Sadiyath Modukpè Adjibade (Licence IA, IFRI)",
-      "Réalisation d’un système intelligent d’accompagnement des travaux pédagogiques de groupe par l’analyse des réunions — Nelxie Adisso (Licence IA, IFRI)",
-      "Réalisation d’un système d’évaluation des compétences pédagogiques basé sur la simulation des situations de classe universitaire — Mouyiwa Damilaré Godwin Akakpo (Licence GL, IFRI)",
-      "Étude comparative des techniques de séparation des sources dans les signaux électroencéphalogrammes (EEG) — Pernel Djahou Tinmitonde (Licence IA, IFRI)",
-      "Réalisation d’un prototype de simulation 3D des comportements des étudiants en situation de classe — Mawenan Fernande Frédérique Togbe (Licence IM, IFRI)",
+      "Optimization of the blood product distribution chain in Benin: case of the Zou Department · Mawulé Robert God’Right Adohounblessi (Licence IA, IFRI)",
+      "Système intelligent de conseil pédagogique pour l’enseignement supérieur : segmentation du public cible et objectifs d’apprentissage · Alimanth Sadiyath Modukpè Adjibade (Licence IA, IFRI)",
+      "Réalisation d’un système intelligent d’accompagnement des travaux pédagogiques de groupe par l’analyse des réunions · Nelxie Adisso (Licence IA, IFRI)",
+      "Réalisation d’un système d’évaluation des compétences pédagogiques basé sur la simulation des situations de classe universitaire · Mouyiwa Damilaré Godwin Akakpo (Licence GL, IFRI)",
+      "Étude comparative des techniques de séparation des sources dans les signaux électroencéphalogrammes (EEG) · Pernel Djahou Tinmitonde (Licence IA, IFRI)",
+      "Réalisation d’un prototype de simulation 3D des comportements des étudiants en situation de classe · Mawenan Fernande Frédérique Togbe (Licence IM, IFRI)",
     ],
   },
   {
     year: "2025",
     items: [
-      "Implementation of a mobile parking management application in Benin — Sègnon Eric Stéphane Gnacadja (Licence GL, IFRI)",
-      "Verified: A platform for document authenticity using unique identifiers — Aristot Sadock Othniel Tohon (Licence GL, IFRI)",
-      "Mobile application for cleaning metadata from online multimedia files — Sophie Fèmi Bérengère Aholou (Licence GL, IFRI)",
-      "Implementation of a management system for the FRIARE mentoring program: Mentora — Dona Fidèle Houekpoeha (Licence GL, IFRI)",
+      "Implementation of a mobile parking management application in Benin · Sègnon Eric Stéphane Gnacadja (Licence GL, IFRI)",
+      "Verified: A platform for document authenticity using unique identifiers · Aristot Sadock Othniel Tohon (Licence GL, IFRI)",
+      "Mobile application for cleaning metadata from online multimedia files · Sophie Fèmi Bérengère Aholou (Licence GL, IFRI)",
+      "Implementation of a management system for the FRIARE mentoring program: Mentora · Dona Fidèle Houekpoeha (Licence GL, IFRI)",
     ],
   },
   {
     year: "2024",
     items: [
-      "KidneyDoc: a patient management platform for the nephrology department of CNHU — Samira Bandolo Anaïs Mvogo (Licence GL, IFRI)",
-      "Application web de gestion des emplois du temps : cas de l’IFRI — Jordy Gnanih (Licence GL, IFRI)",
-      "Documentaire sur l’impact de l’intelligence artificielle sur la vie privée — Odile Lalou (Licence IM, IFRI)",
-      "Développement d’une application de détection des comportements suspects des applications mobiles sur les smartphones Android — Phoris Agbozognigbe (Licence SI, IFRI)",
+      "KidneyDoc: a patient management platform for the nephrology department of CNHU · Samira Bandolo Anaïs Mvogo (Licence GL, IFRI)",
+      "Application web de gestion des emplois du temps : cas de l’IFRI · Jordy Gnanih (Licence GL, IFRI)",
+      "Documentaire sur l’impact de l’intelligence artificielle sur la vie privée · Odile Lalou (Licence IM, IFRI)",
+      "Développement d’une application de détection des comportements suspects des applications mobiles sur les smartphones Android · Phoris Agbozognigbe (Licence SI, IFRI)",
     ],
   },
   {
     year: "2023",
     items: [
-      "Application web d’aide à la planification des soutenances : cas de l’IFRI — Karen Houeha (Licence GL, IFRI)",
-      "Sensibilisation à l’utilisation responsable de l’intelligence artificielle : vidéo et stratégie de communication — Lyne Gbaguidi (Licence IM, IFRI)",
-      "Implementation of a DevOps architecture for IFRI applications — Parfait Tolefo (Licence SI, IFRI)",
-      "Security audit of a web platform: the case of the IFRI website — Marilyse Sèdé Ahouangonou (Licence SI, IFRI)",
-      "Application de gestion des finances personnelles — Abdé Rayanath Seibou Toleba (Licence GL, IFRI)",
-      "Prototype d’une application d’achat de produits pharmaceutiques en ligne — Esther Ahossi (Licence IM, IFRI)",
-      "API RESTful pour la digitalisation des services d’un réseau d’entreprise : cas de Coursier Express Africa — Carmel Prosper Sagbo (Licence GL, IFRI)",
-      "Visite de la Route des Esclaves en réalité augmentée et basée sur la géolocalisation — Nicos Gbènato Hounvio (Licence IM, IFRI)",
-      "Expérience immersive en réalité augmentée pour les visiteurs du monument de l’Amazone — Elvis Eustache Patinvoh (Licence IM, IFRI)",
-      "Application de gestion de la location immobilière — Damien Ulrich Doevi (Licence GL, IFRI)",
-      "NextVision, an AI-powered intelligent video surveillance platform for enhanced security — Prince Gédéon Yiségnon Guedje (Licence IM, IFRI)",
-      "Application mobile de réalité virtuelle d’aide à la rééducation par simulation d’imagerie motrice — O. Adéwoumi Lazare Jean-Deluxe Fagbohoun (Licence IM, IFRI)",
-      "Visite virtuelle 3D de la Porte du Non-Retour à Ouidah — O. A. Anne-Marie Chabi (Licence IM, IFRI)",
-      "Application mobile de mise en relation des producteurs maraîchers, éleveurs et consommateurs — Liwa Augustine Tawe (Licence GL, IFRI)",
-      "Géolocalisation assistée par réalité augmentée : cas du campus d’Abomey-Calavi — Gisèle Goubalan (Licence IM, IFRI)",
+      "Application web d’aide à la planification des soutenances : cas de l’IFRI · Karen Houeha (Licence GL, IFRI)",
+      "Sensibilisation à l’utilisation responsable de l’intelligence artificielle : vidéo et stratégie de communication · Lyne Gbaguidi (Licence IM, IFRI)",
+      "Implementation of a DevOps architecture for IFRI applications · Parfait Tolefo (Licence SI, IFRI)",
+      "Security audit of a web platform: the case of the IFRI website · Marilyse Sèdé Ahouangonou (Licence SI, IFRI)",
+      "Application de gestion des finances personnelles · Abdé Rayanath Seibou Toleba (Licence GL, IFRI)",
+      "Prototype d’une application d’achat de produits pharmaceutiques en ligne · Esther Ahossi (Licence IM, IFRI)",
+      "API RESTful pour la digitalisation des services d’un réseau d’entreprise : cas de Coursier Express Africa · Carmel Prosper Sagbo (Licence GL, IFRI)",
+      "Visite de la Route des Esclaves en réalité augmentée et basée sur la géolocalisation · Nicos Gbènato Hounvio (Licence IM, IFRI)",
+      "Expérience immersive en réalité augmentée pour les visiteurs du monument de l’Amazone · Elvis Eustache Patinvoh (Licence IM, IFRI)",
+      "Application de gestion de la location immobilière · Damien Ulrich Doevi (Licence GL, IFRI)",
+      "NextVision, an AI-powered intelligent video surveillance platform for enhanced security · Prince Gédéon Yiségnon Guedje (Licence IM, IFRI)",
+      "Application mobile de réalité virtuelle d’aide à la rééducation par simulation d’imagerie motrice · O. Adéwoumi Lazare Jean-Deluxe Fagbohoun (Licence IM, IFRI)",
+      "Visite virtuelle 3D de la Porte du Non-Retour à Ouidah · O. A. Anne-Marie Chabi (Licence IM, IFRI)",
+      "Application mobile de mise en relation des producteurs maraîchers, éleveurs et consommateurs · Liwa Augustine Tawe (Licence GL, IFRI)",
+      "Géolocalisation assistée par réalité augmentée : cas du campus d’Abomey-Calavi · Gisèle Goubalan (Licence IM, IFRI)",
     ],
   },
   {
     year: "2022",
     items: [
-      "UMLDesigner: an automatic UML diagram design tool — Généreux Mahouzonssou Akotenou (Licence GL, IFRI)",
-      "Outil de sélection automatique de candidats par programmation par contraintes — Bignon Klaus Précieux Bonou Selegbe (Licence GL, IFRI)",
-      "Application d’aide à la planification des soutenances des étudiants : cas de l’IFRI — Mahussi Jeff Fidèle Datongnon (Licence GL, IFRI)",
+      "UMLDesigner: an automatic UML diagram design tool · Généreux Mahouzonssou Akotenou (Licence GL, IFRI)",
+      "Outil de sélection automatique de candidats par programmation par contraintes · Bignon Klaus Précieux Bonou Selegbe (Licence GL, IFRI)",
+      "Application d’aide à la planification des soutenances des étudiants : cas de l’IFRI · Mahussi Jeff Fidèle Datongnon (Licence GL, IFRI)",
     ],
   },
   {
     year: "2021",
     items: [
-      "Modélisation du risque de crédit par apprentissage automatique : cas de la Mutuelle pour le Développement à la Base — Ogbinto Samir Tafel Boni (IFRI)",
-      "Application web de suivi technico-économique des fermes avicoles au Bénin — Marcellin Zinsou (IFRI)",
-      "Outil d’identification automatique des éléments d’une facture — Lizzy Adjagba (IFRI)",
-      "Application de simulation d’ameublement en réalité augmentée — Kelvine Natacha Mahussi Honon Dadjo (IFRI)",
+      "Modélisation du risque de crédit par apprentissage automatique : cas de la Mutuelle pour le Développement à la Base · Ogbinto Samir Tafel Boni (IFRI)",
+      "Application web de suivi technico-économique des fermes avicoles au Bénin · Marcellin Zinsou (IFRI)",
+      "Outil d’identification automatique des éléments d’une facture · Lizzy Adjagba (IFRI)",
+      "Application de simulation d’ameublement en réalité augmentée · Kelvine Natacha Mahussi Honon Dadjo (IFRI)",
     ],
   },
   {
     year: "2020",
     items: [
-      "Application de gestion des heures supplémentaires dans les universités publiques du Bénin — Pascaline Hounkponou (Licence SIRI, IFRI)",
-      "Application en réalité augmentée pour l’enseignement de la géologie au secondaire — Aîchatou Oroubade (Licence IM, IFRI)",
+      "Application de gestion des heures supplémentaires dans les universités publiques du Bénin · Pascaline Hounkponou (Licence SIRI, IFRI)",
+      "Application en réalité augmentée pour l’enseignement de la géologie au secondaire · Aîchatou Oroubade (Licence IM, IFRI)",
     ],
   },
   {
     year: "2019",
     items: [
-      "Simulation médicale en réalité virtuelle : cas de l’appendicectomie — Mahoutin Afis Kousse (Licence GL, IFRI)",
-      "Reconstruction 3D à partir de séquences d’images : application au tourisme — Gabriel Julien Agbossou (Licence GL, IFRI)",
-      "Réalisation d’un agrégateur de paiement : KKiaPay — Mélaine Kiossou (ENEAM)",
+      "Simulation médicale en réalité virtuelle : cas de l’appendicectomie · Mahoutin Afis Kousse (Licence GL, IFRI)",
+      "Reconstruction 3D à partir de séquences d’images : application au tourisme · Gabriel Julien Agbossou (Licence GL, IFRI)",
+      "Réalisation d’un agrégateur de paiement : KKiaPay · Mélaine Kiossou (ENEAM)",
     ],
   },
   {
     year: "2018",
     items: [
-      "Système de prédiction des performances académiques des étudiants : cas de l’IFRI-UAC — Iffanice Houndayi (IFRI)",
-      "Implémentation de TLS fondé sur la cryptographie à courbes elliptiques dans des prises intelligentes — Abdias Dagbekpo (IFRI)",
-      "Système de traduction français-fongbé — Luc Atakpa (IFRI)",
-      "Chatbot vocal de présentation des formations de l’Université d’Abomey-Calavi — Servule O. F. Kouzonde (IFRI)",
-      "Système de commande domotique par SMS — Yessir Gouton Noudohouénou (IFRI)",
+      "Système de prédiction des performances académiques des étudiants : cas de l’IFRI-UAC · Iffanice Houndayi (IFRI)",
+      "Implémentation de TLS fondé sur la cryptographie à courbes elliptiques dans des prises intelligentes · Abdias Dagbekpo (IFRI)",
+      "Système de traduction français-fongbé · Luc Atakpa (IFRI)",
+      "Chatbot vocal de présentation des formations de l’Université d’Abomey-Calavi · Servule O. F. Kouzonde (IFRI)",
+      "Système de commande domotique par SMS · Yessir Gouton Noudohouénou (IFRI)",
     ],
   },
   {
     year: "2017",
     items: [
-      "Le jeu Awalé : interface de programmation applicative et interface en réalité augmentée — Marie-Parisius Houessou (IFRI)",
-      "Plateforme de gestion des rendez-vous et dossiers médicaux dans les établissements de santé — Ahouefa Pascale Ninon Kpossou (IFRI)",
+      "Le jeu Awalé : interface de programmation applicative et interface en réalité augmentée · Marie-Parisius Houessou (IFRI)",
+      "Plateforme de gestion des rendez-vous et dossiers médicaux dans les établissements de santé · Ahouefa Pascale Ninon Kpossou (IFRI)",
     ],
   },
   {
     year: "2015",
     items: [
-      "Système de gestion de notes conforme au LMD dans une entité de l’UAC : cas de l’IFRI — Gael Aglin (IFRI)",
-      "Réimplémentation de la librairie AIMA sous la forme d’un langage dédié — Freud Lanha (IFRI)",
+      "Système de gestion de notes conforme au LMD dans une entité de l’UAC : cas de l’IFRI · Gael Aglin (IFRI)",
+      "Réimplémentation de la librairie AIMA sous la forme d’un langage dédié · Freud Lanha (IFRI)",
     ],
   },
 ];
 
-function PersonName({ name }: { name: string }) {
-  const linkedinProfile = linkedinProfiles.get(name);
-
-  return linkedinProfile ? (
-    <ExternalLink href={linkedinProfile}>{name}</ExternalLink>
-  ) : (
-    name
-  );
-}
-
 function ThesisItem({ item, kind, year, language }: { item: string; kind: ThesisKind; year: string; language: Language }) {
-  const separator = " — ";
+  const separator = " · ";
   const separatorIndex = item.lastIndexOf(separator);
   const nameStart = separatorIndex + separator.length;
   const detailsIndex = item.indexOf(" (", nameStart);
@@ -503,7 +418,7 @@ function ThesisItem({ item, kind, year, language }: { item: string; kind: Thesis
   return (
     <>
       {item.slice(0, nameStart)}
-      <PersonName name={name} />
+      {name}
       {item.slice(detailsIndex)}
       {documentId ? (
         <>
@@ -563,7 +478,7 @@ function SupervisionContent({ language }: { language: Language }) {
                 <span className="title">{localize(thesis.title, language)}</span>
                 <span className="details">
                   <strong>
-                    <PersonName name={thesis.name} />
+                    {thesis.name}
                   </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null}
                 </span>
               </li>
@@ -579,7 +494,7 @@ function SupervisionContent({ language }: { language: Language }) {
                 <span className="title">{localize(thesis.title, language)}</span>
                 <span className="details">
                   <strong>
-                    <PersonName name={thesis.name} />
+                    {thesis.name}
                   </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null} · {thesis.years} · {thesis.status === "defended"
                     ? (isEnglish ? "Defended" : "Soutenue")
                     : (isEnglish ? "Ongoing" : "En cours")}
