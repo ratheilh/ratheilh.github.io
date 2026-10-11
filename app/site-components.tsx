@@ -13,6 +13,6 @@ export function AcademicPage({ children, home = false, language = "fr" }: { chil
 
 export function ExternalLink({ href, children }: { href: string; children: ReactNode }) { return <a href={href} target="_blank" rel="noreferrer">{children}</a>; }
 
-export function PageIntro({ title, children }: { title: string; children?: ReactNode }) {
-  return <div className="page-intro"><h1>{title}</h1>{children ? <p>{children}</p> : null}</div>;
+export function PageIntro({ title, children, id }: { title: string; children?: ReactNode; id?: string }) {
+  return <div className="page-intro"><h1 id={id} tabIndex={id ? -1 : undefined}>{title}</h1>{children ? <p>{children}</p> : null}</div>;
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import type { ReactNode } from "react";
-import { AcademicPage, ExternalLink, PageIntro } from "../site-components";
+import { AcademicPage, PageIntro } from "../site-components";
 import { type Language, type Localized, localize } from "../i18n";
 import { createPageMetadata, routes } from "../seo";
+import { ThesisBrowser, type ThesisCollection } from "./thesis-browser";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Encadrements et thèses",
@@ -402,56 +404,46 @@ const bachelorTheses: ThesisGroup[] = [
   },
 ];
 
-function ThesisItem({ item, kind, year, language }: { item: string; kind: ThesisKind; year: string; language: Language }) {
-  const separator = " · ";
-  const separatorIndex = item.lastIndexOf(separator);
-  const nameStart = separatorIndex + separator.length;
-  const detailsIndex = item.indexOf(" (", nameStart);
+function createThesisCollection(kind: ThesisKind, groups: ThesisGroup[]): ThesisCollection {
+  return {
+    kind,
+    groups: groups.map((group) => ({
+      year: group.year,
+      items: group.items.map((item) => {
+        const separator = " · ";
+        const separatorIndex = item.lastIndexOf(separator);
+        const nameStart = separatorIndex + separator.length;
+        const detailsIndex = item.indexOf(" (", nameStart);
 
-  if (separatorIndex === -1 || detailsIndex === -1) {
-    return item;
-  }
+        if (separatorIndex === -1 || detailsIndex === -1) {
+          return { title: item, name: "", details: "" };
+        }
 
-  const name = item.slice(nameStart, detailsIndex);
-  const documentId = thesisDocumentIds.get(`${kind}:${year}:${name}`);
+        const name = item.slice(nameStart, detailsIndex);
+        const documentId = thesisDocumentIds.get(`${kind}:${group.year}:${name}`);
 
-  return (
-    <>
-      {item.slice(0, nameStart)}
-      {name}
-      {item.slice(detailsIndex)}
-      {documentId ? (
-        <>
-          {" · "}
-          <ExternalLink href={`https://drive.google.com/uc?export=download&id=${documentId}`}>
-            {language === "en" ? "Download thesis (PDF)" : "Télécharger le mémoire (PDF)"}
-          </ExternalLink>
-        </>
-      ) : null}
-    </>
-  );
+        return {
+          title: item.slice(0, separatorIndex),
+          name,
+          details: item.slice(detailsIndex + 2, -1),
+          ...(documentId ? { href: `https://drive.google.com/uc?export=download&id=${documentId}` } : {}),
+        };
+      }),
+    })),
+  };
 }
 
-function ThesisGroups({ groups, kind, language, yearHeadingLevel = "h3" }: { groups: ThesisGroup[]; kind: ThesisKind; language: Language; yearHeadingLevel?: "h3" | "h4" }) {
-  const YearHeading = yearHeadingLevel;
-
-  return groups.map((group) => (
-    <section key={group.year}>
-      <YearHeading>{group.year}</YearHeading>
-      <ul className="supervision-thesis-list">
-        {group.items.map((item) => (
-          <li key={item}><ThesisItem item={item} kind={kind} year={group.year} language={language} /></li>
-        ))}
-      </ul>
-    </section>
-  ));
-}
+const thesisCollections = [
+  createThesisCollection("master", masterTheses),
+  createThesisCollection("engineer", engineerTheses),
+  createThesisCollection("bachelor", bachelorTheses),
+];
 
 function CollapsibleSupervisionSection({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section className="collapsible-page-section" aria-labelledby={id}>
       <details open>
-        <summary><h2 id={id}>{title}</h2></summary>
+        <summary><h2 id={id} tabIndex={-1}>{title}</h2></summary>
         <div className="collapsible-page-content">{children}</div>
       </details>
     </section>
@@ -463,63 +455,80 @@ function SupervisionContent({ language }: { language: Language }) {
 
   return (
     <AcademicPage language={language}>
-      <PageIntro title={isEnglish ? "Supervision" : "Encadrements"}>
+      <PageIntro id="supervision-top" title={isEnglish ? "Supervision" : "Encadrements"}>
         {isEnglish
           ? "Ongoing PhD research, contributions to PhD supervision, and a selection of supervised master’s, engineering, and bachelor’s theses in artificial intelligence, optimization, and software engineering."
           : "Thèses en cours, contributions à l’encadrement doctoral et sélection de mémoires de master, d’ingénieur et de licence encadrés en intelligence artificielle, optimisation et génie logiciel."}
       </PageIntro>
 
-      <CollapsibleSupervisionSection id="phd-supervision" title={isEnglish ? "PhD supervision" : "Encadrement doctoral"}>
-        <section className="supervision-subsection">
-          <h3>{isEnglish ? "Ongoing PhD theses" : "Thèses en cours"}</h3>
-          <ol className="publication-list compact-record-list">
-            {doctoralTheses.map((thesis) => (
-              <li key={thesis.name}>
-                <span className="title">{localize(thesis.title, language)}</span>
-                <span className="details">
-                  <strong>
-                    {thesis.name}
-                  </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null}
-                </span>
+      <ThesisBrowser
+        language={language}
+        collections={thesisCollections}
+        doctoralSection={(
+          <CollapsibleSupervisionSection id="phd-supervision" title={isEnglish ? "PhD supervision" : "Encadrement doctoral"}>
+            <section className="supervision-subsection">
+              <h3>{isEnglish ? "Ongoing PhD theses" : "Thèses en cours"}</h3>
+              <ol className="publication-list compact-record-list">
+                {doctoralTheses.map((thesis) => (
+                  <li key={thesis.name}>
+                    <span className="title">{localize(thesis.title, language)}</span>
+                    <span className="details">
+                      <strong>
+                        {thesis.name}
+                      </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section className="supervision-subsection">
+              <h3>{isEnglish ? "Contributions to PhD supervision" : "Contributions à l’encadrement de thèses"}</h3>
+              <ol className="publication-list compact-record-list">
+                {contributedDoctoralTheses.map((thesis) => (
+                  <li key={thesis.name}>
+                    <span className="title">{localize(thesis.title, language)}</span>
+                    <span className="details">
+                      <strong>
+                        {thesis.name}
+                      </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null} · {thesis.years} · {thesis.status === "defended"
+                        ? (isEnglish ? "Defended" : "Soutenue")
+                        : (isEnglish ? "Ongoing" : "En cours")}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          </CollapsibleSupervisionSection>
+        )}
+        studentResources={(
+          <section id="student-resources" className="supervision-resources" aria-labelledby="student-resources-title">
+            <h2 id="student-resources-title" tabIndex={-1}>{isEnglish ? "Useful resources for students" : "Ressources utiles pour les étudiants"}</h2>
+            <p>{isEnglish
+              ? "Resources in French to help you define your project and prepare your thesis."
+              : "Des ressources pour cadrer votre projet et préparer votre mémoire."}</p>
+            <ul className="simple-list">
+              <li>
+                <a href="/teaching-resources/reussir-son-memoire-en-informatique.pdf" download>
+                  {isEnglish ? "Succeeding with your computer science thesis (PDF, in French)" : "Réussir son mémoire en informatique (PDF)"}
+                </a>
+                <span className="supervision-resource-description">{isEnglish
+                  ? "A concise 10-page guide, from topic selection to thesis defense."
+                  : "Un guide synthétique de 10 pages, du choix du sujet à la soutenance."}</span>
               </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="supervision-subsection">
-          <h3>{isEnglish ? "Contributions to PhD supervision" : "Contributions à l’encadrement de thèses"}</h3>
-          <ol className="publication-list compact-record-list">
-            {contributedDoctoralTheses.map((thesis) => (
-              <li key={thesis.name}>
-                <span className="title">{localize(thesis.title, language)}</span>
-                <span className="details">
-                  <strong>
-                    {thesis.name}
-                  </strong> · {localize(thesis.institution, language)}{thesis.university ? ` · ${thesis.university}` : null} · {thesis.years} · {thesis.status === "defended"
-                    ? (isEnglish ? "Defended" : "Soutenue")
-                    : (isEnglish ? "Ongoing" : "En cours")}
-                </span>
+              <li>
+                <a href="/teaching-resources/modele-cahier-des-charges-memoire.docx" download>
+                  {isEnglish ? "Thesis project specification template (Word, in French)" : "Modèle de cahier des charges de mémoire (Word)"}
+                </a>
+                <span className="supervision-resource-description">{isEnglish
+                  ? "A structured template to help you prepare your project specifications."
+                  : "Un modèle structuré pour préparer le cahier des charges de votre projet."}</span>
               </li>
-            ))}
-          </ol>
-        </section>
-      </CollapsibleSupervisionSection>
-
-      <CollapsibleSupervisionSection id="master-supervision" title={isEnglish ? "Master’s and engineering theses" : "Mémoires de master et d’ingénieur"}>
-        <section className="supervision-subsection">
-          <h3>{isEnglish ? "Master’s theses" : "Mémoires de master"}</h3>
-          <ThesisGroups groups={masterTheses} kind="master" language={language} yearHeadingLevel="h4" />
-        </section>
-
-        <section className="supervision-subsection">
-          <h3>{isEnglish ? "Engineering degree theses" : "Mémoires d’ingénieur"}</h3>
-          <ThesisGroups groups={engineerTheses} kind="engineer" language={language} yearHeadingLevel="h4" />
-        </section>
-      </CollapsibleSupervisionSection>
-
-      <CollapsibleSupervisionSection id="bachelor-supervision" title={isEnglish ? "Bachelor’s theses" : "Mémoires de licence"}>
-        <ThesisGroups groups={bachelorTheses} kind="bachelor" language={language} />
-      </CollapsibleSupervisionSection>
+            </ul>
+            <Link href={routes.contact[language]}>{isEnglish ? "Contact me about thesis supervision" : "Me contacter au sujet d’un encadrement"}</Link>
+          </section>
+        )}
+      />
 
     </AcademicPage>
   );
