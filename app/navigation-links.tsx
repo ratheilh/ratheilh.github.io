@@ -10,6 +10,7 @@ const navigationItems: { href: Localized; label: Localized }[] = [
   { href: { fr: "/publications", en: "/en/publications" }, label: { fr: "Publications", en: "Publications" } },
   { href: { fr: "/enseignement", en: "/en/teaching" }, label: { fr: "Enseignements", en: "Teaching" } },
   { href: { fr: "/encadrements", en: "/en/supervision" }, label: { fr: "Encadrements", en: "Supervision" } },
+  { href: { fr: "/mobilites-erasmus", en: "/en/erasmus-mobility" }, label: { fr: "Mobilités Erasmus", en: "Erasmus mobility" } },
   { href: { fr: "/services", en: "/en/services" }, label: { fr: "Services", en: "Services" } },
   { href: { fr: "/contact", en: "/en/contact" }, label: { fr: "CV & contacts", en: "CV & contact" } },
 ];

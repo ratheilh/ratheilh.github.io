@@ -351,6 +351,12 @@ function HomeContent({ language }: { language: Language }) {
           </CollapsibleHomeSection>
 
           <CollapsibleHomeSection id="news" title={localize(homeContent.newsTitle, language)}>
+            <div className="notice erasmus-news">
+              <p><strong><Link href={routes.erasmus[language]}>{isEnglish ? "Erasmus mobility at UCLouvain" : "Mobilités Erasmus à l’UCLouvain"}</Link></strong></p>
+              <p>{isEnglish
+                ? "Funding is available for three Erasmus mobility stays at UCLouvain, each lasting three months, for IFRI master’s students. Read the information and prepare your application."
+                : "Trois mobilités Erasmus de trois mois à l’UCLouvain sont financées pour les étudiants de master de l’IFRI. Consultez les informations et préparez votre candidature."}</p>
+            </div>
             <ol className="news-list">{news.map((item, index) => <li key={`${item.dateTime}-${index}`}><time dateTime={item.dateTime}>{localize(item.period, language)}</time><p><strong>{localize(item.title, language)}</strong><br />{localize(item.details, language)}{item.links ? <span className="news-links">{item.links.map((link, linkIndex) => <span key={link.href}>{linkIndex > 0 ? " · " : null}<ExternalLink href={link.href}>{localize(link.label, language)}</ExternalLink></span>)}</span> : null}</p></li>)}</ol>
           </CollapsibleHomeSection>
         </div>
