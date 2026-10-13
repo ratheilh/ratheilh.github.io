@@ -25,7 +25,6 @@ const copy = {
   documentsIntroduction: { fr: "Votre dossier doit comprendre :", en: "Your application must include:" },
   sendingTitle: { fr: "Envoyer votre dossier", en: "Submit your application" },
   sendingIntroduction: { fr: "Adressez votre candidature aux deux contacts suivants, dans un même courriel :", en: "Send your application to both of the following contacts in a single email:" },
-  evaluation: { fr: "Les dossiers seront évalués par Ratheil Houndji et Hélène Verhaeghe.", en: "Applications will be assessed by Ratheil Houndji and Hélène Verhaeghe." },
   subjectLabel: { fr: "Objet de l'email :", en: "Email subject:" },
   enquiries: {
     fr: "Pour connaître le calendrier de candidature et discuter des possibilités de séjour, contactez Ratheil Houndji et Hélène Verhaeghe aux adresses indiquées ci-dessus.",
@@ -70,7 +69,6 @@ export function ErasmusContent({ language }: { language: Language }) {
           <h2 id="sending-title">{localize(copy.sendingTitle, language)}</h2>
           <p>{localize(copy.sendingIntroduction, language)}</p>
           <ul className="erasmus-contacts">{contacts.map((contact) => <li key={contact.email}><strong>{contact.name}{language === "fr" ? " :" : ":"}</strong> <a href={applicationHref}>{contact.email}</a></li>)}</ul>
-          <p>{localize(copy.evaluation, language)}</p>
           <p><strong>{localize(copy.subjectLabel, language)}</strong> <span className="erasmus-subject" lang="fr">{applicationSubject}</span></p>
           <p>{localize(copy.enquiries, language)}</p>
         </section>
