@@ -35,6 +35,11 @@ const groups: CourseGroup[] = [
 
 const resources: TeachingResource[] = [
   {
+    name: { fr: "Atelier des soutenances : visualiseur et contrôleur", en: "Defense scheduling workshop: visualizer and checker" },
+    description: { fr: "un outil interactif pour explorer une instance et vérifier une solution JSON : présoutenances en ligne, finales en salle, conflits et temps creux. Traitement local dans le navigateur, sans solveur.", en: "a French-language interactive tool to explore an instance and check a JSON solution: online pre-defenses, in-room final defenses, conflicts, and idle time. Data is processed locally in your browser; no solver is included." },
+    href: "/outils/soutenances/",
+  },
+  {
     name: { fr: "Modèle de cahier des charges de mémoire", en: "Thesis project specification template" },
     description: { fr: "un modèle Word détaillé et structuré pour guider les étudiants dans la rédaction du cahier des charges de leur mémoire.", en: "a detailed, structured Word template guiding students through the preparation of their thesis project specifications." },
     href: "/teaching-resources/modele-cahier-des-charges-memoire.docx",
